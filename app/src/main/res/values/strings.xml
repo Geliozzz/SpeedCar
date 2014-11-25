@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sensor_test</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="enter">Ввод</string>
+    <string name="carHint">Название ТС</string>
+    <string name="test1">Тест 1</string>
+    <string name="test2">Тест 2</string>
+    <string name="startTest">Начать тест</string>
+    <string name="result">Результат</string>
+    <string name="failAccelerometer">Отсутствует акселерометр</string>
+    <string name="back">Назад</string>
+    <string name="typeEngine">Тип двигателя:</string>
+    <string name="engIsNorm">Двигатель в норме</string>
+
+
+
+
+    <string-array name="typesEng">
+        <item>Бензин</item>
+        <item>Дизель</item>
+    </string-array>
+
+    <string-array name="resultText">
+        <item>dg</item>
+        <item>gg</item>
+        <item>hh</item>
+    </string-array>
+
+</resources>
