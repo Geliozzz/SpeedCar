@@ -10,10 +10,10 @@ public class InputInterface {
     public enum ResultTestEnum {
         GOOD, BAD
     }
-    public void Start(InputTypeEnum inputTypeEnum){
+    public void Start(InputTypeEnum inputTypeEnum, Collector collector){
         if (inputTypeEnum.equals(InputTypeEnum.sensors)){
             m_sensorInput = new SensorInput();
-            m_sensorInput.Start();
+            m_sensorInput.Start(collector);
         }
     }
     public void Stop(){

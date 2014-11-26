@@ -6,8 +6,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
 public class SensorInput implements SensorEventListener {
-    public void Start(){
-
+    Collector m_collector;
+    public void Start(Collector collector){
+         m_collector = collector;
     }
 
     public void Stop(){
@@ -16,7 +17,7 @@ public class SensorInput implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-           Collector.Collect();
+           m_collector.Collect();
     }
 
     @Override
