@@ -16,6 +16,7 @@
     <string name="engIsNorm">Двигатель в норме</string>
     <string name="saveOk">Данные сохранены</string>
     <string name="canNotSave">Невозможно сохранить данные</string>
+    <string name="fileNotFound">Файл не найден</string>
 
 
 

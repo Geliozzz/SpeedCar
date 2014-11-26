@@ -16,6 +16,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +68,7 @@ public class TestExecutorActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 m_needSave = true;
-                Collector(InputTypeEnum.sensors);
+               // Collector(InputTypeEnum.storage);
 
             }
         });
@@ -90,22 +95,23 @@ public class TestExecutorActivity extends ActionBarActivity {
 
     }
 
-    public void Collector(InputTypeEnum inputTypeEnum) {
+/*    public void Collector(InputTypeEnum inputTypeEnum) {
         if (inputTypeEnum.equals(InputTypeEnum.sensors)) {
             m_sensors.Start();
             m_counter = 0;
         } else if (inputTypeEnum.equals(InputTypeEnum.storage)) {
-
+            Reader("acc_2014_11_26_14_1_43.txt");
+            m_needSave = false;
         }
 
-    }
+    }*/
 
-    public void Collector(float XAxis, float YAxis, float ZAxis, long TimeInMillisecond) {
+    public void Collector(double XAxis, double YAxis, double ZAxis, long TimeInMillisecond) {
         if (m_counter <= m_count_dem) {
             try {
-                m_testData.XAxis[m_counter] = (double) XAxis;
-                m_testData.YAxis[m_counter] = (double) YAxis;
-                m_testData.ZAxis[m_counter] = (double) ZAxis;
+                m_testData.XAxis[m_counter] = XAxis;
+                m_testData.YAxis[m_counter] = YAxis;
+                m_testData.ZAxis[m_counter] = ZAxis;
                 m_testData.TimeInMilliseconds[m_counter] = TimeInMillisecond;
             } catch (IndexOutOfBoundsException e) {
                 Log.d(LOG_TAG, "Invalid index in TestDataClass");
@@ -119,22 +125,23 @@ public class TestExecutorActivity extends ActionBarActivity {
             m_textViewZ.setText(String.valueOf(ZAxis));
         } else {
             m_sensors.Stop();
-            Analyze(m_testData);
+            m_counter = 0;
+           // Analyze(m_testData);
             if (m_needSave) {
                 Saver(m_testData);
             }
 
-            if (Analyze(m_testData).equals(ResultTestEnum.GOOD)) {
+   /*         if (Analyze(m_testData).equals(ResultTestEnum.GOOD)) {
                 m_linearLayoutTestExecutor.setBackgroundColor(getResources().getColor(R.color.green));
                 Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.engIsNorm), Toast.LENGTH_SHORT);
                 toast.show();
-            }
+            }*/
         }
     }
 
-    private ResultTestEnum Analyze(TestData testData) {
+/*  //  private ResultTestEnum Analyze(TestData testData) {
         return ResultTestEnum.GOOD;
-    }
+    }*/
 
     private void Saver(TestData testData) {
         String path = Environment.getExternalStorageDirectory().toString();
@@ -145,6 +152,40 @@ public class TestExecutorActivity extends ActionBarActivity {
             Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.canNotSave), Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    private void Reader(String fileName){
+        String path = Environment.getExternalStorageDirectory().toString();
+        File file = new File(path, fileName);
+        try {
+            BufferedReader bufferedFileReader = new BufferedReader(new FileReader(file));
+            while (bufferedFileReader.ready()){
+                String[] line =  bufferedFileReader.readLine().split(" ");
+                try {
+                    double axisX = Double.parseDouble(line[0]);
+                    double axisY = Double.parseDouble(line[1]);
+                    double axisZ = Double.parseDouble(line[2]);
+                    long time = Long.parseLong(line[3]);
+                    Collector(axisX, axisY, axisZ, time);
+                } catch (IndexOutOfBoundsException e){
+                    Log.d(LOG_TAG, "Index is out of range");
+                } catch (NumberFormatException e){
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        } catch (FileNotFoundException e){
+            Log.d(LOG_TAG, "File not found");
+            Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.fileNotFound), Toast.LENGTH_SHORT);
+            toast.show();
+        } catch (IOException e){
+            Log.d(LOG_TAG, "Can't read line");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 
