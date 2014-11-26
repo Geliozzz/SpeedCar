@@ -11,28 +11,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-
-public class InDataActivity extends ActionBarActivity {
-
-    private EditText edtNameCar;
-    private Spinner spinTypeEng;
-    private Button btnTstActivity;
+public class InputDataActivity extends ActionBarActivity {
+    private EditText m_editTableNameCar;
+    private Spinner m_spinnerTypeEngine;
+    private Button m_btnTstActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_in_data);
-        edtNameCar = (EditText)findViewById(R.id.edtInputName);
-        spinTypeEng = (Spinner)findViewById(R.id.spinTypeEng);
-        btnTstActivity = (Button)findViewById(R.id.btnTstAct);
+        setContentView(R.layout.activity_input_data);
+        m_editTableNameCar = (EditText)findViewById(R.id.edtInputName);
+        m_spinnerTypeEngine = (Spinner)findViewById(R.id.spinTypeEng);
+        m_btnTstActivity = (Button)findViewById(R.id.btnTstAct);
 
         ArrayAdapter<String> adapterTypeEng = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.typesEng));
-        spinTypeEng.setAdapter(adapterTypeEng);
+        m_spinnerTypeEngine.setAdapter(adapterTypeEng);
 
-        btnTstActivity.setOnClickListener(new View.OnClickListener() {
+        m_btnTstActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), TestActivity.class);
+                Intent intent = new Intent(getApplicationContext(), TestExecutorActivity.class);
                 startActivity(intent);
             }
         });

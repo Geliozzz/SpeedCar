@@ -8,21 +8,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class ResultActivity extends ActionBarActivity {
-    private TextView tvResult;
-    private Button btnBack;
+    private TextView m_textViewResult;
+    private Button m_btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        btnBack = (Button)findViewById(R.id.btnBack);
+        m_btnBack = (Button)findViewById(R.id.btnBack);
 
         Intent intent = getIntent();
         String tmp = intent.getStringExtra("str");
-        tvResult = (TextView)findViewById(R.id.tvResult);
-        tvResult.setText(tmp);
+        m_textViewResult = (TextView)findViewById(R.id.tvResult);
+        m_textViewResult.setText(tmp);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        m_btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

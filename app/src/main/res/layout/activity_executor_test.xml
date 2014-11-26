@@ -42,7 +42,7 @@
         android:layout_height="20dp"
         android:id="@+id/prBrTest"
         style="@android:style/Widget.ProgressBar.Horizontal"
-         />
+        />
 
     <Button
         android:layout_width="fill_parent"
