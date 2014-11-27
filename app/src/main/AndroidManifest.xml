@@ -21,7 +21,7 @@
         <activity android:name=".TestExecutorActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".PopupActivity"></activity>
 
     </application>
 

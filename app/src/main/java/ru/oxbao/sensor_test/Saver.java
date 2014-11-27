@@ -1,7 +1,8 @@
 package ru.oxbao.sensor_test;
 
-/**
- * Created by pocheptsov on 26.11.2014.
- */
+
 public class Saver {
+    public boolean SaveInFile(TestData testData){
+        return true;
+    }
 }

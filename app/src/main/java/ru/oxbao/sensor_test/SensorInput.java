@@ -6,6 +6,14 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
 public class SensorInput implements SensorEventListener {
+    private Collector m_collectorOwner;
+    private TestExecutorActivity m_ownerActivity;
+
+    public SensorInput(TestExecutorActivity testExecutorActivity ,Collector collector) {
+        m_collectorOwner = collector;
+        m_ownerActivity = testExecutorActivity;
+    }
+
     public void Start(){
 
     }
@@ -16,7 +24,9 @@ public class SensorInput implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-           Collector.Collect();
+           //  В датчике внутренний датчик реализован (он сам генерирует события выдачи новых данных)
+            //В любом случае xxxInput циклично дёргает метод Collector’a
+            m_collectorOwner.Amass();
     }
 
     @Override
