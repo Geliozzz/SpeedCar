@@ -17,6 +17,7 @@ public class TestExecutor {
     }
 
     public void Start(){
+<<<<<<< HEAD
         m_collector.Start(InputInterface.InputTypeEnum.sensors); // TestExecutor запускает Collector
         //Получать данные с датчика или считывать их из файла(-ов) определяется параметром
         // метода Collector’a, который вызывает TestExecutor.
@@ -33,6 +34,15 @@ public class TestExecutor {
         }
         return Solutions.ResultTestEnum.GOOD;
     }
+=======
+        Collector collector = new Collector();
+        collector.Start(m_fromSensor, this);
+    }
+    public InputInterface.ResultTestEnum Analyze(TestData testData){
+        return InputInterface.ResultTestEnum.GOOD;
+    }
+
+>>>>>>> 66531d8cde43049e596bd73b4650f29978cb631b
 
 
 }
