@@ -64,7 +64,7 @@ public class TestExecutorActivity extends ActionBarActivity {
         m_progressBarTest.setProgress(progress);
     }
 
-    public void SetResultAnalyze(Solutions.ResultTestEnum resultTestEnum){
+    public void OnTestFinished(Solutions.ResultTestEnum resultTestEnum){
 
     }
 }

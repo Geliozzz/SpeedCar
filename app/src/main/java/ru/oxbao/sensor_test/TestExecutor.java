@@ -17,32 +17,24 @@ public class TestExecutor {
     }
 
     public void Start(){
-<<<<<<< HEAD
         m_collector.Start(InputInterface.InputTypeEnum.sensors); // TestExecutor запускает Collector
         //Получать данные с датчика или считывать их из файла(-ов) определяется параметром
         // метода Collector’a, который вызывает TestExecutor.
         // В тестЭкзекуторе пока этот параметр задать хардкодом.
     }
 
-    public Solutions.ResultTestEnum Analyze(TestData testData){
+    private Solutions.ResultTestEnum Analyze(TestData testData){
 
-      //  TestExecutor через вызов метода Saver
-      // сохраняет TestData в файл(-ы) (если установлен соответствующий флаг
-        m_ownerActivity.SetResultAnalyze(Solutions.ResultTestEnum.GOOD);
-        if (m_saveData){
-            m_saver.SaveInFile(testData);
-        }
+
+        m_ownerActivity.OnTestFinished(Solutions.ResultTestEnum.GOOD);
         return Solutions.ResultTestEnum.GOOD;
     }
-=======
-        Collector collector = new Collector();
-        collector.Start(m_fromSensor, this);
+
+    public void OnDataCollected(){
+        m_collector.Stop();
+        Analyze(g_testData);
+        if (m_saveData){
+            m_saver.SaveInFile(g_testData);
+        }
     }
-    public InputInterface.ResultTestEnum Analyze(TestData testData){
-        return InputInterface.ResultTestEnum.GOOD;
-    }
-
->>>>>>> 66531d8cde43049e596bd73b4650f29978cb631b
-
-
 }
