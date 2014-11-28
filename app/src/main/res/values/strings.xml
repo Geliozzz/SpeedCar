@@ -10,12 +10,12 @@
     <string name="test2">Тест 2</string>
     <string name="startTest">Начать тест</string>
     <string name="result">Результат</string>
-    <string name="failAccelerometer">Отсутствует акселерометр</string>
+    <string name="failAccelerometer">Акселерометр не найден</string>
     <string name="back">Назад</string>
     <string name="typeEngine">Тип двигателя:</string>
     <string name="engIsNorm">Двигатель в норме</string>
     <string name="saveOk">Данные сохранены</string>
-    <string name="canNotSave">Невозможно сохранить данные</string>
+    <string name="failSaveFile">Невозможно сохранить данные</string>
     <string name="fileNotFound">Файл не найден</string>
 
 

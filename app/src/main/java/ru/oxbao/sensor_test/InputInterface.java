@@ -9,8 +9,8 @@ public class InputInterface {
         sensors, storage
     }
 
-    public InputInterface(TestExecutorActivity testExecutorActivity ,Collector collector) {
-        m_sensorInput = new SensorInput(testExecutorActivity, collector);
+    public InputInterface(TestExecutorActivity testExecutorActivity , TestExecutor testExecutor,Collector collector) {
+        m_sensorInput = new SensorInput(testExecutorActivity,  testExecutor, collector);
         m_storageInput = new StorageInput();
     }
 

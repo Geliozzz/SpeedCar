@@ -54,17 +54,34 @@ public class TestExecutorActivity extends ActionBarActivity {
         m_btnStartTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_testExecutor.Start();
+                switch (m_radioGroupTests.getCheckedRadioButtonId()){
+                    case R.id.test1:
+                        m_testExecutor.Start(TestExecutor.TestEnum.test1);
+                        break;
+                    case R.id.test2:
+                        m_testExecutor.Start(TestExecutor.TestEnum.test2);
+                        break;
+                }
+
             }
         });
-
     }
 
-    public void SetProgressBar(int progress){
+    public void SetProgressBar(int progress) {
         m_progressBarTest.setProgress(progress);
     }
 
-    public void OnTestFinished(Solutions.ResultTestEnum resultTestEnum){
+    public void SetMaxProgressBar(int max) {
+        m_progressBarTest.setMax(max);
+    }
 
+    public void OnTestFinished(Solutions.ResultTestEnum resultTestEnum) {
+
+    }
+
+    public void SetTextViews(double x, double y, double z) {
+        m_textViewX.setText(String.valueOf(x));
+        m_textViewY.setText(String.valueOf(y));
+        m_textViewZ.setText(String.valueOf(z));
     }
 }

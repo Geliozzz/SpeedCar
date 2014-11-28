@@ -1,40 +1,53 @@
 package ru.oxbao.sensor_test;
 
 
+import android.util.Log;
+
 public class Collector {
     private InputInterface m_inputInterface;
     private int m_numberOfMeasurements;
     private int m_count;
     private TestExecutor m_ownerExecutor;
     private TestExecutorActivity m_ownerActivity;
+    private final String COLLECTOR_TAG = "Collector";
 
     public Collector(TestExecutorActivity testExecutorActivity, TestExecutor testExecutor, int number) {
-        m_inputInterface = new InputInterface(testExecutorActivity, this);
+        m_inputInterface = new InputInterface(testExecutorActivity, testExecutor, this);
         m_numberOfMeasurements = number;
         m_ownerExecutor = testExecutor;
         m_ownerActivity = testExecutorActivity;
+        m_count = 0;
     }
 
     public void Start(InputInterface.InputTypeEnum inputTypeEnum) {
-        //TestExecutor запускает Collector, тот в свою очередь – Iinput::Start() (сенсор или считыватель из ЗУ).
         m_inputInterface.Start(inputTypeEnum);
+        m_count = 0;
     }
 
     public void Stop(){
         m_inputInterface.Stop();
     }
 
-    public void Amass() {
-        //метод Collector’a, чтобы он сохранял очередные значения датчиков
-        // (три значения для трёх осей + временная отметка получения данных)
-        // в структуру TestData::timeDomain (в соответствующие массивы X, Y, Z, T)
-        //Также этот метод Collector’a проверяет, набралось ли достаточное количество
-        // отсчётов (необходимое количество число хардкодом задано в нём, например 17000).
+    public void Amass(double XAxis, double YAxis, double ZAxis, long time) {
+        try {
+            m_ownerExecutor.g_testData.XAxis[m_count] = XAxis;
+            m_ownerExecutor.g_testData.YAxis[m_count] = YAxis;
+            m_ownerExecutor.g_testData.ZAxis[m_count] = ZAxis;
+            m_ownerExecutor.g_testData.TimeInMilliseconds[m_count] = time;
+        } catch (IndexOutOfBoundsException e){
+            Log.d(COLLECTOR_TAG, "index testData is out of range");
+        } catch (Exception e){
+            e.printStackTrace();
+            Log.d(COLLECTOR_TAG, "Anything exception ");
+        }
+        m_ownerActivity.SetTextViews(XAxis, YAxis, ZAxis);
         m_count++;
-        m_ownerActivity.setProgress(m_count); // ProgressBar заполняется по ходу накопления данных
-        m_ownerExecutor.g_testData.XAxis[m_count] = 5d;
+        m_ownerActivity.SetProgressBar(m_count);
+        if (m_count > m_numberOfMeasurements - 1){
+            m_ownerExecutor.OnDataCollected();     // Окончание накопления
+        }
 
-        // Окончание накопления
-        m_ownerExecutor.OnDataCollected();
+
+
     }
 }
