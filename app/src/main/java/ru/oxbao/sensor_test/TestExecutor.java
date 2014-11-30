@@ -1,6 +1,7 @@
 package ru.oxbao.sensor_test;
 
 
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 public class TestExecutor {
@@ -22,7 +23,7 @@ public class TestExecutor {
     public TestExecutor(TestExecutorActivity testExecutorActivity) {
         m_collector = new Collector(testExecutorActivity, this ,m_numberOfMeasurements);
         g_testData = new TestData(m_numberOfMeasurements);
-        m_saver = new Saver(m_prefix, this);
+        m_saver = new Saver( this, m_prefix);
         m_workMath = new WorkMath();
         m_ownerActivity = testExecutorActivity;
         m_ownerActivity.SetMaxProgressBar(m_numberOfMeasurements);
@@ -30,21 +31,23 @@ public class TestExecutor {
     }
 
     public void Start(TestEnum testEnum){
-        m_collector.Start(InputInterface.InputTypeEnum.sensors);
+        if (testEnum.equals(TestEnum.test1)) {
+            m_collector.Start(InputInterface.InputTypeEnum.sensors);
+            m_saveData = true;
+        } else if (testEnum.equals(TestEnum.test2)){
+            m_collector.Start(InputInterface.InputTypeEnum.storage);
+            m_saveData = false;
+        }
         m_saver.SetPrefix(testEnum.toString());
 
     }
 
-    public void Stop(){
-        m_collector.Stop();
-    }
 
     public void OnDataCollected(){
-        m_collector.Stop();
         m_workMath.Analyze(g_testData);
         m_ownerActivity.OnTestFinished(Solutions.ResultTestEnum.GOOD);
         if (m_saveData){
-            m_saver.SaveInFile(g_testData);
+            m_saver.SaveData(g_testData);
         }
     }
 
@@ -57,5 +60,34 @@ public class TestExecutor {
             Toast toast = Toast.makeText(m_ownerActivity.getApplicationContext(), m_ownerActivity.getApplicationContext().getResources().getString(R.string.failAccelerometer), Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    public ArrayAdapter GetFilesNames(){
+        try {
+            String[] files = m_collector.GetFilesNames();
+            if (files.length == 0){
+                return null;
+            }
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(m_ownerActivity, R.layout.support_simple_spinner_dropdown_item, files);
+            return arrayAdapter;
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public String GetCheckedSpinner(){
+        return m_ownerActivity.GetCheckedSpinner();
+    }
+
+    public void SetFixedTestData(){
+        g_testData = new TestData(m_numberOfMeasurements);
+    }
+
+    public int Getm_numberOfMeasurements() {
+        return m_numberOfMeasurements;
     }
 }

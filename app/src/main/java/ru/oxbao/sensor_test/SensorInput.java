@@ -31,7 +31,7 @@ public class SensorInput implements SensorEventListener {
             m_sensorIsWorking = true;
         } else {
             m_ownerTestExecutor.ShowToast(TestExecutor.ToastMessage.failStartSensor);
-            m_ownerTestExecutor.Stop();
+            m_collectorOwner.Stop();
         }
     }
 

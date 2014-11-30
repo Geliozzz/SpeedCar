@@ -3,14 +3,19 @@ package ru.oxbao.sensor_test;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TestExecutorActivity extends ActionBarActivity {
     private RadioGroup m_radioGroupTests;
@@ -20,9 +25,12 @@ public class TestExecutorActivity extends ActionBarActivity {
     private TextView m_textViewX;
     private TextView m_textViewY;
     private TextView m_textViewZ;
+    private Spinner m_spinnerFiles;
     private LinearLayout m_linearLayoutTestExecutor;
     private TestExecutor m_testExecutor;
+    private RadioButton m_radioTest1;
     final String LOG_TAG = "Logs";
+    private Handler m_handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +45,28 @@ public class TestExecutorActivity extends ActionBarActivity {
         m_textViewY = (TextView) findViewById(R.id.tvY);
         m_textViewZ = (TextView) findViewById(R.id.tvZ);
         m_linearLayoutTestExecutor = (LinearLayout) findViewById(R.id.testLay);
+        m_spinnerFiles = (Spinner) findViewById(R.id.spinnerFiles);
+        m_radioTest1 = (RadioButton) findViewById(R.id.test1);
 
         m_testExecutor = new TestExecutor(this);
 
         /***********Запрет на зысыпание*****************/
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        m_handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                Bundle bundle = new Bundle();
+
+                m_progressBarTest.setProgress(msg.getData().getInt("count"));
+            }
+        };
+
         m_btnViewResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
+                intent.putExtra("TestDataValue", m_testExecutor.g_testData.toString());
                 startActivity(intent);
             }
         });
@@ -65,6 +85,28 @@ public class TestExecutorActivity extends ActionBarActivity {
 
             }
         });
+
+        m_radioGroupTests.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.test1:
+                        m_spinnerFiles.setVisibility(View.INVISIBLE);
+                        break;
+                    case R.id.test2:
+                        if (m_testExecutor.GetFilesNames() != null){
+                            m_spinnerFiles.setVisibility(View.VISIBLE);
+                            m_spinnerFiles.setAdapter(m_testExecutor.GetFilesNames());
+                        } else {
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.filesNotFound), Toast.LENGTH_SHORT).show();
+                            m_radioTest1.setChecked(true);
+                        }
+                        break;
+                }
+            }
+        });
+
+
     }
 
     public void SetProgressBar(int progress) {
@@ -83,5 +125,24 @@ public class TestExecutorActivity extends ActionBarActivity {
         m_textViewX.setText(String.valueOf(x));
         m_textViewY.setText(String.valueOf(y));
         m_textViewZ.setText(String.valueOf(z));
+    }
+
+    public String GetCheckedSpinner(){
+        String result = "";
+        try {
+           result = m_spinnerFiles.getSelectedItem().toString();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public void SendMessage(int count){
+        Bundle bundle = new Bundle();
+        bundle.putInt("count", count);
+        Message message = new Message();
+        message.setData(bundle);
+        m_handler.sendMessage(message);
     }
 }

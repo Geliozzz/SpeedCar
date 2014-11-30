@@ -19,7 +19,7 @@ public class PopupActivity extends ActionBarActivity {
         m_btnBack = (Button)findViewById(R.id.btnBack);
 
         Intent intent = getIntent();
-        String tmp = intent.getStringExtra("str");
+        String tmp = intent.getStringExtra("TestDataValue");
         m_textViewResult = (TextView)findViewById(R.id.tvResult);
         m_textViewResult.setText(tmp);
 
