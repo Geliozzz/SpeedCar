@@ -13,25 +13,45 @@ import android.widget.Spinner;
 
 public class InputDataActivity extends ActionBarActivity {
     private EditText m_editTableNameCar;
-    private Spinner m_spinnerTypeEngine;
+    //private Spinner m_spinnerTypeEngine;
     private Button m_btnTstActivity;
+    private Button m_btnPetrol;
+    private Button m_btnDiesel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_data);
         m_editTableNameCar = (EditText)findViewById(R.id.edtInputName);
-        m_spinnerTypeEngine = (Spinner)findViewById(R.id.spinTypeEng);
+        //m_spinnerTypeEngine = (Spinner)findViewById(R.id.spinTypeEng);
         m_btnTstActivity = (Button)findViewById(R.id.btnTstAct);
+        m_btnDiesel = (Button)findViewById(R.id.btnDiesel);
+        m_btnPetrol = (Button) findViewById(R.id.btnPetrol);
 
-        ArrayAdapter<String> adapterTypeEng = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.typesEng));
-        m_spinnerTypeEngine.setAdapter(adapterTypeEng);
+        /*ArrayAdapter<String> adapterTypeEng = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.typesEng));
+        m_spinnerTypeEngine.setAdapter(adapterTypeEng);*/
 
         m_btnTstActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), TestExecutorActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        m_btnPetrol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                m_btnDiesel.setText("");
+                m_btnPetrol.setText(getResources().getString(R.string.petrol));
+            }
+        });
+
+        m_btnDiesel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                m_btnPetrol.setText("");
+                m_btnDiesel.setText(getResources().getString(R.string.diesel));
             }
         });
     }

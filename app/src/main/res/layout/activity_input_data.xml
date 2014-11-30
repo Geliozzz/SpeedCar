@@ -13,35 +13,61 @@
         android:layout_height="wrap_content"
         android:id="@+id/edtInputName"
         android:hint="@string/carHint"
+        android:layout_marginTop="43dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/typeEngine"
-        android:id="@+id/tvTypeEngine"
-        android:layout_below="@+id/edtInputName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <Spinner
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/edtInputName"
+        android:id="@+id/linearLayout">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/petrol"
+            android:id="@+id/btnPetrol"
+            />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/diesel"
+            android:layout_weight="0.5"
+            android:id="@+id/btnDiesel"
+            />
+    </LinearLayout>
+
+<!--    <Spinner
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinTypeEng"
-        android:layout_below="@+id/tvTypeEngine"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="33dp" />-->
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/enter"
         android:id="@+id/btnTstAct"
-        android:layout_below="@+id/spinTypeEng"
+        android:layout_below="@+id/linearLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+
+        android:src="@drawable/abc_ic_voice_search" />
 
 
 </RelativeLayout>

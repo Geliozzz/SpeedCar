@@ -19,6 +19,8 @@
     <string name="fileNotFound">Файл не найден</string>
     <string name="filesNotFound">Файлы не найдены</string>
     <string name="failStorage">Карта памяти не доступна</string>
+    <string name="petrol">Бензин</string>
+    <string name="diesel">Дизель</string>
 
 
 
