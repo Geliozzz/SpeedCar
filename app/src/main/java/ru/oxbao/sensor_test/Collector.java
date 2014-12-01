@@ -61,9 +61,10 @@ public class Collector {
             m_ownerActivity.SendMessage(m_count);
         }
         m_count++;
-
+        //Log.d(COLLECTOR_TAG, String.valueOf(m_count) + " " + String.valueOf(m_numberOfMeasurements));
         if (m_count > m_numberOfMeasurements - 1){
             Stop();
+            Log.d(COLLECTOR_TAG, "Stopped ");
             m_ownerExecutor.OnDataCollected();     // Окончание накопления
         }
     }
@@ -74,5 +75,11 @@ public class Collector {
 
     public void SetNumberOfMeasurements(int number){
         m_numberOfMeasurements = number;
+    }
+
+    /*Нужен для остановки при чтении из файла. Возможно возникновение исклучений при чтении и счетчик накопленных значений не заполняется до конца*/
+    public  void OnDataCollected(){
+        Stop();
+        m_ownerExecutor.OnDataCollected();
     }
 }

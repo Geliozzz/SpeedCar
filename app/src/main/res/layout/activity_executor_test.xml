@@ -2,7 +2,8 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundLayoutsColor"
     android:id="@+id/testLay"
@@ -15,49 +16,102 @@
         style="@style/HeaderStyle"
         android:id="@+id/textViewHeader"
          />
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="67dp">
-    <LinearLayout
+
+
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="63dp"
+        android:layout_height="45dp"
         android:background="@color/StepBackgroundColor">
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerFiles"
+            android:visibility= "invisible"/>
 
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView" />
+            style="@style/StepStyle"
+            android:background="@color/StepNoActiveColor"
+            android:id="@+id/imageViewStep1"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewStep2"
+            />
+        <ImageView
+            style="@style/StepStyle"
+            android:background="@color/StepActiveColor"
+            android:id="@+id/imageViewStep2"
+            android:layout_centerHorizontal="true"
+            />
+        <ImageView
+            style="@style/StepStyle"
+            android:background="@color/StepNoActiveColor"
+            android:id="@+id/imageViewStep3"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/imageViewStep2" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView2" />
-    </LinearLayout>
+            android:text="@string/step2Text"
+            android:textColor="@color/StepTextColor"
+            android:id="@+id/textView2"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 
-    </ScrollView>
+
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="109dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
         android:text="@string/TesterHelpMessage"
         android:id="@+id/textViewHelpMessage"
         android:textColor="@color/HelperMessageTextColor"
+        android:layout_marginTop="10dp"
         android:gravity="center"
      />
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <RadioGroup
+            android:id="@+id/radGrTests"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <RadioButton
+                android:id="@+id/test1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:text="@string/test1"
+                android:layout_weight="1"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/test2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
+                android:text="@string/test2"
+                />
+        </RadioGroup>
 
         <ru.oxbao.sensor_test.ProgressWheel
             android:id="@+id/progressBarWheel"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             ProgressWheel:text="@string/wait"
             ProgressWheel:textColor="#ff000000"
             ProgressWheel:textSize="12sp"
@@ -73,10 +127,11 @@
             android:layout_centerHorizontal="true" />
 
         <Button
-            android:layout_width="240dp"
-            android:layout_height="240dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:text="@string/startTest"
             android:textSize="30sp"
+            android:textStyle="bold"
             android:textColor="@color/btnStartReadyTextColor"
             android:background= "@drawable/oval_button_ready"
             android:id="@+id/btnStartTest"
@@ -95,57 +150,24 @@
         android:id="@+id/button"
         android:layout_gravity="center_horizontal" />
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinnerFiles"
-        android:visibility= "invisible"/>
 
-    <RadioGroup
-        android:id="@+id/radGrTests"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:orientation="vertical" >
-
-        <RadioButton
-            android:id="@+id/test1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:text="@string/test1"
-            android:layout_weight="1"
-            android:checked="true" />
-
-        <RadioButton
-            android:id="@+id/test2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_weight="1"
-            android:text="@string/test2"
-            />
-    </RadioGroup>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-
         android:id="@+id/tvX" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-
         android:id="@+id/tvY" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-
         android:id="@+id/tvZ" />
 
 </LinearLayout>

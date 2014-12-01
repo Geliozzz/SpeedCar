@@ -52,6 +52,7 @@ public class StorageInput {
                         bundle.putDouble("YAxis" , YAxis);
                         bundle.putDouble("ZAxis" , ZAxis);
                         bundle.putLong("Time", Time);
+                        bundle.putString("key", "collector"); //Ключ сообщения нужен для идентификации сообщения
                         msg.setData(bundle);
                         m_handler.handleMessage(msg);
                     } catch (NumberFormatException e){
@@ -75,6 +76,10 @@ public class StorageInput {
             } catch (Exception e){
                 e.printStackTrace();
             }
+            bundle.clear();
+            bundle.putString("key", "stop"); //Ключ сообщения нужен для идентификации сообщения
+            msg.setData(bundle);
+            m_handler.handleMessage(msg);
         }
     }
 
@@ -87,9 +92,17 @@ public class StorageInput {
             @Override
             public void handleMessage(Message msg) {
               Bundle bundle = msg.getData();
-              m_collectorOwner.Amass(bundle.getDouble("XAxis"), bundle.getDouble("YAxis"),
-                      bundle.getDouble("ZAxis"), bundle.getLong("Time"));
+              String key =  bundle.getString("key");
+                if (key.equals("collector")){
+                    m_collectorOwner.Amass(bundle.getDouble("XAxis"), bundle.getDouble("YAxis"),
+                            bundle.getDouble("ZAxis"), bundle.getLong("Time"));
+                } else if (key.equals("stop")){
+                    m_collectorOwner.OnDataCollected();
+                }
+
             }
+
+
         };
     }
 
@@ -126,7 +139,7 @@ public class StorageInput {
         } catch (Exception e){
             e.printStackTrace();
             files = null;
-            
+
         }
         return files;
 

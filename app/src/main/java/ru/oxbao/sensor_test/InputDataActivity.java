@@ -1,5 +1,6 @@
 package ru.oxbao.sensor_test;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -11,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class InputDataActivity extends ActionBarActivity {
+public class InputDataActivity extends Activity {
     private EditText m_editTableNameCar;
     //private Spinner m_spinnerTypeEngine;
     private Button m_btnTstActivity;

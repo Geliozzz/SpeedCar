@@ -27,6 +27,12 @@
                                         приборов экраном вверх, динамиком
                                      вперед, нажмите кнопку "Начать тест"</string>
 
+    <string name="step1Text">Шаг 1. Основные данные.</string>
+    <string name="step2Text">Шаг 2. Пройдите тест.</string>
+    <string name="step3Text">Шаг 3. Результаты теста.</string>
+    <string name="carName">Название автомобиля</string>
+    <string name="typeFuel">Тип топлива</string>
+
 
 
     <string-array name="typesEng">

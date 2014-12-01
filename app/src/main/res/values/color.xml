@@ -13,5 +13,10 @@
     <color name="HeaderTextColor">#fff7b64a</color>
     <color name="HeaderBackgroundColor">#ff141414</color>
     <color name="StepBackgroundColor">#ff222222</color>
+    <color name="StepTextColor">#ffffffff</color>
+    <color name="StepActiveColor">#fffdfdfd</color>
+    <color name="StepNoActiveColor">#ff524c4c</color>
     <color name="HelperMessageTextColor">#ffdbdbdb</color>
+    <color name="InDataTVTextColor">#ff939393</color>
+
 </resources>

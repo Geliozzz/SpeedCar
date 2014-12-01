@@ -19,8 +19,6 @@ import android.widget.Toast;
 public class TestExecutorActivity extends Activity {
     private RadioGroup m_radioGroupTests;
     private Button m_btnStartTest;
-  //  private ProgressBar m_progressBarTest;
-  //  private Button m_btnViewResult;
     private TextView m_textViewX;
     private TextView m_textViewY;
     private TextView m_textViewZ;
@@ -31,6 +29,7 @@ public class TestExecutorActivity extends Activity {
     private ProgressWheel m_progressBarWheel;
     final String LOG_TAG = "Logs";
     private Handler m_handler;
+    private boolean m_popupIsStarted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,6 @@ public class TestExecutorActivity extends Activity {
 
         m_radioGroupTests = (RadioGroup) findViewById(R.id.radGrTests);
         m_btnStartTest = (Button) findViewById(R.id.btnStartTest);
-     //   m_progressBarTest = (ProgressBar) findViewById(R.id.prBrTest);
-        //m_btnViewResult = (Button) findViewById(R.id.btnViewResult);
         m_textViewX = (TextView) findViewById(R.id.tvX);
         m_textViewY = (TextView) findViewById(R.id.tvY);
         m_textViewZ = (TextView) findViewById(R.id.tvZ);
@@ -61,6 +58,7 @@ public class TestExecutorActivity extends Activity {
                 Bundle bundle = new Bundle();
 
              //   m_progressBarTest.setProgress(msg.getData().getInt("count"));
+                m_progressBarWheel.setProgress(msg.getData().getInt("count"));
             }
         };
 
@@ -121,11 +119,12 @@ public class TestExecutorActivity extends Activity {
     protected void onResume() {
         super.onResume();
         /***Ready for test*/
-        m_btnStartTest.setBackgroundResource(R.drawable.oval_button);
+        m_btnStartTest.setBackgroundResource(R.drawable.oval_button_ready);
         m_btnStartTest.setText(getResources().getString(R.string.startTest));
         m_btnStartTest.setEnabled(true);
         m_btnStartTest.setTextColor(getResources().getColor(R.color.btnStartReadyTextColor));
         SetProgressBar(0);
+        m_popupIsStarted = false;
     }
 
     public void SetProgressBar(int progress) {
@@ -166,10 +165,14 @@ public class TestExecutorActivity extends Activity {
         message.setData(bundle);
         m_handler.sendMessage(message);
     }
-
+    // При чтении с датчика возникают события новых значений после остановки.
+    // Иногда открывается несколько результатов
+    //Что б не открвывалось больше одного результата введен флаг.
     public void ShowResult(){
-        Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
-        intent.putExtra("TestDataValue", m_testExecutor.g_testData.toString());
-        startActivity(intent);
+        if (!m_popupIsStarted){
+            Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
+            intent.putExtra("TestDataValue", m_testExecutor.g_testData.toString());
+            startActivity(intent);
+        }
     }
 }
