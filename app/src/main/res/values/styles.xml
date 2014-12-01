@@ -5,16 +5,18 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Buttons">
+<!--    <item name="android:gravity">center_horizontal</item>
+    <item name="android:drawablePadding">2dp</item>-->
+    <style name="HeaderStyle">
         <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:drawablePadding">2dp</item>
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:text">@string/engineTester</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#ff29549f</item>
-        <item name="android:background">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/HeaderTextColor</item>
+        <item name="android:background">@color/HeaderBackgroundColor</item>
     </style>
 
 </resources>

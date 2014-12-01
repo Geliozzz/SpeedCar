@@ -21,6 +21,11 @@
     <string name="failStorage">Карта памяти не доступна</string>
     <string name="petrol">Бензин</string>
     <string name="diesel">Дизель</string>
+    <string name="wait">Подождите</string>
+    <string name="engineTester">Engine Tester</string>
+    <string name="TesterHelpMessage">Разместите телефон на панели
+                                        приборов экраном вверх, динамиком
+                                     вперед, нажмите кнопку "Начать тест"</string>
 
 
 

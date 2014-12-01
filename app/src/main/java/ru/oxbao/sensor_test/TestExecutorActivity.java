@@ -1,27 +1,26 @@
 package ru.oxbao.sensor_test;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TestExecutorActivity extends ActionBarActivity {
+public class TestExecutorActivity extends Activity {
     private RadioGroup m_radioGroupTests;
     private Button m_btnStartTest;
-    private ProgressBar m_progressBarTest;
-    private Button m_btnViewResult;
+  //  private ProgressBar m_progressBarTest;
+  //  private Button m_btnViewResult;
     private TextView m_textViewX;
     private TextView m_textViewY;
     private TextView m_textViewZ;
@@ -29,6 +28,7 @@ public class TestExecutorActivity extends ActionBarActivity {
     private LinearLayout m_linearLayoutTestExecutor;
     private TestExecutor m_testExecutor;
     private RadioButton m_radioTest1;
+    private ProgressWheel m_progressBarWheel;
     final String LOG_TAG = "Logs";
     private Handler m_handler;
 
@@ -39,16 +39,18 @@ public class TestExecutorActivity extends ActionBarActivity {
 
         m_radioGroupTests = (RadioGroup) findViewById(R.id.radGrTests);
         m_btnStartTest = (Button) findViewById(R.id.btnStartTest);
-        m_progressBarTest = (ProgressBar) findViewById(R.id.prBrTest);
-        m_btnViewResult = (Button) findViewById(R.id.btnViewResult);
+     //   m_progressBarTest = (ProgressBar) findViewById(R.id.prBrTest);
+        //m_btnViewResult = (Button) findViewById(R.id.btnViewResult);
         m_textViewX = (TextView) findViewById(R.id.tvX);
         m_textViewY = (TextView) findViewById(R.id.tvY);
         m_textViewZ = (TextView) findViewById(R.id.tvZ);
         m_linearLayoutTestExecutor = (LinearLayout) findViewById(R.id.testLay);
         m_spinnerFiles = (Spinner) findViewById(R.id.spinnerFiles);
         m_radioTest1 = (RadioButton) findViewById(R.id.test1);
-
+        m_progressBarWheel = (ProgressWheel) findViewById(R.id.progressBarWheel);
         m_testExecutor = new TestExecutor(this);
+
+
 
         /***********Запрет на зысыпание*****************/
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -58,18 +60,19 @@ public class TestExecutorActivity extends ActionBarActivity {
             public void handleMessage(Message msg) {
                 Bundle bundle = new Bundle();
 
-                m_progressBarTest.setProgress(msg.getData().getInt("count"));
+             //   m_progressBarTest.setProgress(msg.getData().getInt("count"));
             }
         };
 
-        m_btnViewResult.setOnClickListener(new View.OnClickListener() {
+  /*      m_btnViewResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
                 intent.putExtra("TestDataValue", m_testExecutor.g_testData.toString());
                 startActivity(intent);
             }
-        });
+        });*/
+
 
         m_btnStartTest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +85,11 @@ public class TestExecutorActivity extends ActionBarActivity {
                         m_testExecutor.Start(TestExecutor.TestEnum.test2);
                         break;
                 }
+
+                m_btnStartTest.setText(getResources().getString(R.string.wait));
+                m_btnStartTest.setBackgroundResource(R.drawable.oval_button_execute);
+                m_btnStartTest.setTextColor(getResources().getColor(R.color.btnExecuteTextColor));
+                m_btnStartTest.setEnabled(false);
 
             }
         });
@@ -109,12 +117,25 @@ public class TestExecutorActivity extends ActionBarActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /***Ready for test*/
+        m_btnStartTest.setBackgroundResource(R.drawable.oval_button);
+        m_btnStartTest.setText(getResources().getString(R.string.startTest));
+        m_btnStartTest.setEnabled(true);
+        m_btnStartTest.setTextColor(getResources().getColor(R.color.btnStartReadyTextColor));
+        SetProgressBar(0);
+    }
+
     public void SetProgressBar(int progress) {
-        m_progressBarTest.setProgress(progress);
+     //   m_progressBarTest.setProgress(progress);
+        m_progressBarWheel.setProgress(progress);
     }
 
     public void SetMaxProgressBar(int max) {
-        m_progressBarTest.setMax(max);
+     //   m_progressBarTest.setMax(max);
+        m_progressBarWheel.setBarLength(max);
     }
 
     public void OnTestFinished(Solutions.ResultTestEnum resultTestEnum) {
@@ -144,5 +165,11 @@ public class TestExecutorActivity extends ActionBarActivity {
         Message message = new Message();
         message.setData(bundle);
         m_handler.sendMessage(message);
+    }
+
+    public void ShowResult(){
+        Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
+        intent.putExtra("TestDataValue", m_testExecutor.g_testData.toString());
+        startActivity(intent);
     }
 }

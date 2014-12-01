@@ -1,10 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundLayoutsColor"
     android:id="@+id/testLay"
     android:weightSum="1">
+
+    <!-- android:text="@string/startTest"-->
+
+
+    <TextView
+        style="@style/HeaderStyle"
+        android:id="@+id/textViewHeader"
+         />
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="67dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="63dp"
+        android:background="@color/StepBackgroundColor">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/textView2" />
+    </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="109dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/TesterHelpMessage"
+        android:id="@+id/textViewHelpMessage"
+        android:textColor="@color/HelperMessageTextColor"
+        android:gravity="center"
+     />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ru.oxbao.sensor_test.ProgressWheel
+            android:id="@+id/progressBarWheel"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            ProgressWheel:text="@string/wait"
+            ProgressWheel:textColor="#ff000000"
+            ProgressWheel:textSize="12sp"
+            ProgressWheel:rimColor="@color/rimColor"
+            ProgressWheel:barLength="60dp"
+            ProgressWheel:barColor="@color/barColor"
+            ProgressWheel:barWidth="10dp"
+            ProgressWheel:rimWidth="10dp"
+            ProgressWheel:spinSpeed="3dp"
+            android:background="@drawable/ovar_progressbar"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:text="@string/startTest"
+            android:textSize="30sp"
+            android:textColor="@color/btnStartReadyTextColor"
+            android:background= "@drawable/oval_button_ready"
+            android:id="@+id/btnStartTest"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerFiles"
+        android:visibility= "invisible"/>
 
     <RadioGroup
         android:id="@+id/radGrTests"
@@ -32,31 +127,6 @@
             />
     </RadioGroup>
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/startTest"
-        android:id="@+id/btnStartTest" />
-
-    <ProgressBar
-        android:layout_width="fill_parent"
-        android:layout_height="20dp"
-        android:id="@+id/prBrTest"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        />
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/result"
-        android:id="@+id/btnViewResult" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinnerFiles"
-        android:visibility= "invisible"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,4 +147,5 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
 
         android:id="@+id/tvZ" />
+
 </LinearLayout>

@@ -49,6 +49,7 @@ public class TestExecutor {
         if (m_saveData){
             m_saver.SaveData(g_testData);
         }
+        m_ownerActivity.ShowResult();
     }
 
     public void ShowToast(ToastMessage toastMessage){
