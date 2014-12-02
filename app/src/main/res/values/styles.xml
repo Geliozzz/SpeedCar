@@ -18,12 +18,96 @@
         <item name="android:textColor">@color/HeaderTextColor</item>
         <item name="android:background">@color/HeaderBackgroundColor</item>
     </style>
+    <style name="HeaderStyleLarge">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:text">@string/engineTester</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/HeaderTextColor</item>
+        <item name="android:background">@color/HeaderBackgroundColor</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="HeaderStyleSmall">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:text">@string/engineTester</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/HeaderTextColor</item>
+        <item name="android:background">@color/HeaderBackgroundColor</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <!--dasd-->
+
     <style name="StepStyle">
-        <item name="android:layout_width">80dp</item>
-        <item name="android:layout_height">10dp</item>
+        <item name="android:layout_width">110dp</item>
+        <item name="android:layout_height">5dp</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
+
+    </style>
+    <style name="StepStyleLarge">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+
     </style>
 
+    <style name="StepStyleSmall">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+
+    </style>
+    <style name="NavigateButtonStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:background">@drawable/navigate_buttons</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/NavigationButtonTextColor</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginLeft">@dimen/InDataMarginLeftRightNormal</item>
+        <item name="android:layout_marginRight">@dimen/InDataMarginLeftRightNormal</item>
+
+    </style>
+
+    <style name="NavigateButtonStyleLarge">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:background">@drawable/navigate_buttons</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/NavigationButtonTextColor</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+
+    </style>
+    <style name="NavigateButtonStyleSmall">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/navigate_buttons</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/NavigationButtonTextColor</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+
+    </style>
 </resources>

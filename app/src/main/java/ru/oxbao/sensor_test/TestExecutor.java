@@ -42,6 +42,10 @@ public class TestExecutor {
 
     }
 
+    public void Stop(){
+        m_collector.Stop();
+    }
+
 
     public void OnDataCollected(){
         m_workMath.Analyze(g_testData);

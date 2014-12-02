@@ -4,7 +4,6 @@ package ru.oxbao.sensor_test;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +26,7 @@ public class PopupActivity extends Activity {
         m_btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                TestExecutorActivity.g_startTestFlag = true;
                 finish();
             }
         });

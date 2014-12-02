@@ -18,6 +18,7 @@
         android:layout_below="@+id/textViewHeader"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+
         android:id="@+id/relativeLayout">
 
 
@@ -62,16 +63,24 @@
         android:id="@+id/textViewNameCar"
         android:layout_below="@+id/relativeLayout"
         android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormal"
+        android:layout_alignRight="@dimen/InDataMarginLeftRightNormal"
         android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height= "@dimen/InDataSizeUnitNormal"
         android:id="@+id/edtInputName"
-        android:hint="@string/carHint"
+        android:hint="@string/hondaAccord"
+        android:background="@drawable/draw_name_car_edit"
         android:layout_below="@+id/textViewNameCar"
         android:layout_alignParentLeft="true"
+        android:gravity="center"
         android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormal"
+        android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
+        android:layout_marginTop="@dimen/InDataMarginBetweenElements"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -80,6 +89,9 @@
         android:text="@string/typeFuel"
         android:textColor="@color/InDataTVTextColor"
         android:id="@+id/tvTypeFuel"
+        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormal"
+        android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/edtInputName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -88,17 +100,20 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-
+        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormal"
+        android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
+        android:layout_marginTop="@dimen/InDataMarginBetweenElements"
         android:id="@+id/linearLayout"
-        android:layout_above="@+id/btnTstAct"
+        android:background="@drawable/draw_back_fuel"
         android:layout_below="@+id/tvTypeFuel">
 
         <Button
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+
             android:layout_weight="0.5"
             android:text="@string/petrol"
             android:id="@+id/btnPetrol"
@@ -106,7 +121,7 @@
 
         <Button
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:text="@string/diesel"
             android:layout_weight="0.5"
             android:id="@+id/btnDiesel"
@@ -123,11 +138,10 @@
         android:layout_marginTop="33dp" />-->
 
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/enter"
+        style="@style/NavigateButtonStyle"
+        android:text="@string/resume"
         android:id="@+id/btnTstAct"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

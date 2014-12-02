@@ -18,5 +18,11 @@
     <color name="StepNoActiveColor">#ff524c4c</color>
     <color name="HelperMessageTextColor">#ffdbdbdb</color>
     <color name="InDataTVTextColor">#ff939393</color>
-
+    <color name="ResultTextColor">#ffffffff</color>
+    <color name="InDataBtnActiveColor">#fff5a725</color>
+    <color name="InDataBtnNoActiveColor">#ff4e4e4f</color>
+    <color name="NavigationButtonTextColor">#ffffffff</color>
+    <color name="NavigationButtonBackgroundColor">#92f4a625</color>
+    <color name="NavigationButtonStrokeColor">#fff4a625</color>
+    <color name="NameCarBackgroundColor">#ff71706f</color>
 </resources>

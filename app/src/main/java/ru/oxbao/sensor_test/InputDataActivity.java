@@ -3,18 +3,14 @@ package ru.oxbao.sensor_test;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 public class InputDataActivity extends Activity {
     private EditText m_editTableNameCar;
-    //private Spinner m_spinnerTypeEngine;
     private Button m_btnTstActivity;
     private Button m_btnPetrol;
     private Button m_btnDiesel;
@@ -24,13 +20,12 @@ public class InputDataActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_data);
         m_editTableNameCar = (EditText)findViewById(R.id.edtInputName);
-        //m_spinnerTypeEngine = (Spinner)findViewById(R.id.spinTypeEng);
         m_btnTstActivity = (Button)findViewById(R.id.btnTstAct);
         m_btnDiesel = (Button)findViewById(R.id.btnDiesel);
         m_btnPetrol = (Button) findViewById(R.id.btnPetrol);
 
-        /*ArrayAdapter<String> adapterTypeEng = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.typesEng));
-        m_spinnerTypeEngine.setAdapter(adapterTypeEng);*/
+        m_btnPetrol.setBackgroundColor(getResources().getColor(R.color.InDataBtnActiveColor));
+        m_btnDiesel.setBackgroundColor(getResources().getColor(R.color.InDataBtnNoActiveColor));
 
         m_btnTstActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,16 +38,16 @@ public class InputDataActivity extends Activity {
         m_btnPetrol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_btnDiesel.setText("");
-                m_btnPetrol.setText(getResources().getString(R.string.petrol));
+                m_btnPetrol.setBackgroundColor(getResources().getColor(R.color.InDataBtnActiveColor));
+                m_btnDiesel.setBackgroundColor(getResources().getColor(R.color.InDataBtnNoActiveColor));
             }
         });
 
         m_btnDiesel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_btnPetrol.setText("");
-                m_btnDiesel.setText(getResources().getString(R.string.diesel));
+                m_btnPetrol.setBackgroundColor(getResources().getColor(R.color.InDataBtnNoActiveColor));
+                m_btnDiesel.setBackgroundColor(getResources().getColor(R.color.InDataBtnActiveColor));
             }
         });
     }
