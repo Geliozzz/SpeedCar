@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundLayoutsColor"
+    android:background="@drawable/background"
     android:id="@+id/testLay"
     android:weightSum="1">
 
@@ -128,8 +128,8 @@
 
             <ru.oxbao.sensor_test.ProgressWheel
                 android:id="@+id/progressBarWheel"
-                android:layout_width="230dp"
-                android:layout_height="230dp"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
                 ProgressWheel:text="@string/wait"
                 ProgressWheel:textColor="#ff000000"
                 ProgressWheel:textSize="12sp"
@@ -145,10 +145,10 @@
                 android:layout_centerHorizontal="true" />
 
             <Button
-                android:layout_width="180dp"
-                android:layout_height="180dp"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
                 android:text="@string/startTest"
-                android:textSize="25sp"
+                android:textSize="21sp"
                 android:textStyle="bold"
                 android:textColor="@color/btnStartReadyTextColor"
                 android:background= "@drawable/oval_button_ready"

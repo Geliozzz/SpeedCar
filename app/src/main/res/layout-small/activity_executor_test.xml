@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundLayoutsColor"
+    android:background="@drawable/background"
     android:id="@+id/testLay"
     android:weightSum="1">
 
@@ -66,36 +66,18 @@
     </RelativeLayout>
 
 
-
-
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="@string/TesterHelpMessage"
-        android:id="@+id/textViewHelpMessage"
-        android:textColor="@color/HelperMessageTextColor"
-        android:gravity="center"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="2dp"
-        android:layout_alignParentStart="true" />
-
-
-
-        <RelativeLayout
+    <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textViewHelpMessage"
-            android:layout_alignParentRight="true"
+        android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_height="fill_parent"
             android:layout_gravity="center"
             android:id="@+id/relativeLayout2"
             android:layout_centerHorizontal="true"
-            android:layout_above="@+id/btnBack">
+            android:layout_above="@+id/btnBack"
+        android:layout_below="@+id/relativeLayout">
 
             <RadioGroup
                 android:id="@+id/radGrTests"
@@ -113,6 +95,20 @@
                     android:text="@string/test1"
                     android:layout_weight="1"
                     android:checked="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="@string/TesterHelpMessage"
+                    android:id="@+id/textViewHelpMessage"
+                    android:textColor="@color/HelperMessageTextColor"
+                    android:gravity="center"
+                    android:layout_below="@+id/relativeLayout"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="2dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="1" />
 
                 <RadioButton
                     android:id="@+id/test2"
@@ -200,7 +196,7 @@
 
 
     <Button
-        style="@style/NavigateButtonStyleSmall"
+        style="@style/NavigateButtonStyle"
         android:text="@string/back"
         android:id="@+id/btnBack"
         android:layout_alignParentBottom="true"

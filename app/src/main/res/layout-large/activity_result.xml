@@ -7,34 +7,34 @@
     android:background="@drawable/background"
     android:weightSum="1">
     <TextView
-        style="@style/HeaderStyle"
+        style="@style/HeaderStyleLarge"
         android:id="@+id/textViewHeader"
         />
 
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/InDataSizeUnitLarge"
         android:background="@color/StepBackgroundColor"
         android:id="@+id/relativeLayout"
         android:layout_below="@+id/textViewHeader"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
         <ImageView
-            style="@style/StepStyle"
+            style="@style/StepStyleLarge"
             android:background="@color/StepActiveColor"
             android:id="@+id/imageViewStep1"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/imageViewStep2"
             />
         <ImageView
-            style="@style/StepStyle"
+            style="@style/StepStyleLarge"
             android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep2"
             android:layout_centerHorizontal="true"
             />
         <ImageView
-            style="@style/StepStyle"
+            style="@style/StepStyleLarge"
             android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep3"
             android:layout_alignParentTop="true"
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/step3Text"
             android:textColor="@color/StepTextColor"
             android:id="@+id/textView2"
@@ -66,7 +66,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
             android:textColor="@color/ResultTextColor"
             android:layout_marginTop="@dimen/InDataMarginBetweenElements"
@@ -74,7 +74,7 @@
     </ScrollView>
 
     <Button
-        style="@style/NavigateButtonStyle"
+        style="@style/NavigateButtonStyleLarge"
         android:text="@string/restartTest"
         android:id="@+id/btnBack"
         android:layout_alignParentBottom="true"

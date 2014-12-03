@@ -13,7 +13,7 @@
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/InDataSizeUnitLarge"
         android:background="@color/StepBackgroundColor"
         android:layout_below="@+id/textViewHeader"
         android:layout_alignParentLeft="true"
@@ -23,20 +23,20 @@
 
 
         <ImageView
-            style="@style/StepStyle"
+            style="@style/StepStyleLarge"
             android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep1"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/imageViewStep2"
             />
         <ImageView
-            style="@style/StepStyle"
+            style="@style/StepStyleLarge"
             android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep2"
             android:layout_centerHorizontal="true"
             />
         <ImageView
-            style="@style/StepStyle"
+            style="@style/StepStyleLarge"
             android:background="@color/StepActiveColor"
             android:id="@+id/imageViewStep3"
             android:layout_alignParentTop="true"
@@ -64,23 +64,24 @@
         android:layout_below="@+id/relativeLayout"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormal"
-        android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
+        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormalLarge"
+        android:layout_marginRight="@dimen/InDataMarginLeftRightNormalLarge"
         android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="fill_parent"
-        android:layout_height= "@dimen/InDataSizeUnitNormal"
+        android:layout_height= "@dimen/InDataSizeUnitLarge"
         android:id="@+id/edtInputName"
         android:hint="@string/hondaAccord"
+        android:textSize="@dimen/InDataButtonTextFuelLarge"
         android:background="@drawable/draw_name_car_edit"
         android:layout_below="@+id/textViewNameCar"
         android:layout_alignParentLeft="true"
         android:gravity="center"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormal"
-        android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
-        android:layout_marginTop="@dimen/InDataMarginBetweenElements"
+        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormalLarge"
+        android:layout_marginRight="@dimen/InDataMarginLeftRightNormalLarge"
+        android:layout_marginTop="@dimen/InDataMarginBetweenElementsLarge"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -89,9 +90,9 @@
         android:text="@string/typeFuel"
         android:textColor="@color/InDataTVTextColor"
         android:id="@+id/tvTypeFuel"
-        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormal"
-        android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormalLarge"
+        android:layout_marginRight="@dimen/InDataMarginLeftRightNormalLarge"
+        android:layout_marginTop="25dp"
         android:layout_below="@+id/edtInputName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -100,19 +101,19 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/InDataSizeUnitNormal"
+        android:layout_height= "@dimen/InDataSizeUnitLarge"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormal"
-        android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
-        android:layout_marginTop="@dimen/InDataMarginBetweenElements"
+        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormalLarge"
+        android:layout_marginRight="@dimen/InDataMarginLeftRightNormalLarge"
+        android:layout_marginTop="@dimen/InDataMarginBetweenElementsLarge"
         android:id="@+id/linearLayout"
         android:layout_below="@+id/tvTypeFuel">
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            style="@style/ButtonsFuelStyle"
+            style="@style/ButtonsFuelStyleLarge"
             android:background="@drawable/draw_left_btn_fuel_active"
             android:layout_weight="0.5"
             android:text="@string/petrol"
@@ -122,7 +123,7 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            style="@style/ButtonsFuelStyle"
+            style="@style/ButtonsFuelStyleLarge"
             android:text="@string/diesel"
             android:layout_weight="0.5"
             android:id="@+id/btnDiesel"
@@ -139,7 +140,7 @@
         android:layout_marginTop="33dp" />-->
 
     <Button
-        style="@style/NavigateButtonStyle"
+        style="@style/NavigateButtonStyleLarge"
         android:text="@string/resume"
         android:id="@+id/btnTstAct"
         android:layout_alignParentBottom="true"

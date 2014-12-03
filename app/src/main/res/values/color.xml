@@ -3,6 +3,7 @@
     <color name="red">#ffff6b50</color>
     <color name="green">#ff0eff03</color>
     <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
     <color name="rimColor">#ff4a3f3e</color>
     <color name="barColor">#ffffffff</color>
     <color name="backgroundLayoutsColor">#ff212121</color>

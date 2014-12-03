@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
    <dimen name="InDataMarginLeftRightNormal">10dp</dimen>
-   <dimen name="InDataSizeUnitNormal">45dp</dimen>
    <dimen name="InDataMarginBetweenElements">5dp</dimen>
+    <dimen name="InDataSizeUnitNormal">45dp</dimen>
+    <dimen name="InDataRadiusButtonFuelNormal">10dp</dimen>
+    <dimen name="InDataButtonTextFuelNormal">15sp</dimen>
+
+    <dimen name="InDataMarginLeftRightNormalLarge">20dp</dimen>
+    <dimen name="InDataMarginBetweenElementsLarge">10dp</dimen>
+    <dimen name="InDataSizeUnitLarge">60dp</dimen>
+    <dimen name="InDataRadiusButtonFuelLarge">10dp</dimen>
+    <dimen name="InDataButtonTextFuelLarge">20sp</dimen>
+
+    <dimen name="InDataMarginLeftRightNormalSmall">8dp</dimen>
+    <dimen name="InDataMarginBetweenElementsSmall">8dp</dimen>
+    <dimen name="InDataSizeUnitSmall">35dp</dimen>
+    <dimen name="InDataRadiusButtonFuelSmall">8dp</dimen>
+    <dimen name="InDataButtonTextFuelSmall">12sp</dimen>
+
+
+
 </resources>

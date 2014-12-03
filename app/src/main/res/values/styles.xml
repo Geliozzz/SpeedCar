@@ -110,4 +110,19 @@
         <item name="android:layout_marginRight">5dp</item>
 
     </style>
+
+    <style name="ButtonsFuelStyle">
+    <item name="android:textSize">@dimen/InDataButtonTextFuelNormal</item>
+    <item name="android:textStyle">bold</item>
+</style>
+
+    <style name="ButtonsFuelStyleLarge">
+        <item name="android:textSize">@dimen/InDataButtonTextFuelLarge</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ButtonsFuelStyleSmall">
+        <item name="android:textSize">@dimen/InDataButtonTextFuelSmall</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

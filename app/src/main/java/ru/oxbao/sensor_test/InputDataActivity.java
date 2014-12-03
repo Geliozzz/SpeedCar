@@ -24,8 +24,8 @@ public class InputDataActivity extends Activity {
         m_btnDiesel = (Button)findViewById(R.id.btnDiesel);
         m_btnPetrol = (Button) findViewById(R.id.btnPetrol);
 
-        m_btnPetrol.setBackgroundColor(getResources().getColor(R.color.InDataBtnActiveColor));
-        m_btnDiesel.setBackgroundColor(getResources().getColor(R.color.InDataBtnNoActiveColor));
+
+        SetButtons(true);
 
         m_btnTstActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,20 +38,32 @@ public class InputDataActivity extends Activity {
         m_btnPetrol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_btnPetrol.setBackgroundColor(getResources().getColor(R.color.InDataBtnActiveColor));
-                m_btnDiesel.setBackgroundColor(getResources().getColor(R.color.InDataBtnNoActiveColor));
+                SetButtons(true);
             }
         });
 
         m_btnDiesel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_btnPetrol.setBackgroundColor(getResources().getColor(R.color.InDataBtnNoActiveColor));
-                m_btnDiesel.setBackgroundColor(getResources().getColor(R.color.InDataBtnActiveColor));
+                SetButtons(false);
             }
         });
     }
 
+    private void SetButtons(boolean flag){
+        if (flag){
+            m_btnPetrol.setBackgroundResource(R.drawable.draw_left_btn_fuel_active);
+            m_btnPetrol.setTextColor(getResources().getColor(R.color.black));
+            m_btnDiesel.setBackgroundResource(R.drawable.draw_right_btn_fuel_noactive);
+            m_btnDiesel.setTextColor(getResources().getColor(R.color.white));
+        } else {
+            m_btnPetrol.setBackgroundResource(R.drawable.draw_left_btn_fuel_noactive);
+            m_btnPetrol.setTextColor(getResources().getColor(R.color.white));
+            m_btnDiesel.setBackgroundResource(R.drawable.draw_right_btn_fuel_active);
+            m_btnDiesel.setTextColor(getResources().getColor(R.color.black));
+        }
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
