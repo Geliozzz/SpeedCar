@@ -3,6 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
     tools:context=".InDataActivity">
 
     <TextView
@@ -18,7 +20,8 @@
         android:layout_below="@+id/textViewHeader"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-
+        android:focusableInTouchMode="true"
+        android:clickable="true"
         android:id="@+id/relativeLayout">
 
 
@@ -68,19 +71,28 @@
         android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
         android:layout_alignParentStart="true" />
 
+
+
     <EditText
         android:layout_width="fill_parent"
         android:layout_height= "@dimen/InDataSizeUnitNormal"
-        android:id="@+id/edtInputName"
+        android:gravity="center"
+        android:focusableInTouchMode="true"
+        android:clickable="true"
         android:hint="@string/hondaAccord"
+
+        android:id="@+id/edtInputName"
+        android:singleLine="true"
         android:background="@drawable/draw_name_car_edit"
         android:layout_below="@+id/textViewNameCar"
         android:layout_alignParentLeft="true"
-        android:gravity="center"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="@dimen/InDataMarginLeftRightNormal"
         android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
         android:layout_marginTop="@dimen/InDataMarginBetweenElements"
+
+
+
         />
     <TextView
         android:layout_width="wrap_content"
@@ -107,7 +119,9 @@
         android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
         android:layout_marginTop="@dimen/InDataMarginBetweenElements"
         android:id="@+id/linearLayout"
-        android:layout_below="@+id/tvTypeFuel">
+        android:layout_below="@+id/tvTypeFuel"
+        android:focusable="true"
+        android:clickable="true">
 
         <Button
             android:layout_width="fill_parent"
@@ -117,6 +131,7 @@
             android:layout_weight="0.5"
             android:text="@string/petrol"
             android:id="@+id/btnPetrol"
+            android:focusable="true"
             />
 
         <Button
@@ -126,6 +141,7 @@
             android:text="@string/diesel"
             android:layout_weight="0.5"
             android:id="@+id/btnDiesel"
+            android:focusable="true"
             />
     </LinearLayout>
 

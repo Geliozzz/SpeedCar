@@ -3,6 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
     tools:context=".InDataActivity">
 
     <TextView
@@ -18,7 +20,8 @@
         android:layout_below="@+id/textViewHeader"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-
+        android:focusableInTouchMode="true"
+        android:clickable="true"
         android:id="@+id/relativeLayout">
 
 
@@ -82,6 +85,8 @@
         android:layout_marginLeft="@dimen/InDataMarginLeftRightNormalLarge"
         android:layout_marginRight="@dimen/InDataMarginLeftRightNormalLarge"
         android:layout_marginTop="@dimen/InDataMarginBetweenElementsLarge"
+        android:focusableInTouchMode="true"
+        android:clickable="true"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -108,7 +113,9 @@
         android:layout_marginRight="@dimen/InDataMarginLeftRightNormalLarge"
         android:layout_marginTop="@dimen/InDataMarginBetweenElementsLarge"
         android:id="@+id/linearLayout"
-        android:layout_below="@+id/tvTypeFuel">
+        android:layout_below="@+id/tvTypeFuel"
+        android:focusable="true"
+        android:clickable="true">
 
         <Button
             android:layout_width="fill_parent"
@@ -117,6 +124,7 @@
             android:background="@drawable/draw_left_btn_fuel_active"
             android:layout_weight="0.5"
             android:text="@string/petrol"
+            android:focusable="true"
             android:id="@+id/btnPetrol"
             />
 
@@ -126,6 +134,7 @@
             style="@style/ButtonsFuelStyleLarge"
             android:text="@string/diesel"
             android:layout_weight="0.5"
+            android:focusable="true"
             android:id="@+id/btnDiesel"
             />
     </LinearLayout>

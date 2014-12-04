@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -166,6 +167,7 @@ public class TestExecutorActivity extends Activity {
         if (!m_popupIsStarted) {
             Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
             intent.putExtra("TestDataValue", m_testExecutor.g_testData.toString());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
             startActivity(intent);
             m_popupIsStarted = true;
 
@@ -213,5 +215,30 @@ public class TestExecutorActivity extends Activity {
         SetButtonEnabled(true);
         SetProgressBar(0);
         super.onStop();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_HOME){
+            Log.d(LOG_TAG, "EXIT");
+            moveTaskToBack(true);
+            System.runFinalization();
+            System.exit(0);
+        }
+
+        return super.onKeyDown(keyCode, event);
+
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD);
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d(LOG_TAG, "Destroy");
+        super.onDestroy();
     }
 }
