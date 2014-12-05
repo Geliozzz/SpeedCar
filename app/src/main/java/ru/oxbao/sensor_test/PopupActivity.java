@@ -1,25 +1,28 @@
 package ru.oxbao.sensor_test;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.*;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class PopupActivity extends Activity {
+public class PopupActivity extends ActionBarActivity {
     private TextView m_textViewResult;
     private Button m_btnBack;
     final String LOG_TAG = "PopupActivity";
+    private boolean m_isHomeButton = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-
+        InputDataActivity.g_flagEraseData = true; // Стереть введенную информацию. Снимет этот флаг кнопка назад или системнаяя назад
+        getSupportActionBar().hide();
         m_btnBack = (Button)findViewById(R.id.btnBack);
 
         Intent intent = getIntent();
@@ -30,7 +33,9 @@ public class PopupActivity extends Activity {
         m_btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TestExecutorActivity.g_startTestFlag = true;
+        //                TestExecutorActivity.g_startTestFlag = true;
+              //  InputDataActivity.g_flagEraseData = false;
+                m_isHomeButton = false;
                 finish();
             }
         });
@@ -43,22 +48,24 @@ public class PopupActivity extends Activity {
     }
 
 
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_HOME){
-            Log.d(LOG_TAG, "EXIT");
-            moveTaskToBack(true);
-            System.exit(0);
-            System.gc();
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK){
+            Log.d(LOG_TAG, "Back");
+            InputDataActivity.g_flagEraseData = false;
+            m_isHomeButton = false;
         }
-
         return super.onKeyDown(keyCode, event);
-
     }
 
     @Override
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD);
+    protected void onPause() {
+        if (m_isHomeButton){
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
+        super.onPause();
     }
+
+
 }

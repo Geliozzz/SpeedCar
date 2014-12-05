@@ -5,6 +5,7 @@
     android:background="@drawable/background"
     android:focusableInTouchMode="true"
     android:clickable="true"
+    android:id="@+id/relativeLayoutInData"
     tools:context=".InDataActivity">
 
     <TextView
@@ -145,14 +146,6 @@
             />
     </LinearLayout>
 
-<!--    <Spinner
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinTypeEng"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="33dp" />-->
 
     <Button
         style="@style/NavigateButtonStyle"

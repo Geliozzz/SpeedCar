@@ -1,11 +1,9 @@
 package ru.oxbao.sensor_test;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.os.*;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,7 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TestExecutorActivity extends Activity {
+public class TestExecutorActivity extends ActionBarActivity {
     private RadioGroup m_radioGroupTests;
     private Button m_btnStartTest;
     private Button m_btnBack;
@@ -34,13 +32,14 @@ public class TestExecutorActivity extends Activity {
     private Handler m_handler;
     private boolean m_popupIsStarted = false;
     public static boolean g_startTestFlag = false;
-
+    private boolean m_isHomeButton = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(LOG_TAG, "CREATE");
+
 
         setContentView(R.layout.activity_executor_test);
+        Log.d(LOG_TAG, "CREATE");
 
         m_radioGroupTests = (RadioGroup) findViewById(R.id.radGrTests);
         m_btnStartTest = (Button) findViewById(R.id.btnStartTest);
@@ -54,7 +53,8 @@ public class TestExecutorActivity extends Activity {
         m_progressBarWheel = (ProgressWheel) findViewById(R.id.progressBarWheel);
         m_testExecutor = new TestExecutor(this);
 
-
+        getSupportActionBar().hide();
+        InputDataActivity.g_flagEraseData = true; // Стереть введенную информацию. Снимет этот флаг кнопка назад или системнаяя назад
 
         /***********Запрет на зысыпание*****************/
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -62,8 +62,6 @@ public class TestExecutorActivity extends Activity {
         m_handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                Bundle bundle = new Bundle();
-
                 m_progressBarWheel.setProgress(msg.getData().getInt("count"));
             }
         };
@@ -78,6 +76,8 @@ public class TestExecutorActivity extends Activity {
         m_btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                InputDataActivity.g_flagEraseData = false;
+                m_isHomeButton = false;
                 m_testExecutor.Stop();
                 finish();
             }
@@ -108,7 +108,7 @@ public class TestExecutorActivity extends Activity {
 
     @Override
     protected void onResume() {
-        super.onResume();
+        Log.d(LOG_TAG, "Resume");
         SetProgressBar(0);
         /***Ready for test*/
         if (m_popupIsStarted) {
@@ -119,6 +119,8 @@ public class TestExecutorActivity extends Activity {
             StartTest();
             g_startTestFlag = false;
         }
+        m_isHomeButton = true;
+        super.onResume();
     }
 
 
@@ -167,10 +169,10 @@ public class TestExecutorActivity extends Activity {
         if (!m_popupIsStarted) {
             Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
             intent.putExtra("TestDataValue", m_testExecutor.g_testData.toString());
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-            startActivity(intent);
-            m_popupIsStarted = true;
+         //   intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 
+            m_popupIsStarted = true;
+            startActivity(intent);
         }
     }
 
@@ -208,37 +210,23 @@ public class TestExecutorActivity extends Activity {
         super.finalize();
     }
 
-    @Override
-    protected void onStop() {
-        Log.d(LOG_TAG, "onStop");
-        m_testExecutor.Stop();
-        SetButtonEnabled(true);
-        SetProgressBar(0);
-        super.onStop();
-    }
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_HOME){
-            Log.d(LOG_TAG, "EXIT");
-            moveTaskToBack(true);
-            System.runFinalization();
-            System.exit(0);
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK){
+            Log.d(LOG_TAG, "Back");
+            InputDataActivity.g_flagEraseData = false;
+            m_isHomeButton = false;
         }
-
         return super.onKeyDown(keyCode, event);
-
     }
 
     @Override
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD);
-    }
-
-    @Override
-    protected void onDestroy() {
-        Log.d(LOG_TAG, "Destroy");
-        super.onDestroy();
+    protected void onPause() {
+        if (m_isHomeButton){
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
+        super.onPause();
     }
 }

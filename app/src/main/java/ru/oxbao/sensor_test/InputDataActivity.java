@@ -2,32 +2,41 @@ package ru.oxbao.sensor_test;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.*;
+import android.os.Process;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class InputDataActivity extends Activity {
+
+public class InputDataActivity extends ActionBarActivity {
     private EditText m_editTableNameCar;
     private Button m_btnTstActivity;
     private Button m_btnPetrol;
     private Button m_btnDiesel;
+    public static boolean g_flagEraseData = true;
+    static final String LOG_TAG = "InDataActivity";
+    private boolean m_isHomeButton = true;
 
-    final String LOG_TAG = "InDataActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_data);
-        m_editTableNameCar = (EditText)findViewById(R.id.edtInputName);
-        m_btnTstActivity = (Button)findViewById(R.id.btnTstAct);
-        m_btnDiesel = (Button)findViewById(R.id.btnDiesel);
+
+        Log.d(LOG_TAG, "Create");
+
+
+
+        m_editTableNameCar = (EditText) findViewById(R.id.edtInputName);
+        m_btnTstActivity = (Button) findViewById(R.id.btnTstAct);
+        m_btnDiesel = (Button) findViewById(R.id.btnDiesel);
         m_btnPetrol = (Button) findViewById(R.id.btnPetrol);
 
         m_editTableNameCar.setText("");
@@ -35,19 +44,20 @@ public class InputDataActivity extends Activity {
         m_editTableNameCar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
-                if (!hasFocus){
+                if (!hasFocus) {
                     HideKeyboard(view);
                 } else m_editTableNameCar.selectAll();
             }
         });
         SetButtons(true);
-
+        getSupportActionBar().hide();
 
         m_btnTstActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), TestExecutorActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+               // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+                m_isHomeButton = false;
                 startActivity(intent);
             }
         });
@@ -69,8 +79,8 @@ public class InputDataActivity extends Activity {
         });
     }
 
-    private void SetButtons(boolean flag){
-        if (flag){
+    private void SetButtons(boolean flag) {
+        if (flag) {
             m_btnPetrol.setBackgroundResource(R.drawable.draw_left_btn_fuel_active);
             m_btnPetrol.setTextColor(getResources().getColor(R.color.black));
             m_btnDiesel.setBackgroundResource(R.drawable.draw_right_btn_fuel_noactive);
@@ -104,8 +114,20 @@ public class InputDataActivity extends Activity {
     }
 
     public void HideKeyboard(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d(LOG_TAG, "RESUME");
+        if (g_flagEraseData) {
+            m_editTableNameCar.setText("");
+            SetButtons(true);
+            g_flagEraseData = false;
+        }
+        m_isHomeButton = true;
+        super.onResume();
     }
 
     @Override
@@ -115,21 +137,20 @@ public class InputDataActivity extends Activity {
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_HOME){
-            Log.d(LOG_TAG, "EXIT");
-            moveTaskToBack(true);
-            System.runFinalization();
-            System.exit(0);
+    protected void onPause() {
+        if (m_isHomeButton){
+            Log.d(LOG_TAG, "killProcess");
+            android.os.Process.killProcess(Process.myPid());
         }
-
-        return super.onKeyDown(keyCode, event);
-
+        super.onPause();
     }
 
     @Override
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD);
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK){
+            Log.d(LOG_TAG, "Back");
+            m_isHomeButton = false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
