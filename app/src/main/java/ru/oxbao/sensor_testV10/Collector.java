@@ -68,7 +68,6 @@ public class Collector
         //Сделано для облегчения метода при использовании датчика
         if (m_fromSensorMeasurements)
         {
-            m_ownerActivity.SetTextViews(XAxis, YAxis, ZAxis);
             m_ownerActivity.SetProgressBar(m_count);
         }
         else

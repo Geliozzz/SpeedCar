@@ -1,206 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/testLay"
     xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:id="@+id/testLay"
+    android:orientation="vertical"
     android:weightSum="1">
 
-    <!-- android:text="@string/startTest"-->
-
-
     <TextView
-        style="@style/HeaderStyleSmall"
         android:id="@+id/textViewHeader"
-         />
-
+        style="@style/HeaderStyleSmall"
+        />
 
     <RelativeLayout
-        android:orientation="vertical"
+        android:id="@+id/relativeLayout"
         android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:background="@color/StepBackgroundColor"
-        android:id="@+id/relativeLayout"
-        android:layout_below="@+id/textViewHeader"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewHeader"
+        android:background="@color/StepBackgroundColor"
+        android:orientation="vertical">
 
 
         <ImageView
-            style="@style/StepStyleSmall"
-            android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep1"
+            style="@style/StepStyleSmall"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/imageViewStep2"
-            />
-        <ImageView
-            style="@style/StepStyleSmall"
-            android:background="@color/StepActiveColor"
-            android:id="@+id/imageViewStep2"
-            android:layout_centerHorizontal="true"
-            />
-        <ImageView
-            style="@style/StepStyleSmall"
             android:background="@color/StepNoActiveColor"
+            />
+
+        <ImageView
+            android:id="@+id/imageViewStep2"
+            style="@style/StepStyleSmall"
+            android:layout_centerHorizontal="true"
+            android:background="@color/StepActiveColor"
+            />
+
+        <ImageView
             android:id="@+id/imageViewStep3"
+            style="@style/StepStyleSmall"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/imageViewStep2" />
+            android:layout_toLeftOf="@+id/imageViewStep2"
+            android:background="@color/StepNoActiveColor"/>
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/step2Text"
-            android:textColor="@color/StepTextColor"
-            android:id="@+id/textView2"
             android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:layout_centerHorizontal="true" />
+            android:gravity="center"
+            android:text="@string/step2Text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/StepTextColor"/>
 
     </RelativeLayout>
 
 
     <TextView
+        android:id="@+id/textViewHelpMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="@string/TesterHelpMessage"
-        android:id="@+id/textViewHelpMessage"
-        android:textColor="@color/HelperMessageTextColor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/relativeLayout"
         android:gravity="center"
+        android:text="@string/TesterHelpMessage"
 
 
-
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textColor="@color/HelperMessageTextColor"
+        android:textSize="12sp"/>
 
     <RelativeLayout
-            android:layout_width="fill_parent"
+        android:id="@+id/relativeLayout2"
 
-            android:layout_height="fill_parent"
-            android:layout_gravity="center"
-            android:id="@+id/relativeLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_above="@+id/btnBack"
-        android:layout_below="@+id/textViewHelpMessage">
+        android:layout_below="@+id/textViewHelpMessage"
+        android:layout_gravity="center">
 
-            <RadioGroup
-                android:id="@+id/radGrTests"
+        <RadioGroup
+            android:id="@+id/radGrTests"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/btnStartTest"
+            android:background="@null"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <RadioButton
+                android:id="@+id/test1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:orientation="vertical"
-                android:visibility="invisible"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@+id/btnStartTest">
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/test1"/>
 
-                <RadioButton
-                    android:id="@+id/test1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:text="@string/test1"
-                    android:layout_weight="1"
-                    android:checked="true" />
-
-                <RadioButton
-                    android:id="@+id/test2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:layout_weight="1"
-                    android:text="@string/test2"
-                    />
-
-            </RadioGroup>
-
-            <ru.oxbao.sensor_testV10.ProgressWheel
-                android:id="@+id/progressBarWheel"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-
-                ProgressWheel:text="@string/wait"
-                ProgressWheel:textColor="#ff000000"
-                ProgressWheel:textSize="12sp"
-                ProgressWheel:rimColor="@color/rimColor"
-                ProgressWheel:barLength="60dp"
-                ProgressWheel:barColor="@color/barColor"
-                ProgressWheel:barWidth="10dp"
-                ProgressWheel:rimWidth="10dp"
-                ProgressWheel:spinSpeed="0dp"
-                android:background="@drawable/ovar_progressbar"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-
-
+            <RadioButton
+                android:id="@+id/test2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
+                android:text="@string/test2"
                 />
 
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="@string/startTest"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/btnStartReadyTextColor"
-                android:background= "@drawable/oval_button_ready"
-                android:id="@+id/btnStartTest"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                 />
+        </RadioGroup>
+
+        <ru.oxbao.sensor_testV10.ProgressWheel
+            android:id="@+id/progressBarWheel"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ovar_progressbar"
+            ProgressWheel:barColor="@color/barColor"
+            ProgressWheel:barLength="60dp"
+            ProgressWheel:barWidth="10dp"
+            ProgressWheel:rimColor="@color/rimColor"
+            ProgressWheel:rimWidth="10dp"
+            ProgressWheel:spinSpeed="0dp"
+            ProgressWheel:text="@string/wait"
+            ProgressWheel:textColor="#ff000000"
+            ProgressWheel:textSize="12sp"
+            />
+
+        <Button
+            android:id="@+id/btnStartTest"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/oval_button_ready"
+            android:text="@string/startTest"
+            android:textColor="@color/btnStartReadyTextColor"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            />
 
         <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinnerFiles"
-                android:visibility= "invisible"
-                android:layout_toEndOf="@+id/tvX"
-            android:layout_alignTop="@+id/btnStartTest"
+            android:id="@+id/spinnerFiles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_weight="1" />
+            android:layout_alignTop="@+id/btnStartTest"
+            android:visibility="invisible"
+            />
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/tvX"
-                android:textColor="@color/InDataBtnActiveColor"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/InDataBtnActiveColor"
-                android:layout_below="@+id/tvX"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/tvY" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/InDataBtnActiveColor"
-                android:layout_below="@+id/tvY"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/tvZ" />
-
-        </RelativeLayout>
+    </RelativeLayout>
 
 
     <Button
-        style="@style/NavigateButtonStyleSmall"
-        android:text="@string/back"
         android:id="@+id/btnBack"
+        style="@style/NavigateButtonStyleSmall"
         android:layout_alignParentBottom="true"
-         />
-
+        android:text="@string/back"
+        />
 
 
 </RelativeLayout>

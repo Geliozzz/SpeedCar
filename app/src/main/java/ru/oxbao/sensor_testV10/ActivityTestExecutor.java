@@ -2,7 +2,9 @@ package ru.oxbao.sensor_testV10;
 
 
 import android.content.Intent;
-import android.os.*;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -12,7 +14,6 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class ActivityTestExecutor extends ActionBarActivity
@@ -38,9 +39,9 @@ public class ActivityTestExecutor extends ActionBarActivity
 
     // Temporary
     private RadioButton m_radioTest1;
-    private TextView m_textView1;
-    private TextView m_textView2;
-    private TextView m_textView3;
+    //private TextView m_textView1;
+    //private TextView m_textView2;
+    //private TextView m_textView3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,9 +59,7 @@ public class ActivityTestExecutor extends ActionBarActivity
         m_progressBarWheel = (ProgressWheel) findViewById(R.id.progressBarWheel);
 
         m_radioGroupTests = (RadioGroup) findViewById(R.id.radGrTests);
-        m_textView1 = (TextView) findViewById(R.id.tvX);
-        m_textView2 = (TextView) findViewById(R.id.tvY);
-        m_textView3 = (TextView) findViewById(R.id.tvZ);
+
         m_spinnerFiles = (Spinner) findViewById(R.id.spinnerFiles);
         m_radioTest1 = (RadioButton) findViewById(R.id.test1);
 
@@ -153,11 +152,7 @@ public class ActivityTestExecutor extends ActionBarActivity
         ShowResult(stringToShow);
     }
 
-    public void SetTextViews(double x, double y, double z) {
-        m_textView1.setText(String.valueOf(x));
-        m_textView2.setText(String.valueOf(y));
-        m_textView3.setText(String.valueOf(z));
-    }
+
 
     public String GetCheckedSpinner() {
         String result = "";

@@ -162,36 +162,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/spinnerFiles"
                 android:visibility= "invisible"
-                android:layout_toEndOf="@+id/tvX"
                 android:layout_alignBottom="@+id/btnStartTest"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/tvX"
-                android:textColor="@color/InDataBtnActiveColor"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/InDataBtnActiveColor"
-                android:layout_below="@+id/tvX"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/tvY" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/InDataBtnActiveColor"
-                android:layout_below="@+id/tvY"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/tvZ" />
 
         </RelativeLayout>
 
