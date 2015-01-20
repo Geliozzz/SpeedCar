@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 
 import android.widget.ArrayAdapter;
@@ -26,20 +26,20 @@ public class TestExecutor
     private Saver m_saver;
     public  TestData g_testData;
     private WorkMath m_workMath;
-    private TestExecutorActivity m_ownerActivity;
+    private ActivityTestExecutor m_ownerActivity;
     // Output
     public TestResult g_testResult;
 
-    public TestExecutor(TestExecutorActivity testExecutorActivity, TestResult testResult)
+    public TestExecutor(ActivityTestExecutor activityTestExecutor, TestResult testResult)
     {
         m_workMath = new WorkMath();
         m_numberOfMeasurements = WorkMath.NumberOfMeasurements;
-        m_ownerActivity = testExecutorActivity;
+        m_ownerActivity = activityTestExecutor;
         m_ownerActivity.SetMaxProgressBar(m_numberOfMeasurements);
         g_testResult = testResult;
 
         g_testData = new TestData(m_numberOfMeasurements);
-        m_collector = new Collector(testExecutorActivity, this ,m_numberOfMeasurements);
+        m_collector = new Collector(activityTestExecutor, this ,m_numberOfMeasurements);
         m_saver = new Saver( this, m_prefix);
     }
 

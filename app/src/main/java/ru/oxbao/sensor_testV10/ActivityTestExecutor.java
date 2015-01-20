@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 
 import android.content.Intent;
@@ -9,14 +9,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TestExecutorActivity extends ActionBarActivity
+public class ActivityTestExecutor extends ActionBarActivity
 {
     // GUI
     private RadioGroup m_radioGroupTests;
@@ -35,7 +34,7 @@ public class TestExecutorActivity extends ActionBarActivity
     // Variables
     private TestResult m_testResult;
     private String m_carName;
-    private InputDataActivity.EngineTypeEnum m_carEngineType;
+    private ActivityInputData.EngineTypeEnum m_carEngineType;
 
     // Temporary
     private RadioButton m_radioTest1;
@@ -51,8 +50,8 @@ public class TestExecutorActivity extends ActionBarActivity
         Log.d(LOG_TAG, "CREATE");
 
         m_carName = getIntent().getStringExtra("CarName");
-        m_carEngineType = InputDataActivity.ToEngineTypeEnum(getIntent().getIntExtra("CarEngineType",
-                InputDataActivity.EngineTypeEnum.Petrol.ordinal()));
+        m_carEngineType = ActivityInputData.ToEngineTypeEnum(getIntent().getIntExtra("CarEngineType",
+                ActivityInputData.EngineTypeEnum.Petrol.ordinal()));
 
         m_buttonStartTest = (Button) findViewById(R.id.btnStartTest);
         m_buttonBack = (Button) findViewById(R.id.btnBack);
@@ -69,7 +68,7 @@ public class TestExecutorActivity extends ActionBarActivity
         m_testExecutor = new TestExecutor(this, m_testResult);
 
         getSupportActionBar().hide();
-        InputDataActivity.g_flagEraseData = true; // Стереть введенную информацию. Снимет этот флаг кнопка назад или системнаяя назад
+        ActivityInputData.g_flagEraseData = true; // Стереть введенную информацию. Снимет этот флаг кнопка назад или системнаяя назад
 
         /***********Запрет на зысыпание*****************/
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -91,7 +90,7 @@ public class TestExecutorActivity extends ActionBarActivity
         m_buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                InputDataActivity.g_flagEraseData = false;
+                ActivityInputData.g_flagEraseData = false;
                 m_isHomeButton = false;
                 m_testExecutor.Stop();
                 finish();
@@ -186,7 +185,7 @@ public class TestExecutorActivity extends ActionBarActivity
     {
         if (!m_popupIsStarted)
         {
-            Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ActivityPopup.class);
             intent.putExtra("TestDataValue", resultString);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
             m_isHomeButton = false;
@@ -235,7 +234,7 @@ public class TestExecutorActivity extends ActionBarActivity
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK){
             Log.d(LOG_TAG, "Back");
-            InputDataActivity.g_flagEraseData = false;
+            ActivityInputData.g_flagEraseData = false;
             m_isHomeButton = false;
         }
         return super.onKeyDown(keyCode, event);
@@ -246,7 +245,7 @@ public class TestExecutorActivity extends ActionBarActivity
         Log.d(LOG_TAG, "PAUSE");
         m_testExecutor.Stop();
         if (m_isHomeButton){
-            InputDataActivity.g_flagEraseData = true;
+            ActivityInputData.g_flagEraseData = true;
             android.os.Process.killProcess(android.os.Process.myPid());
         }
         super.onPause();

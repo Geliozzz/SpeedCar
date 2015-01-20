@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class PopupActivity extends ActionBarActivity {
+public class ActivityPopup extends ActionBarActivity {
     private TextView m_textViewResult;
     private Button m_btnBack;
     final String LOG_TAG = "PopupActivity";
@@ -20,7 +20,7 @@ public class PopupActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        InputDataActivity.g_flagEraseData = true; // Стереть введенную информацию. Снимет этот флаг кнопка назад или системнаяя назад
+        ActivityInputData.g_flagEraseData = true; // Стереть введенную информацию. Снимет этот флаг кнопка назад или системнаяя назад
         getSupportActionBar().hide();
         m_btnBack = (Button)findViewById(R.id.btnBack);
 
@@ -35,8 +35,8 @@ public class PopupActivity extends ActionBarActivity {
         m_btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TestExecutorActivity.g_startTestFlag = true;
-                InputDataActivity.g_flagEraseData = false;
+                ActivityTestExecutor.g_startTestFlag = true;
+                ActivityInputData.g_flagEraseData = false;
                 m_isHomeButton = false;
                 finish();
             }
@@ -55,7 +55,7 @@ public class PopupActivity extends ActionBarActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK){
             Log.d(LOG_TAG, "Back");
-            InputDataActivity.g_flagEraseData = false;
+            ActivityInputData.g_flagEraseData = false;
             m_isHomeButton = false;
         }
         return super.onKeyDown(keyCode, event);
@@ -64,7 +64,7 @@ public class PopupActivity extends ActionBarActivity {
     @Override
     protected void onPause() {
         if (m_isHomeButton){
-            InputDataActivity.g_flagEraseData = true;
+            ActivityInputData.g_flagEraseData = true;
             android.os.Process.killProcess(android.os.Process.myPid());
         }
         super.onPause();

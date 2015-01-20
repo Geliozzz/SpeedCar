@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 
 import android.content.Context;
@@ -11,17 +11,17 @@ import android.util.Log;
 public class SensorInput implements SensorEventListener
 {
     private Collector m_collectorOwner;
-    private TestExecutorActivity m_ownerActivity;
+    private ActivityTestExecutor m_ownerActivity;
     private TestExecutor m_ownerTestExecutor;
     private SensorManager m_sensorManager;
     private boolean m_sensorIsWorking;
     private final String SENSOR_INPUT = "SensorInput";
 
-    public SensorInput(TestExecutorActivity testExecutorActivity, TestExecutor testExecutor,
+    public SensorInput(ActivityTestExecutor activityTestExecutor, TestExecutor testExecutor,
                        Collector collector)
     {
         m_collectorOwner = collector;
-        m_ownerActivity = testExecutorActivity;
+        m_ownerActivity = activityTestExecutor;
         m_sensorManager = (SensorManager) m_ownerActivity.getSystemService(Context.SENSOR_SERVICE);
         m_sensorIsWorking = false;
         m_ownerTestExecutor = testExecutor;

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "ru.oxbao.sensor_test"
+        applicationId "ru.oxbao.sensor_testV10"
         minSdkVersion 8
         targetSdkVersion 20
         versionCode 1

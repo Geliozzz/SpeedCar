@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 import android.content.Context;
 import android.content.res.TypedArray;

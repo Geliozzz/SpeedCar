@@ -1,6 +1,4 @@
-package ru.oxbao.sensor_test;
-
-import java.util.Arrays;
+package ru.oxbao.sensor_testV10;
 
 public class TestData
 {

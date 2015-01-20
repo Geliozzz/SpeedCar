@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 public final class R {
     public static final class anim {
@@ -1578,7 +1578,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f010054, 0x7f010055, 0x7f010056
         };
         /**
-          <p>This symbol is the offset where the {@link ru.oxbao.sensor_test.R.attr#windowActionBar}
+          <p>This symbol is the offset where the {@link ru.oxbao.sensor_testV10.R.attr#windowActionBar}
           attribute's value can be found in the {@link #ActionBarWindow} array.
 
 
@@ -1592,7 +1592,7 @@ containing a value of this type.
         */
         public static final int ActionBarWindow_windowActionBar = 0;
         /**
-          <p>This symbol is the offset where the {@link ru.oxbao.sensor_test.R.attr#windowActionBarOverlay}
+          <p>This symbol is the offset where the {@link ru.oxbao.sensor_testV10.R.attr#windowActionBarOverlay}
           attribute's value can be found in the {@link #ActionBarWindow} array.
 
 
@@ -1706,7 +1706,7 @@ containing a value of this type.
         */
         public static final int ActionBarWindow_windowFixedWidthMinor = 5;
         /**
-          <p>This symbol is the offset where the {@link ru.oxbao.sensor_test.R.attr#windowSplitActionBar}
+          <p>This symbol is the offset where the {@link ru.oxbao.sensor_testV10.R.attr#windowSplitActionBar}
           attribute's value can be found in the {@link #ActionBarWindow} array.
 
 

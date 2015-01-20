@@ -1,7 +1,7 @@
 /**
  * Automatically generated file. DO NOT MODIFY
  */
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 public final class BuildConfig {
   public static final boolean DEBUG = Boolean.parseBoolean("true");

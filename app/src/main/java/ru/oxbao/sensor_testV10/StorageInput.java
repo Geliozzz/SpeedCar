@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import java.io.IOException;
 import android.os.Handler;
 
 public class StorageInput {
-    private TestExecutorActivity m_ownerActivity;
+    private ActivityTestExecutor m_ownerActivity;
     private Collector m_collectorOwner;
     private TestExecutor m_ownerTestExecutor;
     private String m_dir;
@@ -83,10 +83,10 @@ public class StorageInput {
         }
     }
 
-    public StorageInput(TestExecutorActivity testExecutorActivity, TestExecutor m_ownerTestExecutor, final Collector m_collectorOwner) {
+    public StorageInput(ActivityTestExecutor activityTestExecutor, TestExecutor m_ownerTestExecutor, final Collector m_collectorOwner) {
         this.m_collectorOwner = m_collectorOwner;
         this.m_ownerTestExecutor = m_ownerTestExecutor;
-        m_ownerActivity = testExecutorActivity;
+        m_ownerActivity = activityTestExecutor;
         m_dir = Environment.getExternalStorageDirectory().toString() + DIRECTORY_NAME;
         m_handler = new Handler(){ // Необходим для заполнения коллектора из другого потока
             @Override

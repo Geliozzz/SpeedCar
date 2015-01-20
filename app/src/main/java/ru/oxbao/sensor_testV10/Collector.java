@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 
 import android.os.Bundle;
@@ -14,18 +14,18 @@ public class Collector
     // Objects
     private InputInterface m_inputInterface;
     private TestExecutor m_ownerExecutor;
-    private TestExecutorActivity m_ownerActivity;
+    private ActivityTestExecutor m_ownerActivity;
     // Service
     private Bundle m_bundle;
     private Message m_message;
     private final String COLLECTOR_TAG = "Collector";
 
-    public Collector(TestExecutorActivity testExecutorActivity, TestExecutor testExecutor, int number)
+    public Collector(ActivityTestExecutor activityTestExecutor, TestExecutor testExecutor, int number)
     {
-        m_inputInterface = new InputInterface(testExecutorActivity, testExecutor, this);
+        m_inputInterface = new InputInterface(activityTestExecutor, testExecutor, this);
         m_numberOfMeasurements = number;
         m_ownerExecutor = testExecutor;
-        m_ownerActivity = testExecutorActivity;
+        m_ownerActivity = activityTestExecutor;
         m_bundle = new Bundle();
         m_message = new Message();
     }

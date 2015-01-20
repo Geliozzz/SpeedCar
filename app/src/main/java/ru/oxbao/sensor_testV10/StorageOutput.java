@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 
 import android.os.Environment;
@@ -10,9 +10,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
 
-public class StorageOutputAlternative
-{
-    private static final String DIRECTORY_NAME = "/AccelerometerAlt";
+public class StorageOutput {
+    private static final String DIRECTORY_NAME = "/Accelerometer";
     private static final String FILE_EXTENSION = ".txt";
     private String m_path;
     private String m_prefix;
@@ -20,65 +19,32 @@ public class StorageOutputAlternative
     private TestExecutor m_ownerTestExecutor;
     private final String STORAGE_OUTPUT_TAG = "Saver";
 
-    public StorageOutputAlternative( TestExecutor testExecutor, String prefix) {
+    public StorageOutput( TestExecutor testExecutor, String prefix) {
         m_prefix = prefix;
         String externalStorageDirectory = Environment.getExternalStorageDirectory().toString();
         m_path = GetDirectoryToSaveWhere(externalStorageDirectory);
         m_ownerTestExecutor = testExecutor;
     }
 
-    public boolean SaveInFile(TestData testData, char index) {
-        try
-        {
-            File file = new File(m_path, GenerateNewFileName(m_prefix + index));
+    public boolean SaveInFile(TestData testData) {
+        try {
+            File file = new File(m_path, GenerateNewFileName(m_prefix));
             m_bufferedWriter = new BufferedWriter(new FileWriter(file));
-            try
-            {
-                if(index == 'X')
-                {
-                    for (int i = 0; i < testData.XAxis.length; i++)
-                    {
-                        String tmp = "" + testData.XAxis[i];
-                        m_bufferedWriter.write(tmp);
-                        m_bufferedWriter.newLine();
-                    }
+            String header = "XAxis YAxis ZAxis Time";
+            m_bufferedWriter.write(header);
+            try {
+                for (int i = 0; i < testData.XAxis.length; i++) {
+                    m_bufferedWriter.newLine();
+                    String tmp = testData.XAxis[i] + " " + testData.YAxis[i] + " " +
+                            testData.ZAxis[i] + " " + testData.TimeInNanoSeconds[i];
+                    m_bufferedWriter.write(tmp);
                 }
-                else if(index == 'Y')
-                {
-                    for (int i = 0; i < testData.YAxis.length; i++)
-                    {
-                        String tmp = "" + testData.YAxis[i];
-                        m_bufferedWriter.write(tmp);
-                        m_bufferedWriter.newLine();
-                    }
-                }
-                else if(index == 'Z')
-                {
-                    for (int i = 0; i < testData.ZAxis.length; i++)
-                    {
-                        String tmp = "" + testData.ZAxis[i];
-                        m_bufferedWriter.write(tmp);
-                        m_bufferedWriter.newLine();
-                    }
-                }
-                else if(index == 'T')
-                {
-                    for (int i = 0; i < testData.TimeInNanoSeconds.length; i++)
-                    {
-                        String tmp = "" + testData.TimeInNanoSeconds[i];
-                        m_bufferedWriter.write(tmp);
-                        m_bufferedWriter.newLine();
-
-                    }
-                }
-            }
-            catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException e) {
                 Log.d(STORAGE_OUTPUT_TAG, "Index is out of range");
             }
             m_bufferedWriter.close();
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             m_ownerTestExecutor.ShowToast(TestExecutor.ToastMessage.failSaveData);
             try {

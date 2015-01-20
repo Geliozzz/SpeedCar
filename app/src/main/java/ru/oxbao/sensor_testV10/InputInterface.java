@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_test;
+package ru.oxbao.sensor_testV10;
 
 
 public class InputInterface
@@ -14,11 +14,11 @@ public class InputInterface
         storage
     }
 
-    public InputInterface(TestExecutorActivity testExecutorActivity ,
+    public InputInterface(ActivityTestExecutor activityTestExecutor,
                           TestExecutor testExecutor,Collector collector)
     {
-        m_sensorInput = new SensorInput(testExecutorActivity,  testExecutor, collector);
-        m_storageInput = new StorageInput(testExecutorActivity,testExecutor, collector);
+        m_sensorInput = new SensorInput(activityTestExecutor,  testExecutor, collector);
+        m_storageInput = new StorageInput(activityTestExecutor,testExecutor, collector);
         m_ownerTestExecutor = testExecutor;
         m_ownerCollector = collector;
     }
