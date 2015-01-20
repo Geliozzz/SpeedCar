@@ -39,9 +39,6 @@ public class ActivityTestExecutor extends ActionBarActivity
 
     // Temporary
     private RadioButton m_radioTest1;
-    //private TextView m_textView1;
-    //private TextView m_textView2;
-    //private TextView m_textView3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
