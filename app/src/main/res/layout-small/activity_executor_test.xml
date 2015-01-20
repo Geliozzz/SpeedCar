@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:orientation="vertical"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/btnStartTest">
 

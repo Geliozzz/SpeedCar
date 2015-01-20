@@ -1,11 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/background"
-    android:focusableInTouchMode="true"
-    android:clickable="true"
-    tools:context=".InDataActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/background"
+                android:focusableInTouchMode="true"
+                android:clickable="true"
+                android:id="@+id/relativeLayoutInData"
+                tools:context=".InDataActivity">
 
     <TextView
         style="@style/HeaderStyleSmall"
@@ -15,7 +16,7 @@
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/StepBackgroundColor"
         android:layout_below="@+id/textViewHeader"
         android:layout_alignParentLeft="true"
@@ -57,96 +58,25 @@
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/carName"
-        android:textColor="@color/InDataTVTextColor"
-        android:id="@+id/textViewNameCar"
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView"
+        android:layout_above="@+id/btnTstAct"
         android:layout_below="@+id/relativeLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormalLarge"
-        android:layout_marginRight="@dimen/InDataMarginLeftRightNormalLarge"
-        android:layout_alignParentStart="true" />
+        android:layout_alignRight="@+id/btnTstAct"
+        android:layout_alignEnd="@+id/btnTstAct"
+        android:layout_alignLeft="@+id/btnTstAct"
+        android:layout_alignStart="@+id/btnTstAct">
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height= "@dimen/InDataSizeUnitSmall"
-        android:id="@+id/edtInputName"
-        android:hint="@string/hondaAccord"
-        android:textSize="@dimen/InDataButtonTextFuelLarge"
-        android:background="@drawable/draw_name_car_edit"
-        android:layout_below="@+id/textViewNameCar"
-        android:layout_alignParentLeft="true"
-        android:gravity="center"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormalSmall"
-        android:layout_marginRight="@dimen/InDataMarginLeftRightNormalSmall"
-        android:layout_marginTop="@dimen/InDataMarginBetweenElementsSmall"
-        android:focusableInTouchMode="true"
-        android:clickable="true"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/typeFuel"
-        android:textColor="@color/InDataTVTextColor"
-        android:id="@+id/tvTypeFuel"
-        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormalSmall"
-        android:layout_marginRight="@dimen/InDataMarginLeftRightNormalSmall"
-        android:layout_marginTop="@dimen/InDataMarginBetweenElementsSmall"
-        android:layout_below="@+id/edtInputName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height= "@dimen/InDataSizeUnitSmall"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormalSmall"
-        android:layout_marginRight="@dimen/InDataMarginLeftRightNormalSmall"
-        android:layout_marginTop="@dimen/InDataMarginBetweenElementsSmall"
-        android:id="@+id/linearLayout"
-        android:layout_below="@+id/tvTypeFuel"
-        android:focusable="true"
-        android:clickable="true">
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ButtonsFuelStyleSmall"
-            android:background="@drawable/draw_left_btn_fuel_active"
-            android:layout_weight="0.5"
-            android:text="@string/petrol"
-            android:focusable="true"
-            android:id="@+id/btnPetrol"
-            />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ButtonsFuelStyleSmall"
-            android:text="@string/diesel"
-            android:layout_weight="0.5"
-            android:focusable="true"
-            android:id="@+id/btnDiesel"
-            />
-    </LinearLayout>
-
-<!--    <Spinner
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinTypeEng"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="33dp" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/white"
+            android:text="@string/mainHelpMessage"
+            android:id="@+id/textView"/>
+    </ScrollView>
 
     <Button
         style="@style/NavigateButtonStyleSmall"
@@ -155,8 +85,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-
 
 
 </RelativeLayout>

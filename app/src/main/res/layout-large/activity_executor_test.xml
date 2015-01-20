@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="invisible">
 
                 <RadioButton
                     android:id="@+id/test1"
