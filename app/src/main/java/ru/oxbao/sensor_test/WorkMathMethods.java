@@ -1,5 +1,11 @@
 package ru.oxbao.sensor_test;
 
+import java.lang.reflect.Array;
 
-public class WorkMathMethods {
+import static java.lang.StrictMath.abs;
+import static java.lang.StrictMath.sqrt;
+
+public class WorkMathMethods
+{
+
 }

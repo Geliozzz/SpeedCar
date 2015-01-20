@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -17,13 +18,14 @@ public class PopupActivity extends ActionBarActivity {
     private boolean m_isHomeButton = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         InputDataActivity.g_flagEraseData = true; // Стереть введенную информацию. Снимет этот флаг кнопка назад или системнаяя назад
         getSupportActionBar().hide();
         m_btnBack = (Button)findViewById(R.id.btnBack);
+
+        /***********Запрет на зысыпание*****************/
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         Intent intent = getIntent();
         String tmp = intent.getStringExtra("TestDataValue");
@@ -33,8 +35,8 @@ public class PopupActivity extends ActionBarActivity {
         m_btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-        //                TestExecutorActivity.g_startTestFlag = true;
-              //  InputDataActivity.g_flagEraseData = false;
+                TestExecutorActivity.g_startTestFlag = true;
+                InputDataActivity.g_flagEraseData = false;
                 m_isHomeButton = false;
                 finish();
             }
@@ -62,10 +64,15 @@ public class PopupActivity extends ActionBarActivity {
     @Override
     protected void onPause() {
         if (m_isHomeButton){
+            InputDataActivity.g_flagEraseData = true;
             android.os.Process.killProcess(android.os.Process.myPid());
         }
         super.onPause();
     }
 
-
+    @Override
+    protected void onResume() {
+        m_isHomeButton = true;
+        super.onResume();
+    }
 }

@@ -4,37 +4,53 @@ package ru.oxbao.sensor_test;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-public class TestExecutor {
-    private boolean m_saveData = true;
-    private Collector m_collector;
-    private WorkMath m_workMath;
-    private Saver m_saver;
-    public TestData g_testData;
-    private int m_numberOfMeasurements = 1000;
-    private TestExecutorActivity m_ownerActivity;
-    private String m_prefix = "UnKnown";
-    public enum ToastMessage {
-        failSaveData, failStartSensor
+public class TestExecutor
+{
+    public enum ToastMessage
+    {
+        failSaveData,
+        failStartSensor
     }
-    public enum TestEnum {
-        test1, test2
+    public enum TestEnum
+    {
+        test1,
+        test2
     }
 
-    public TestExecutor(TestExecutorActivity testExecutorActivity) {
-        m_collector = new Collector(testExecutorActivity, this ,m_numberOfMeasurements);
-        g_testData = new TestData(m_numberOfMeasurements);
-        m_saver = new Saver( this, m_prefix);
+    // Flags, parameters
+    private boolean m_saveData = true;
+    private int m_numberOfMeasurements;
+    private String m_prefix = "UnKnown";
+    // Objects
+    private Collector m_collector;
+    private Saver m_saver;
+    public  TestData g_testData;
+    private WorkMath m_workMath;
+    private TestExecutorActivity m_ownerActivity;
+    // Output
+    public TestResult g_testResult;
+
+    public TestExecutor(TestExecutorActivity testExecutorActivity, TestResult testResult)
+    {
         m_workMath = new WorkMath();
+        m_numberOfMeasurements = WorkMath.NumberOfMeasurements;
         m_ownerActivity = testExecutorActivity;
         m_ownerActivity.SetMaxProgressBar(m_numberOfMeasurements);
+        g_testResult = testResult;
 
+        g_testData = new TestData(m_numberOfMeasurements);
+        m_collector = new Collector(testExecutorActivity, this ,m_numberOfMeasurements);
+        m_saver = new Saver( this, m_prefix);
     }
 
-    public void Start(TestEnum testEnum){
-        if (testEnum.equals(TestEnum.test1)) {
+    public void Start(TestEnum testEnum)
+    {
+        if (testEnum.equals(TestEnum.test1))
+        {
             m_collector.Start(InputInterface.InputTypeEnum.sensors);
             m_saveData = true;
-        } else if (testEnum.equals(TestEnum.test2)){
+        } else if (testEnum.equals(TestEnum.test2))
+        {
             m_collector.Start(InputInterface.InputTypeEnum.storage);
             m_saveData = false;
         }
@@ -47,13 +63,20 @@ public class TestExecutor {
     }
 
 
-    public void OnDataCollected(){
-        m_workMath.Analyze(g_testData);
-        m_ownerActivity.OnTestFinished(Solutions.ResultTestEnum.GOOD);
-        if (m_saveData){
-            m_saver.SaveData(g_testData);
+    public void OnDataCollected()
+    {
+        if (m_saveData)
+        {
+            m_saver.SaveData(g_testData, false);
         }
-        m_ownerActivity.ShowResult();
+        else
+        {
+            m_saver.SaveData(g_testData, true); // for alternative
+        }
+
+
+
+        m_ownerActivity.OnTestFinished(g_testResult.ResultEnum);
     }
 
     public void ShowToast(ToastMessage toastMessage){

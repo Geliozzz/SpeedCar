@@ -1,9 +1,14 @@
 package ru.oxbao.sensor_test;
 
 
-public class WorkMath {
-    public Solutions.ResultTestEnum Analyze(TestData testData){
+public class WorkMath
+{
+    static public  int NumberOfMeasurements = 4096;
 
-        return Solutions.ResultTestEnum.GOOD;
+    public Solutions.ResultTestEnum Analyze(TestData testData)
+    {
+
+
+        return Solutions.ResultTestEnum.Acceptable;
     }
 }

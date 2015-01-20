@@ -13,85 +13,121 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
-public class InputDataActivity extends ActionBarActivity {
-    private EditText m_editTableNameCar;
-    private Button m_btnTstActivity;
-    private Button m_btnPetrol;
-    private Button m_btnDiesel;
+public class InputDataActivity extends ActionBarActivity
+{
+    public enum EngineTypeEnum
+    {
+        Diesel,
+        Petrol
+    }
+    public static EngineTypeEnum ToEngineTypeEnum(int i)
+    {
+        return EngineTypeEnum.values()[i];
+    }
+
+    // GUI
+    private Button m_buttonOpenTestActivity;
+    private Button m_buttonDiesel, m_buttonPetrol;
+    private EditText m_editCarName;
+    private boolean m_isHomeButton = true;
+    // Service
     public static boolean g_flagEraseData = true;
     static final String LOG_TAG = "InDataActivity";
-    private boolean m_isHomeButton = true;
 
+    // Variables
+    private EngineTypeEnum m_enginveType = EngineTypeEnum.Petrol;
 
+    //
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_data);
 
         Log.d(LOG_TAG, "Create");
+        DeviceHelper.GetOsVersion();
 
+        m_editCarName = (EditText) findViewById(R.id.edtInputName);
+        m_buttonOpenTestActivity = (Button) findViewById(R.id.btnTstAct);
+        m_buttonDiesel = (Button) findViewById(R.id.btnDiesel);
+        m_buttonPetrol = (Button) findViewById(R.id.btnPetrol);
 
-
-        m_editTableNameCar = (EditText) findViewById(R.id.edtInputName);
-        m_btnTstActivity = (Button) findViewById(R.id.btnTstAct);
-        m_btnDiesel = (Button) findViewById(R.id.btnDiesel);
-        m_btnPetrol = (Button) findViewById(R.id.btnPetrol);
-
-        m_editTableNameCar.setText("");
-        m_editTableNameCar.setHint(getResources().getString(R.string.carHint));
-        m_editTableNameCar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        m_editCarName.setText("");
+        m_editCarName.setHint(getResources().getString(R.string.carHint));
+        m_editCarName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
                     HideKeyboard(view);
-                } else m_editTableNameCar.selectAll();
+                } else m_editCarName.selectAll();
             }
         });
-        SetButtons(true);
-        getSupportActionBar().hide();
 
-        m_btnTstActivity.setOnClickListener(new View.OnClickListener() {
+        m_buttonOpenTestActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), TestExecutorActivity.class);
-               // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+                intent.putExtra("CarName", m_editCarName.getText().toString());
+                intent.putExtra("CarEngineType", m_enginveType.ordinal());
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
                 m_isHomeButton = false;
                 startActivity(intent);
             }
         });
 
-        m_btnPetrol.setOnClickListener(new View.OnClickListener() {
+        m_buttonDiesel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                m_enginveType = EngineTypeEnum.Diesel;
+                SetButtons(false);
+                HideKeyboard(view);
+            }
+        });
+
+        m_buttonPetrol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                m_enginveType = EngineTypeEnum.Petrol;
                 SetButtons(true);
                 HideKeyboard(view);
             }
         });
 
-        m_btnDiesel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SetButtons(false);
-                HideKeyboard(view);
-            }
-        });
+        SetButtons(true);
+        getSupportActionBar().hide();
     }
 
-    private void SetButtons(boolean flag) {
-        if (flag) {
-            m_btnPetrol.setBackgroundResource(R.drawable.draw_left_btn_fuel_active);
-            m_btnPetrol.setTextColor(getResources().getColor(R.color.black));
-            m_btnDiesel.setBackgroundResource(R.drawable.draw_right_btn_fuel_noactive);
-            m_btnDiesel.setTextColor(getResources().getColor(R.color.white));
+    private void SetButtons(boolean flag)
+    {
+        if (DeviceHelper.g_moreGingerBread)
+        {
+            if (flag) {
+                m_buttonPetrol.setBackgroundResource(R.drawable.draw_fuel_icecream_left_active);
+                m_buttonPetrol.setTextColor(getResources().getColor(R.color.black));
+                m_buttonDiesel.setBackgroundResource(R.drawable.draw_fuel_icecream_right_noactive);
+                m_buttonDiesel.setTextColor(getResources().getColor(R.color.white));
+            } else {
+                m_buttonPetrol.setBackgroundResource(R.drawable.draw_fuel_icecream_left_noactive);
+                m_buttonPetrol.setTextColor(getResources().getColor(R.color.white));
+                m_buttonDiesel.setBackgroundResource(R.drawable.draw_fuel_icecream_right_active);
+                m_buttonDiesel.setTextColor(getResources().getColor(R.color.black));
+            }
         } else {
-            m_btnPetrol.setBackgroundResource(R.drawable.draw_left_btn_fuel_noactive);
-            m_btnPetrol.setTextColor(getResources().getColor(R.color.white));
-            m_btnDiesel.setBackgroundResource(R.drawable.draw_right_btn_fuel_active);
-            m_btnDiesel.setTextColor(getResources().getColor(R.color.black));
+            if (flag) {
+                m_buttonPetrol.setBackgroundResource(R.drawable.draw_left_btn_fuel_active);
+                m_buttonPetrol.setTextColor(getResources().getColor(R.color.black));
+                m_buttonDiesel.setBackgroundResource(R.drawable.draw_right_btn_fuel_noactive);
+                m_buttonDiesel.setTextColor(getResources().getColor(R.color.white));
+            } else {
+                m_buttonPetrol.setBackgroundResource(R.drawable.draw_left_btn_fuel_noactive);
+                m_buttonPetrol.setTextColor(getResources().getColor(R.color.white));
+                m_buttonDiesel.setBackgroundResource(R.drawable.draw_right_btn_fuel_active);
+                m_buttonDiesel.setTextColor(getResources().getColor(R.color.black));
+            }
         }
-
     }
 
     @Override
@@ -122,7 +158,7 @@ public class InputDataActivity extends ActionBarActivity {
     protected void onResume() {
         Log.d(LOG_TAG, "RESUME");
         if (g_flagEraseData) {
-            m_editTableNameCar.setText("");
+            m_editCarName.setText("");
             SetButtons(true);
             g_flagEraseData = false;
         }
@@ -138,10 +174,12 @@ public class InputDataActivity extends ActionBarActivity {
 
     @Override
     protected void onPause() {
+        g_flagEraseData = true;
         if (m_isHomeButton){
             Log.d(LOG_TAG, "killProcess");
             android.os.Process.killProcess(Process.myPid());
         }
+
         super.onPause();
     }
 
