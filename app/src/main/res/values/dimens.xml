@@ -17,6 +17,11 @@
     <dimen name="InDataSizeUnitSmall">35dp</dimen>
     <dimen name="InDataRadiusButtonFuelSmall">8dp</dimen>
     <dimen name="InDataButtonTextFuelSmall">12sp</dimen>
+    <!--  Head steps -->
+    <dimen name="StepHeadHighLarge">80dp</dimen>
+    <dimen name="StepHeadHighNormal">45dp</dimen>
+    <dimen name="StepHeadHighSmall">40dp</dimen>
+
 
 
 

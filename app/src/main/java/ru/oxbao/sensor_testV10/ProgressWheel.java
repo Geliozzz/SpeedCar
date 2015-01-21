@@ -22,7 +22,8 @@ import android.view.View;
  *         Licensed under the Creative Commons Attribution 3.0 license see:
  *         http://creativecommons.org/licenses/by/3.0/
  */
-public class ProgressWheel extends View {
+public class ProgressWheel extends View
+{
 
     //Sizes (with defaults)
     private int layout_height = 0;
@@ -82,7 +83,8 @@ public class ProgressWheel extends View {
      * @param context
      * @param attrs
      */
-    public ProgressWheel(Context context, AttributeSet attrs) {
+    public ProgressWheel(Context context, AttributeSet attrs)
+    {
         super(context, attrs);
 
         parseAttributes(context.obtainStyledAttributes(attrs,
@@ -99,7 +101,8 @@ public class ProgressWheel extends View {
      *
      */
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
+    {
         // The first thing that happen is that we call the superclass
         // implementation of onMeasure. The reason for that is that measuring
         // can be quite a complex process and calling the super method is a
@@ -122,9 +125,11 @@ public class ProgressWheel extends View {
         // and when we set the dimension we add it back again. Now the actual content
         // of the view will be square, but, depending on the padding, the total dimensions
         // of the view might not be.
-        if (widthWithoutPadding > heigthWithoutPadding) {
+        if (widthWithoutPadding > heigthWithoutPadding)
+        {
             size = heigthWithoutPadding;
-        } else {
+        } else
+        {
             size = widthWithoutPadding;
         }
 
@@ -146,7 +151,8 @@ public class ProgressWheel extends View {
      * Use this dimensions to setup the bounds and paints.
      */
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    protected void onSizeChanged(int w, int h, int oldw, int oldh)
+    {
         super.onSizeChanged(w, h, oldw, oldh);
 
         // Share the dimensions
@@ -162,7 +168,8 @@ public class ProgressWheel extends View {
      * Set the properties of the paints we're using to
      * draw the progress wheel
      */
-    private void setupPaints() {
+    private void setupPaints()
+    {
         barPaint.setColor(barColor);
         barPaint.setAntiAlias(true);
         barPaint.setStyle(Style.STROKE);
@@ -193,7 +200,8 @@ public class ProgressWheel extends View {
     /**
      * Set the bounds of the component
      */
-    private void setupBounds() {
+    private void setupBounds()
+    {
         // Width should equal to Height, find the min value to steup the circle
         int minValue = Math.min(layout_width, layout_height);
 
@@ -231,7 +239,8 @@ public class ProgressWheel extends View {
      *
      * @param a the attributes to parse
      */
-    private void parseAttributes(TypedArray a) {
+    private void parseAttributes(TypedArray a)
+    {
         barWidth = (int) a.getDimension(R.styleable.ProgressWheel_barWidth,
                 barWidth);
 
@@ -243,7 +252,8 @@ public class ProgressWheel extends View {
 
         delayMillis = a.getInteger(R.styleable.ProgressWheel_delayMillis,
                 delayMillis);
-        if (delayMillis < 0) {
+        if (delayMillis < 0)
+        {
             delayMillis = 0;
         }
 
@@ -259,7 +269,8 @@ public class ProgressWheel extends View {
                 textColor);
 
         //if the text is empty , so ignore it
-        if (a.hasValue(R.styleable.ProgressWheel_text)) {
+        if (a.hasValue(R.styleable.ProgressWheel_text))
+        {
             setText(a.getString(R.styleable.ProgressWheel_text));
         }
 
@@ -281,7 +292,8 @@ public class ProgressWheel extends View {
     //Animation stuff
     //----------------------------------
 
-    public Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
+    public Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth)
+    {
         int width = bm.getWidth();
         int height = bm.getHeight();
         float scaleWidth = ((float) newWidth) / width;
@@ -296,7 +308,8 @@ public class ProgressWheel extends View {
         return resizedBitmap;
     }
 
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(Canvas canvas)
+    {
         super.onDraw(canvas);
 
         canvas.drawArc(circleBounds, 360, 360, false, circlePaint);
@@ -304,9 +317,10 @@ public class ProgressWheel extends View {
         canvas.drawArc(circleOuterContour, 360, 360, false, contourPaint);
         canvas.drawArc(circleInnerContour, 360, 360, false, contourPaint);
 
-        float degreeRotate = (progress * 360)/ barLength;
+        float degreeRotate = (progress * 360) / barLength;
         /*При делении возникает погрешность и он не дорисовывает*/
-        if (progress == barLength){
+        if (progress == barLength)
+        {
             degreeRotate = 360;
         }
         //Draw the bar
@@ -317,32 +331,39 @@ public class ProgressWheel extends View {
         float textHeight = textPaint.descent() - textPaint.ascent();
         float verticalTextOffset = (textHeight / 2) - textPaint.descent();
 
-        for (String s : splitText) {
+        for (String s : splitText)
+        {
             float horizontalTextOffset = textPaint.measureText(s) / 2;
             canvas.drawText(s, this.getWidth() / 2 - horizontalTextOffset,
                     this.getHeight() / 2 + verticalTextOffset, textPaint);
         }
-        if (isSpinning) {
+        if (isSpinning)
+        {
             scheduleRedraw();
         }
     }
 
-    private void scheduleRedraw() {
+    private void scheduleRedraw()
+    {
         progress += spinSpeed;
-        if (progress > 360) {
+        if (progress > 360)
+        {
             progress = 0;
         }
         postInvalidateDelayed(delayMillis);
     }
 
     /**
-     *   Check if the wheel is currently spinning
+     * Check if the wheel is currently spinning
      */
 
-    public boolean isSpinning() {
-        if(isSpinning){
+    public boolean isSpinning()
+    {
+        if (isSpinning)
+        {
             return true;
-        } else {
+        } else
+        {
             return false;
         }
     }
@@ -350,7 +371,8 @@ public class ProgressWheel extends View {
     /**
      * Reset the count (in increment mode)
      */
-    public void resetCount() {
+    public void resetCount()
+    {
         progress = 0;
         setText("0%");
         invalidate();
@@ -359,7 +381,8 @@ public class ProgressWheel extends View {
     /**
      * Turn off spin mode
      */
-    public void stopSpinning() {
+    public void stopSpinning()
+    {
         isSpinning = false;
         progress = 0;
         postInvalidate();
@@ -369,7 +392,8 @@ public class ProgressWheel extends View {
     /**
      * Puts the view on spin mode
      */
-    public void spin() {
+    public void spin()
+    {
         isSpinning = true;
         postInvalidate();
     }
@@ -377,7 +401,8 @@ public class ProgressWheel extends View {
     /**
      * Increment the progress by 1 (of 360)
      */
-    public void incrementProgress() {
+    public void incrementProgress()
+    {
         isSpinning = false;
         progress++;
         if (progress > 360)
@@ -390,7 +415,8 @@ public class ProgressWheel extends View {
     /**
      * Set the progress to a specific value
      */
-    public void setProgress(int i) {
+    public void setProgress(int i)
+    {
         isSpinning = false;
         progress = i;
         postInvalidate();
@@ -406,189 +432,235 @@ public class ProgressWheel extends View {
      *
      * @param text the text to show ('\n' constitutes a new line)
      */
-    public void setText(String text) {
+    public void setText(String text)
+    {
         this.text = text;
         splitText = this.text.split("\n");
     }
 
-    public int getCircleRadius() {
+    public int getCircleRadius()
+    {
         return circleRadius;
     }
 
-    public void setCircleRadius(int circleRadius) {
+    public void setCircleRadius(int circleRadius)
+    {
         this.circleRadius = circleRadius;
     }
 
-    public int getBarLength() {
+    public int getBarLength()
+    {
         return barLength;
     }
 
-    public void setBarLength(int barLength) {
+    public void setBarLength(int barLength)
+    {
         this.barLength = barLength;
     }
 
-    public int getBarWidth() {
+    public int getBarWidth()
+    {
         return barWidth;
     }
 
-    public void setBarWidth(int barWidth) {
+    public void setBarWidth(int barWidth)
+    {
         this.barWidth = barWidth;
 
-        if ( this.barPaint != null ) {
-            this.barPaint.setStrokeWidth( this.barWidth );
+        if (this.barPaint != null)
+        {
+            this.barPaint.setStrokeWidth(this.barWidth);
         }
     }
 
-    public int getTextSize() {
+    public int getTextSize()
+    {
         return textSize;
     }
 
-    public void setTextSize(int textSize) {
+    public void setTextSize(int textSize)
+    {
         this.textSize = textSize;
 
-        if ( this.textPaint != null ) {
-            this.textPaint.setTextSize( this.textSize );
+        if (this.textPaint != null)
+        {
+            this.textPaint.setTextSize(this.textSize);
         }
     }
 
-    public int getPaddingTop() {
+    public int getPaddingTop()
+    {
         return paddingTop;
     }
 
-    public void setPaddingTop(int paddingTop) {
+    public void setPaddingTop(int paddingTop)
+    {
         this.paddingTop = paddingTop;
     }
 
-    public int getPaddingBottom() {
+    public int getPaddingBottom()
+    {
         return paddingBottom;
     }
 
-    public void setPaddingBottom(int paddingBottom) {
+    public void setPaddingBottom(int paddingBottom)
+    {
         this.paddingBottom = paddingBottom;
     }
 
-    public int getPaddingLeft() {
+    public int getPaddingLeft()
+    {
         return paddingLeft;
     }
 
-    public void setPaddingLeft(int paddingLeft) {
+    public void setPaddingLeft(int paddingLeft)
+    {
         this.paddingLeft = paddingLeft;
     }
 
-    public int getPaddingRight() {
+    public int getPaddingRight()
+    {
         return paddingRight;
     }
 
-    public void setPaddingRight(int paddingRight) {
+    public void setPaddingRight(int paddingRight)
+    {
         this.paddingRight = paddingRight;
     }
 
-    public int getBarColor() {
+    public int getBarColor()
+    {
         return barColor;
     }
 
-    public void setBarColor(int barColor) {
+    public void setBarColor(int barColor)
+    {
         this.barColor = barColor;
 
-        if ( this.barPaint != null ) {
-            this.barPaint.setColor( this.barColor );
+        if (this.barPaint != null)
+        {
+            this.barPaint.setColor(this.barColor);
         }
     }
 
-    public int getCircleColor() {
+    public int getCircleColor()
+    {
         return circleColor;
     }
 
-    public void setCircleColor(int circleColor) {
+    public void setCircleColor(int circleColor)
+    {
         this.circleColor = circleColor;
 
-        if ( this.circlePaint != null ) {
-            this.circlePaint.setColor( this.circleColor);
+        if (this.circlePaint != null)
+        {
+            this.circlePaint.setColor(this.circleColor);
         }
     }
 
-    public int getRimColor() {
+    public int getRimColor()
+    {
         return rimColor;
     }
 
-    public void setRimColor(int rimColor) {
+    public void setRimColor(int rimColor)
+    {
         this.rimColor = rimColor;
 
-        if ( this.rimPaint != null ) {
-            this.rimPaint.setColor( this.rimColor );
+        if (this.rimPaint != null)
+        {
+            this.rimPaint.setColor(this.rimColor);
         }
     }
 
 
-    public Shader getRimShader() {
+    public Shader getRimShader()
+    {
         return rimPaint.getShader();
     }
 
-    public void setRimShader(Shader shader) {
+    public void setRimShader(Shader shader)
+    {
         this.rimPaint.setShader(shader);
     }
 
-    public int getTextColor() {
+    public int getTextColor()
+    {
         return textColor;
     }
 
-    public void setTextColor(int textColor) {
+    public void setTextColor(int textColor)
+    {
         this.textColor = textColor;
 
-        if ( this.textPaint != null ) {
-            this.textPaint.setColor( this.textColor );
+        if (this.textPaint != null)
+        {
+            this.textPaint.setColor(this.textColor);
         }
     }
 
-    public int getSpinSpeed() {
+    public int getSpinSpeed()
+    {
         return spinSpeed;
     }
 
-    public void setSpinSpeed(int spinSpeed) {
+    public void setSpinSpeed(int spinSpeed)
+    {
         this.spinSpeed = spinSpeed;
     }
 
-    public int getRimWidth() {
+    public int getRimWidth()
+    {
         return rimWidth;
     }
 
-    public void setRimWidth(int rimWidth) {
+    public void setRimWidth(int rimWidth)
+    {
         this.rimWidth = rimWidth;
 
-        if ( this.rimPaint != null ) {
-            this.rimPaint.setStrokeWidth( this.rimWidth );
+        if (this.rimPaint != null)
+        {
+            this.rimPaint.setStrokeWidth(this.rimWidth);
         }
     }
 
-    public int getDelayMillis() {
+    public int getDelayMillis()
+    {
         return delayMillis;
     }
 
-    public void setDelayMillis(int delayMillis) {
+    public void setDelayMillis(int delayMillis)
+    {
         this.delayMillis = delayMillis;
     }
 
-    public int getContourColor() {
+    public int getContourColor()
+    {
         return contourColor;
     }
 
-    public void setContourColor(int contourColor) {
+    public void setContourColor(int contourColor)
+    {
         this.contourColor = contourColor;
 
-        if ( contourPaint != null ) {
-            this.contourPaint.setColor( this.contourColor );
+        if (contourPaint != null)
+        {
+            this.contourPaint.setColor(this.contourColor);
         }
     }
 
-    public float getContourSize() {
+    public float getContourSize()
+    {
         return this.contourSize;
     }
 
-    public void setContourSize(float contourSize) {
+    public void setContourSize(float contourSize)
+    {
         this.contourSize = contourSize;
 
-        if ( contourPaint != null ) {
-            this.contourPaint.setStrokeWidth( this.contourSize );
+        if (contourPaint != null)
+        {
+            this.contourPaint.setStrokeWidth(this.contourSize);
         }
     }
 }

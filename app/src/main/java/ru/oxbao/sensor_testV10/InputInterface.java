@@ -15,10 +15,10 @@ public class InputInterface
     }
 
     public InputInterface(ActivityTestExecutor activityTestExecutor,
-                          TestExecutor testExecutor,Collector collector)
+                          TestExecutor testExecutor, Collector collector)
     {
-        m_sensorInput = new SensorInput(activityTestExecutor,  testExecutor, collector);
-        m_storageInput = new StorageInput(activityTestExecutor,testExecutor, collector);
+        m_sensorInput = new SensorInput(activityTestExecutor, testExecutor, collector);
+        m_storageInput = new StorageInput(activityTestExecutor, testExecutor, collector);
         m_ownerTestExecutor = testExecutor;
         m_ownerCollector = collector;
     }
@@ -32,8 +32,7 @@ public class InputInterface
             m_ownerTestExecutor.SetFixedTestData();
             m_ownerCollector.SetNumberOfMeasurements(m_ownerTestExecutor.Getm_numberOfMeasurements()); // Возврат к фиксированному значению
             m_sensorInput.Start();
-        }
-        else if (inputTypeEnum.equals(InputTypeEnum.storage))
+        } else if (inputTypeEnum.equals(InputTypeEnum.storage))
         {
             //Так как неизвестно количество данных в файлах
             // необходимо объявить заново ТестДата. Иначе возможна потеря информации
@@ -46,16 +45,17 @@ public class InputInterface
         }
 
     }
+
     public void Stop()
     {
         m_sensorInput.Stop();
 
     }
 
-    public String[] GetFilesNames(){
-       return m_storageInput.GetFilesFromFolder();
+    public String[] GetFilesNames()
+    {
+        return m_storageInput.GetFilesFromFolder();
     }
-
 
 
 }

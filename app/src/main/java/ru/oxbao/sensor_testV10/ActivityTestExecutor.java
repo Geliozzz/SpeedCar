@@ -69,23 +69,29 @@ public class ActivityTestExecutor extends ActionBarActivity
         /***********Запрет на зысыпание*****************/
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        m_handler = new Handler() {
+        m_handler = new Handler()
+        {
             @Override
-            public void handleMessage(Message msg) {
+            public void handleMessage(Message msg)
+            {
                 m_progressBarWheel.setProgress(msg.getData().getInt("count"));
             }
         };
 
-        m_buttonStartTest.setOnClickListener(new View.OnClickListener() {
+        m_buttonStartTest.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 StartTest();
             }
         });
 
-        m_buttonBack.setOnClickListener(new View.OnClickListener() {
+        m_buttonBack.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 ActivityInputData.g_flagEraseData = false;
                 m_isHomeButton = false;
                 m_testExecutor.Stop();
@@ -93,18 +99,23 @@ public class ActivityTestExecutor extends ActionBarActivity
             }
         });
 
-        m_radioGroupTests.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        m_radioGroupTests.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
             @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i) {
+            public void onCheckedChanged(RadioGroup radioGroup, int i)
+            {
+                switch (i)
+                {
                     case R.id.test1:
                         m_spinnerFiles.setVisibility(View.INVISIBLE);
                         break;
                     case R.id.test2:
-                        if (m_testExecutor.GetFilesNames() != null) {
+                        if (m_testExecutor.GetFilesNames() != null)
+                        {
                             m_spinnerFiles.setVisibility(View.VISIBLE);
                             m_spinnerFiles.setAdapter(m_testExecutor.GetFilesNames());
-                        } else {
+                        } else
+                        {
                             Toast.makeText(getApplicationContext(), getResources().getString(R.string.filesNotFound), Toast.LENGTH_SHORT).show();
                             m_radioTest1.setChecked(true);
                         }
@@ -115,15 +126,18 @@ public class ActivityTestExecutor extends ActionBarActivity
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         Log.d(LOG_TAG, "Resume");
         SetProgressBar(0);
         /***Ready for test*/
-        if (m_popupIsStarted) {
+        if (m_popupIsStarted)
+        {
             SetButtonEnabled(true);
             m_popupIsStarted = false;
         }
-        if (g_startTestFlag){
+        if (g_startTestFlag)
+        {
             StartTest();
             g_startTestFlag = false;
         }
@@ -132,11 +146,13 @@ public class ActivityTestExecutor extends ActionBarActivity
     }
 
 
-    public void SetProgressBar(int progress) {
+    public void SetProgressBar(int progress)
+    {
         m_progressBarWheel.setProgress(progress);
     }
 
-    public void SetMaxProgressBar(int max) {
+    public void SetMaxProgressBar(int max)
+    {
 
         m_progressBarWheel.setBarLength(max);
     }
@@ -150,19 +166,22 @@ public class ActivityTestExecutor extends ActionBarActivity
     }
 
 
-
-    public String GetCheckedSpinner() {
+    public String GetCheckedSpinner()
+    {
         String result = "";
-        try {
+        try
+        {
             result = m_spinnerFiles.getSelectedItem().toString();
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             e.printStackTrace();
         }
 
         return result;
     }
 
-    public void SendMessage(int count) {
+    public void SendMessage(int count)
+    {
         Bundle bundle = new Bundle();
         bundle.putInt("count", count);
         Message message = new Message();
@@ -186,13 +205,16 @@ public class ActivityTestExecutor extends ActionBarActivity
         }
     }
 
-    private void SetButtonEnabled(boolean flag) {
-        if (flag) {
+    private void SetButtonEnabled(boolean flag)
+    {
+        if (flag)
+        {
             m_buttonStartTest.setBackgroundResource(R.drawable.oval_button_ready);
             m_buttonStartTest.setText(getResources().getString(R.string.startTest));
             m_buttonStartTest.setEnabled(true);
             m_buttonStartTest.setTextColor(getResources().getColor(R.color.btnStartReadyTextColor));
-        } else {
+        } else
+        {
             m_buttonStartTest.setText(getResources().getString(R.string.wait));
             m_buttonStartTest.setBackgroundResource(R.drawable.oval_button_execute);
             m_buttonStartTest.setTextColor(getResources().getColor(R.color.btnExecuteTextColor));
@@ -202,7 +224,8 @@ public class ActivityTestExecutor extends ActionBarActivity
 
     public void StartTest()
     {
-        switch (m_radioGroupTests.getCheckedRadioButtonId()) {
+        switch (m_radioGroupTests.getCheckedRadioButtonId())
+        {
             case R.id.test1:
                 m_testExecutor.Start(TestExecutor.TestEnum.test1);
                 break;
@@ -215,16 +238,18 @@ public class ActivityTestExecutor extends ActionBarActivity
     }
 
     @Override
-    protected void finalize() throws Throwable {
+    protected void finalize() throws Throwable
+    {
         Log.d(LOG_TAG, "FINALIZE");
         super.finalize();
     }
 
 
-
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK){
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK)
+        {
             Log.d(LOG_TAG, "Back");
             ActivityInputData.g_flagEraseData = false;
             m_isHomeButton = false;
@@ -233,10 +258,12 @@ public class ActivityTestExecutor extends ActionBarActivity
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
         Log.d(LOG_TAG, "PAUSE");
         m_testExecutor.Stop();
-        if (m_isHomeButton){
+        if (m_isHomeButton)
+        {
             ActivityInputData.g_flagEraseData = true;
             android.os.Process.killProcess(android.os.Process.myPid());
         }
@@ -244,13 +271,15 @@ public class ActivityTestExecutor extends ActionBarActivity
     }
 
     @Override
-    protected void onStop() {
+    protected void onStop()
+    {
         Log.d(LOG_TAG, "STOP");
         super.onStop();
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy()
+    {
         Log.d(LOG_TAG, "Destroy");
         super.onDestroy();
     }

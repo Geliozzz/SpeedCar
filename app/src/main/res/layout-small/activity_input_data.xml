@@ -16,7 +16,7 @@
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/StepHeadHighSmall"
         android:background="@color/StepBackgroundColor"
         android:layout_below="@+id/textViewHeader"
         android:layout_alignParentLeft="true"

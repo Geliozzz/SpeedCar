@@ -32,9 +32,11 @@ public class Collector
 
     public void Start(InputInterface.InputTypeEnum inputTypeEnum)
     {
-        if (inputTypeEnum.equals(InputInterface.InputTypeEnum.sensors)){
+        if (inputTypeEnum.equals(InputInterface.InputTypeEnum.sensors))
+        {
             m_fromSensorMeasurements = true;
-        } else {
+        } else
+        {
             m_fromSensorMeasurements = false;
         }
 
@@ -42,7 +44,8 @@ public class Collector
         m_inputInterface.Start(inputTypeEnum);
     }
 
-    public void Stop(){
+    public void Stop()
+    {
         m_inputInterface.Stop();
     }
 
@@ -54,12 +57,10 @@ public class Collector
             m_ownerExecutor.g_testData.YAxis[m_count] = YAxis;
             m_ownerExecutor.g_testData.ZAxis[m_count] = ZAxis;
             m_ownerExecutor.g_testData.TimeInNanoSeconds[m_count] = time;
-        }
-        catch (IndexOutOfBoundsException e)
+        } catch (IndexOutOfBoundsException e)
         {
             Log.d(COLLECTOR_TAG, "index testData is out of range");
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
             Log.d(COLLECTOR_TAG, "Anything exception ");
@@ -69,8 +70,7 @@ public class Collector
         if (m_fromSensorMeasurements)
         {
             m_ownerActivity.SetProgressBar(m_count);
-        }
-        else
+        } else
         {
             m_ownerActivity.SendMessage(m_count);
         }
@@ -85,16 +85,18 @@ public class Collector
         }
     }
 
-    public String[] GetFilesNames(){
+    public String[] GetFilesNames()
+    {
         return m_inputInterface.GetFilesNames();
     }
 
-    public void SetNumberOfMeasurements(int number){
+    public void SetNumberOfMeasurements(int number)
+    {
         m_numberOfMeasurements = number;
     }
 
     /*Нужен для остановки при чтении из файла. Возможно возникновение исклучений при чтении и счетчик накопленных значений не заполняется до конца*/
-    public  void OnDataCollected()
+    public void OnDataCollected()
     {
         Stop();
         m_ownerExecutor.OnDataCollected();

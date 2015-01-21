@@ -1,15 +1,17 @@
 package ru.oxbao.sensor_testV10;
 
 
-public class Saver {
+public class Saver
+{
 
     private TestExecutor m_ownerTestExecutor;
     private StorageOutput m_storageOutput;
     private StorageOutputAlternative m_storageOutputAlternative;
     private final String SAVER_TAG = "Saver";
-   // private
+    // private
 
-    public Saver(TestExecutor testExecutor, String prefix) {
+    public Saver(TestExecutor testExecutor, String prefix)
+    {
         m_storageOutput = new StorageOutput(testExecutor, prefix);
         m_storageOutputAlternative = new StorageOutputAlternative(testExecutor, prefix);
         m_ownerTestExecutor = testExecutor;
@@ -17,7 +19,7 @@ public class Saver {
 
     public void SaveData(TestData testData, boolean alternative)
     {
-        if(!alternative) m_storageOutput.SaveInFile(testData);
+        if (!alternative) m_storageOutput.SaveInFile(testData);
         m_storageOutputAlternative.SaveInFile(testData, 'X');
         m_storageOutputAlternative.SaveInFile(testData, 'Y');
         m_storageOutputAlternative.SaveInFile(testData, 'Z');

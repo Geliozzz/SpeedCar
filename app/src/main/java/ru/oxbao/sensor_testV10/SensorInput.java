@@ -34,8 +34,7 @@ public class SensorInput implements SensorEventListener
         {
             m_sensorManager.registerListener(this, s, SensorManager.SENSOR_DELAY_FASTEST);
             m_sensorIsWorking = true;
-        }
-        else
+        } else
         {
             m_ownerTestExecutor.ShowToast(TestExecutor.ToastMessage.failStartSensor);
             m_collectorOwner.Stop();
@@ -57,16 +56,19 @@ public class SensorInput implements SensorEventListener
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
+    public void onAccuracyChanged(Sensor sensor, int i)
+    {
 
     }
 
-    public boolean IsWorking() {
+    public boolean IsWorking()
+    {
         return m_sensorIsWorking;
     }
 
     @Override
-    protected void finalize() throws Throwable {
+    protected void finalize() throws Throwable
+    {
         Stop();
         super.finalize();
     }

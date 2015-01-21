@@ -18,6 +18,7 @@ public class ActivityInputData extends ActionBarActivity
         Diesel,
         Petrol
     }
+
     public static EngineTypeEnum ToEngineTypeEnum(int i)
     {
         return EngineTypeEnum.values()[i];
@@ -46,9 +47,11 @@ public class ActivityInputData extends ActionBarActivity
 
         m_buttonOpenTestActivity = (Button) findViewById(R.id.btnTstAct);
 
-        m_buttonOpenTestActivity.setOnClickListener(new View.OnClickListener() {
+        m_buttonOpenTestActivity.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Intent intent = new Intent(getApplicationContext(), ActivityTestExecutor.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
                 m_isHomeButton = false;
@@ -60,16 +63,17 @@ public class ActivityInputData extends ActionBarActivity
     }
 
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.in_data, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -81,22 +85,26 @@ public class ActivityInputData extends ActionBarActivity
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         Log.d(LOG_TAG, "RESUME");
         m_isHomeButton = true;
         super.onResume();
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy()
+    {
         Log.d(LOG_TAG, "Destroy");
         super.onDestroy();
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
         g_flagEraseData = true;
-        if (m_isHomeButton){
+        if (m_isHomeButton)
+        {
             Log.d(LOG_TAG, "killProcess");
             android.os.Process.killProcess(Process.myPid());
         }

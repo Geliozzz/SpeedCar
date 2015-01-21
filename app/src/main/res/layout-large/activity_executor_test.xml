@@ -21,7 +21,7 @@
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/StepHeadHighLarge"
         android:background="@color/StepBackgroundColor"
         android:id="@+id/relativeLayout"
         android:layout_below="@+id/textViewHeader"
@@ -60,7 +60,6 @@
             android:textColor="@color/StepTextColor"
             android:id="@+id/textView2"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
