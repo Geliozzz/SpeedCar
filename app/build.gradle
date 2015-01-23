@@ -5,15 +5,16 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "ru.oxbao.sensor_testV10"
-        minSdkVersion 8
+        applicationId "ru.oxbao.speed_car"
+        minSdkVersion 10
         targetSdkVersion 20
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            runProguard false
+            apply plugin: 'idea'
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

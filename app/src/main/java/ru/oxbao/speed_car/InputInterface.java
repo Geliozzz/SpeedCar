@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_testV10;
+package ru.oxbao.speed_car;
 
 
 public class InputInterface
@@ -49,7 +49,6 @@ public class InputInterface
     public void Stop()
     {
         m_sensorInput.Stop();
-
     }
 
     public String[] GetFilesNames()

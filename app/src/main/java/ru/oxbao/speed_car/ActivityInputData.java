@@ -1,9 +1,9 @@
-package ru.oxbao.sensor_testV10;
+package ru.oxbao.speed_car;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.*;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +13,8 @@ import android.widget.Button;
 
 public class ActivityInputData extends ActionBarActivity
 {
+
+
     public enum EngineTypeEnum
     {
         Diesel,

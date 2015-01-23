@@ -124,7 +124,7 @@
 
             </RadioGroup>
 
-            <ru.oxbao.sensor_testV10.ProgressWheel
+            <ru.oxbao.speed_car.ProgressWheel
                 android:id="@+id/progressBarWheel"
                 android:layout_width="320dp"
                 android:layout_height="320dp"

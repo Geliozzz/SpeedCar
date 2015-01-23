@@ -1,4 +1,4 @@
-package ru.oxbao.sensor_testV10;
+package ru.oxbao.speed_car;
 
 
 import android.content.Context;
