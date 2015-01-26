@@ -125,4 +125,43 @@
         <item name="android:textSize">@dimen/InDataButtonTextFuelSmall</item>
         <item name="android:textStyle">bold</item>
     </style>
+<!-- Need Speed Styles Normal -->
+    <style name="ButtonsNeedSpeedNormal">
+        <item name="android:layout_width">@dimen/NeedSpeedButtonSizeNormal</item>
+        <item name="android:layout_height">@dimen/NeedSpeedButtonSizeNormal</item>
+        <item name="android:textSize">@dimen/NeedSpeedButtonsTextSize</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/HeaderTextColor</item>
+        <item name="android:background">@drawable/need_speed_buttons_oval</item>
+        <item name="android:layout_marginTop">@dimen/MarginTop</item>
+        <item name="android:layout_marginLeft">@dimen/MarginLeft</item>
+        <item name="android:layout_marginRight">@dimen/MarginRight</item>
+        <item name="android:layout_marginBottom">@dimen/MarginBottom</item>
+    </style>
+
+    <style name="EditNeedSpeedNormal">
+        <item name="android:layout_width">@dimen/NeedSpeedEditWidthNormal</item>
+        <item name="android:layout_height">@dimen/NeedSpeedButtonSizeNormal</item>
+        <item name="android:textSize">@dimen/NeedSpeedButtonsTextSize</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/HeaderTextColor</item>
+        <item name="android:background">@drawable/need_speed_edit_oval</item>
+
+        <item name="android:layout_marginTop">@dimen/MarginTop</item>
+        <item name="android:layout_marginLeft">@dimen/MarginLeft</item>
+        <item name="android:layout_marginRight">@dimen/MarginRight</item>
+        <item name="android:layout_marginBottom">@dimen/MarginBottom</item>
+    </style>
+
+    <style name="HeaderNeedSpeedNormal">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/NeedSpeedHeaderTextColor</item>
+
+        <item name="android:layout_marginTop">@dimen/MarginTop</item>
+        <item name="android:layout_marginLeft">@dimen/MarginLeft</item>
+        <item name="android:layout_marginRight">@dimen/MarginRight</item>
+    </style>
 </resources>

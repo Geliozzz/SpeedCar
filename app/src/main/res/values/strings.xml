@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Engine Tester</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Speed Tester</string>
     <string name="action_settings">Settings</string>
     <string name="enter">Ввод</string>
-    <string name="carHint">Название ТС</string>
     <string name="test1">С датчика</string>
     <string name="test2">Из файла</string>
     <string name="startTest">Начать тест</string>
     <string name="result">Результат</string>
     <string name="failAccelerometer">Акселерометр не найден</string>
     <string name="back">\u21e6 НАЗАД</string>
-    <string name="typeEngine">Тип двигателя:</string>
-    <string name="engIsNorm">Двигатель в норме</string>
+    <string name="arrowUp">\u2191</string>
+    <string name="arrowDown">\u2193</string>
     <string name="saveOk">Данные сохранены</string>
     <string name="failSaveFile">Невозможно сохранить данные</string>
     <string name="fileNotFound">Файл не найден</string>
     <string name="filesNotFound">Файлы не найдены</string>
     <string name="failStorage">Карта памяти не доступна</string>
-    <string name="petrol">Бензин</string>
-    <string name="diesel">Дизель</string>
-    <string name="wait">Подождите</string>
+    <string name="calibrate">Калибровка</string>
     <string name="engineTester">Engine Tester</string>
     <string name="TesterHelpMessage">Разместите телефон на панели
                                         приборов экраном вверх, динамиком
@@ -30,11 +26,11 @@
     <string name="step1Text">Шаг 1.</string>
     <string name="step2Text">Шаг 2. Пройдите тест.</string>
     <string name="step3Text">Шаг 3. Результаты теста.</string>
-    <string name="carName">Название автомобиля</string>
-    <string name="typeFuel">Тип топлива</string>
     <string name="restartTest">ПОВТОРИТЬ ТЕСТ</string>
     <string name="resume">ПРОДОЛЖИТЬ \u21e8</string>
-    <string name="hondaAccord">Honda Accord</string>
+    <string name="needSpeedHeaderText">Тестируемая скорость, км/ч </string>
+    <string name="forward">Вперёд!</string>
+
 
     <string name="mainHelpMessage">
         Звучат позывные в эфире\n
@@ -83,17 +79,5 @@
         Но верю, что он долетит!\n\n
     </string>
 
-
-
-    <string-array name="typesEng">
-        <item>Бензин</item>
-        <item>Дизель</item>
-    </string-array>
-
-    <string-array name="resultText">
-        <item>dg</item>
-        <item>gg</item>
-        <item>hh</item>
-    </string-array>
 
 </resources>

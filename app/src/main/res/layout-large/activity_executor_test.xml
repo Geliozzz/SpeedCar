@@ -128,7 +128,7 @@
                 android:id="@+id/progressBarWheel"
                 android:layout_width="320dp"
                 android:layout_height="320dp"
-                ProgressWheel:text="@string/wait"
+                ProgressWheel:text="@string/calibrate"
                 ProgressWheel:textColor="#ff000000"
                 ProgressWheel:textSize="12sp"
                 ProgressWheel:rimColor="@color/rimColor"

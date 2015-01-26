@@ -10,7 +10,8 @@ import android.util.Log;
 
 public class SensorInput implements SensorEventListener
 {
-    private Collector m_collectorOwner;
+  //  private Collector m_collectorOwner;
+    private InputInterfaceAdapter m_inputInterfaceAdapter;
     private ActivityTestExecutor m_ownerActivity;
     private TestExecutor m_ownerTestExecutor;
     private SensorManager m_sensorManager;
@@ -18,9 +19,10 @@ public class SensorInput implements SensorEventListener
     private final String SENSOR_INPUT = "SensorInput";
 
     public SensorInput(ActivityTestExecutor activityTestExecutor, TestExecutor testExecutor,
-                       Collector collector)
+                       InputInterfaceAdapter inputInterfaceAdapter)
     {
-        m_collectorOwner = collector;
+       // m_collectorOwner = collector;
+        m_inputInterfaceAdapter = inputInterfaceAdapter;
         m_ownerActivity = activityTestExecutor;
         m_sensorManager = (SensorManager) m_ownerActivity.getSystemService(Context.SENSOR_SERVICE);
         m_sensorIsWorking = false;
@@ -37,7 +39,7 @@ public class SensorInput implements SensorEventListener
         } else
         {
             m_ownerTestExecutor.ShowToast(TestExecutor.ToastMessage.failStartSensor);
-            m_collectorOwner.Stop();
+            m_inputInterfaceAdapter.Stop();
         }
     }
 
@@ -51,7 +53,9 @@ public class SensorInput implements SensorEventListener
     @Override
     public void onSensorChanged(SensorEvent sensorEvent)
     {
-        m_collectorOwner.Amass(sensorEvent.values[0], sensorEvent.values[1],
+      /*  m_collectorOwner.Amass(sensorEvent.values[0], sensorEvent.values[1],
+                sensorEvent.values[2], sensorEvent.timestamp);*/
+        m_inputInterfaceAdapter.Amass(sensorEvent.values[0], sensorEvent.values[1],
                 sensorEvent.values[2], sensorEvent.timestamp);
     }
 

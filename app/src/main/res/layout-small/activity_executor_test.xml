@@ -132,7 +132,7 @@
             ProgressWheel:rimColor="@color/rimColor"
             ProgressWheel:rimWidth="10dp"
             ProgressWheel:spinSpeed="0dp"
-            ProgressWheel:text="@string/wait"
+            ProgressWheel:text="@string/calibrate"
             ProgressWheel:textColor="#ff000000"
             ProgressWheel:textSize="12sp"
             />

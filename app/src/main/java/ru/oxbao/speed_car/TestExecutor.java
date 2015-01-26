@@ -22,8 +22,10 @@ public class TestExecutor
     private boolean m_saveData = true;
     private int m_numberOfMeasurements;
     private String m_prefix = "UnKnown";
+    private float m_speed;
     // Objects
     private Collector m_collector;
+    private RealtimeInput m_realtimeInput;
     private Saver m_saver;
     public TestData g_testData;
     private WorkMath m_workMath;
@@ -41,7 +43,9 @@ public class TestExecutor
 
         g_testData = new TestData(m_numberOfMeasurements);
         m_collector = new Collector(activityTestExecutor, this, m_numberOfMeasurements);
+        m_realtimeInput = new RealtimeInput(activityTestExecutor, this);
         m_saver = new Saver(this, m_prefix);
+
     }
 
     public void Start(TestEnum testEnum)
@@ -74,7 +78,9 @@ public class TestExecutor
         {
             m_saver.SaveData(g_testData, true); // for alternative
         }
-        m_ownerActivity.OnTestFinished(g_testResult.ResultEnum);
+        //   m_ownerActivity.OnTestFinished(g_testResult.ResultEnum);
+        m_ownerActivity.OnCalibrateFinished();
+        m_realtimeInput.Start();
     }
 
     public void ShowToast(ToastMessage toastMessage)
@@ -126,5 +132,20 @@ public class TestExecutor
     public int Getm_numberOfMeasurements()
     {
         return m_numberOfMeasurements;
+    }
+
+    public void ProcessSample(double XAxis, double YAxis, double ZAxis, long time)
+    {
+        m_speed++;
+        SetProgress((int) m_speed);
+        if (m_speed == 100){
+            m_realtimeInput.Stop();
+            m_ownerActivity.OnTestFinished(g_testResult.ResultEnum);
+        }
+    }
+
+    public void SetProgress(int progress)
+    {
+        m_ownerActivity.SetProgressBar(progress);
     }
 }

@@ -6,7 +6,7 @@ public class InputInterface
     private SensorInput m_sensorInput;
     private StorageInput m_storageInput;
     private TestExecutor m_ownerTestExecutor;
-    private Collector m_ownerCollector;
+    private InputInterfaceAdapter m_inputInterfaceAdapter;
 
     public enum InputTypeEnum
     {
@@ -15,12 +15,12 @@ public class InputInterface
     }
 
     public InputInterface(ActivityTestExecutor activityTestExecutor,
-                          TestExecutor testExecutor, Collector collector)
+                          TestExecutor testExecutor, InputInterfaceAdapter inputInterfaceAdapter)
     {
-        m_sensorInput = new SensorInput(activityTestExecutor, testExecutor, collector);
-        m_storageInput = new StorageInput(activityTestExecutor, testExecutor, collector);
+        m_sensorInput = new SensorInput(activityTestExecutor, testExecutor, inputInterfaceAdapter);
+        m_storageInput = new StorageInput(activityTestExecutor, testExecutor, inputInterfaceAdapter);
         m_ownerTestExecutor = testExecutor;
-        m_ownerCollector = collector;
+        m_inputInterfaceAdapter = inputInterfaceAdapter;
     }
 
 
@@ -30,7 +30,7 @@ public class InputInterface
         {
             // Переопределить Тест дата для фиксированного количества измерений если до этого была работа из файла
             m_ownerTestExecutor.SetFixedTestData();
-            m_ownerCollector.SetNumberOfMeasurements(m_ownerTestExecutor.Getm_numberOfMeasurements()); // Возврат к фиксированному значению
+            m_inputInterfaceAdapter.SetNumberOfMeasurements(m_ownerTestExecutor.Getm_numberOfMeasurements()); // Возврат к фиксированному значению
             m_sensorInput.Start();
         } else if (inputTypeEnum.equals(InputTypeEnum.storage))
         {
@@ -39,11 +39,9 @@ public class InputInterface
             int count = m_storageInput.GetNumberLines(); //!!!!!!!!!!!!!!!!!!!!!!!!! проверка на ноль
             m_ownerTestExecutor.g_testData = new TestData(count);
             // Кол-во измерений в коллектрое тоже должно измениться
-            m_ownerCollector.SetNumberOfMeasurements(count);
-
+            m_inputInterfaceAdapter.SetNumberOfMeasurements(count);
             m_storageInput.Start();
         }
-
     }
 
     public void Stop()

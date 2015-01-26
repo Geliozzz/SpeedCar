@@ -3,6 +3,7 @@ package ru.oxbao.speed_car;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
@@ -13,12 +14,11 @@ import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 
-import android.os.Handler;
-
 public class StorageInput
 {
     private ActivityTestExecutor m_ownerActivity;
-    private Collector m_collectorOwner;
+    //private Collector m_collectorOwner;
+    private InputInterfaceAdapter m_inputInterfaceAdapter;
     private TestExecutor m_ownerTestExecutor;
     private String m_dir;
     private Handler m_handler;
@@ -100,9 +100,9 @@ public class StorageInput
         }
     }
 
-    public StorageInput(ActivityTestExecutor activityTestExecutor, TestExecutor m_ownerTestExecutor, final Collector m_collectorOwner)
+    public StorageInput(ActivityTestExecutor activityTestExecutor, TestExecutor m_ownerTestExecutor, final InputInterfaceAdapter inputInterfaceAdapter)
     {
-        this.m_collectorOwner = m_collectorOwner;
+        this.m_inputInterfaceAdapter = inputInterfaceAdapter;
         this.m_ownerTestExecutor = m_ownerTestExecutor;
         m_ownerActivity = activityTestExecutor;
         m_dir = Environment.getExternalStorageDirectory().toString() + DIRECTORY_NAME;
@@ -115,11 +115,11 @@ public class StorageInput
                 String key = bundle.getString("key");
                 if (key.equals("collector"))
                 {
-                    m_collectorOwner.Amass(bundle.getDouble("XAxis"), bundle.getDouble("YAxis"),
+                    m_inputInterfaceAdapter.Amass(bundle.getDouble("XAxis"), bundle.getDouble("YAxis"),
                             bundle.getDouble("ZAxis"), bundle.getLong("Time"));
                 } else if (key.equals("stop"))
                 {
-                    m_collectorOwner.OnDataCollected();
+                  //  m_collectorOwner.OnDataCollected(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 }
 
             }
@@ -137,7 +137,7 @@ public class StorageInput
             reader.start();
         } else
         {
-            m_collectorOwner.Stop();
+            m_inputInterfaceAdapter.Stop();
         }
     }
 

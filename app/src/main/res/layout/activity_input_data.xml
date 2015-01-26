@@ -58,28 +58,16 @@
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_alignRight="@+id/scrollView"
-        android:layout_alignEnd="@+id/scrollView"
-        android:layout_alignLeft="@+id/scrollView"
-        android:layout_alignStart="@+id/scrollView"/>
-
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/scrollView"
-        android:layout_above="@+id/btnTstAct"
+        android:layout_above="@+id/relativeLayoutNeedSpeed"
+        android:layout_below="@+id/relativeLayout"
         android:layout_alignRight="@+id/btnTstAct"
         android:layout_alignEnd="@+id/btnTstAct"
         android:layout_alignLeft="@+id/btnTstAct"
-        android:layout_alignStart="@+id/btnTstAct"
-        android:layout_below="@+id/editText">
+        android:layout_alignStart="@+id/btnTstAct">
 
         <TextView
             android:layout_width="wrap_content"
@@ -89,6 +77,52 @@
             android:text="@string/mainHelpMessage"
             android:id="@+id/textView"/>
     </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/relativeLayoutNeedSpeed"
+        android:layout_above="@+id/btnTstAct"
+        android:layout_alignLeft="@+id/scrollView"
+        android:layout_alignStart="@+id/scrollView"
+        android:layout_alignRight="@+id/scrollView"
+        android:layout_alignEnd="@+id/scrollView">
+
+        <TextView
+            style="@style/HeaderNeedSpeedNormal"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/needSpeedHeaderText"
+            android:id="@+id/tvNeedSpeedHeaderText"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText
+            style="@style/EditNeedSpeedNormal"
+            android:inputType="none"
+            android:ems="10"
+            android:id="@+id/edtNeedSpeedEnter"
+            android:layout_below="@+id/tvNeedSpeedHeaderText"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            style="@style/ButtonsNeedSpeedNormal"
+            android:text="@string/arrowUp"
+            android:id="@+id/btnNeedSpeedUp"
+            android:layout_below="@+id/tvNeedSpeedHeaderText"
+            android:layout_toRightOf="@+id/edtNeedSpeedEnter"
+            android:layout_toEndOf="@+id/edtNeedSpeedEnter"/>
+
+        <Button
+            style="@style/ButtonsNeedSpeedNormal"
+            android:text="@string/arrowDown"
+            android:id="@+id/btnNeedSpeedDown"
+            android:layout_below="@+id/tvNeedSpeedHeaderText"
+            android:layout_toLeftOf="@+id/edtNeedSpeedEnter"
+            android:layout_toStartOf="@+id/edtNeedSpeedEnter"/>
+
+
+    </RelativeLayout>
 
     <Button
         style="@style/NavigateButtonStyle"

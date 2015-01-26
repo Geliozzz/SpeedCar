@@ -34,8 +34,6 @@ public class ActivityTestExecutor extends ActionBarActivity
     private TestExecutor m_testExecutor;
     // Variables
     private TestResult m_testResult;
-    private String m_carName;
-    private ActivityInputData.EngineTypeEnum m_carEngineType;
 
     // Temporary
     private RadioButton m_radioTest1;
@@ -46,10 +44,6 @@ public class ActivityTestExecutor extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_executor_test);
         Log.d(LOG_TAG, "CREATE");
-
-        m_carName = getIntent().getStringExtra("CarName");
-        m_carEngineType = ActivityInputData.ToEngineTypeEnum(getIntent().getIntExtra("CarEngineType",
-                ActivityInputData.EngineTypeEnum.Petrol.ordinal()));
 
         m_buttonStartTest = (Button) findViewById(R.id.btnStartTest);
         m_buttonBack = (Button) findViewById(R.id.btnBack);
@@ -165,6 +159,14 @@ public class ActivityTestExecutor extends ActionBarActivity
         ShowResult(stringToShow);
     }
 
+    public void OnCalibrateFinished()
+    {
+        // set progressbarmax
+        SetProgressBar(0);
+        SetMaxProgressBar(100);
+        m_buttonStartTest.setText(getResources().getString(R.string.forward));
+    }
+
 
     public String GetCheckedSpinner()
     {
@@ -215,7 +217,7 @@ public class ActivityTestExecutor extends ActionBarActivity
             m_buttonStartTest.setTextColor(getResources().getColor(R.color.btnStartReadyTextColor));
         } else
         {
-            m_buttonStartTest.setText(getResources().getString(R.string.wait));
+            m_buttonStartTest.setText(getResources().getString(R.string.calibrate));
             m_buttonStartTest.setBackgroundResource(R.drawable.oval_button_execute);
             m_buttonStartTest.setTextColor(getResources().getColor(R.color.btnExecuteTextColor));
             m_buttonStartTest.setEnabled(false);

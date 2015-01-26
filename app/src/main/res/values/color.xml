@@ -26,4 +26,15 @@
     <color name="NavigationButtonBackgroundColor">#92f4a625</color>
     <color name="NavigationButtonStrokeColor">#fff4a625</color>
     <color name="NameCarBackgroundColor">#ff71706f</color>
+
+    <!-- Need Speed Colors -->
+    <color name="NeedSpeedButtonsBackGroundColor">#ffffffff</color>
+    <color name="NeedSpeedButtonsTextColor">#ff29ae61</color>
+
+    <color name="NeedSpeedEditBackGroundColor">#fff40069</color>
+    <color name="NeedSpeedEditBorderColor">#ff989898</color>
+    <color name="NeedSpeedEditTextColor">#ffffffff</color>
+
+    <color name="NeedSpeedHeaderTextColor">#ff989291</color>
+    <!-- End Need Speed Colors -->
 </resources>

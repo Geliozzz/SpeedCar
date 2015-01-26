@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/NeedSpeedButtonsBackGroundColor"/>
+            <corners android:radius="@dimen/NeedSpeedButtonsOvalRadius" />
+            <stroke android:width="@dimen/NeedSpeedBorderSize"
+                    android:color="@color/NeedSpeedEditBorderColor" />
+        </shape>
+    </item>
+</selector>

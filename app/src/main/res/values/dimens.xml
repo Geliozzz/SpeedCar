@@ -21,8 +21,23 @@
     <dimen name="StepHeadHighLarge">80dp</dimen>
     <dimen name="StepHeadHighNormal">45dp</dimen>
     <dimen name="StepHeadHighSmall">40dp</dimen>
+    <!-- End Head steps -->
 
+    <!--  Need Speed Normal -->
+    <dimen name="NeedSpeedButtonSizeNormal">50dp</dimen>
+    <dimen name="NeedSpeedButtonsTextSize">30sp</dimen>
+    <dimen name="NeedSpeedButtonsOvalRadius">10dp</dimen>
 
+    <dimen name="NeedSpeedEditWidthNormal">80dp</dimen>
+    <dimen name="NeedSpeedEditTextSize">30sp</dimen>
+    <dimen name="NeedSpeedBorderSize">3dp</dimen>
 
+    <dimen name="NeedSpeedHeaderTextSize">30sp</dimen>
+
+    <dimen name="MarginLeft">10dp</dimen>
+    <dimen name="MarginRight">10dp</dimen>
+    <dimen name="MarginTop">10dp</dimen>
+    <dimen name="MarginBottom">10dp</dimen>
+    <!-- End Need Speed Normal -->
 
 </resources>

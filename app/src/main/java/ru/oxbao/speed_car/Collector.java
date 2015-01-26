@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 
-public class Collector
+public class Collector extends InputInterfaceAdapter
 {
     // Flags, parameters
     private boolean m_fromSensorMeasurements = false;
@@ -81,7 +81,7 @@ public class Collector
         {
             Stop();
             Log.d(COLLECTOR_TAG, "Stopped ");
-            m_ownerExecutor.OnDataCollected();     // Окончание накопления
+            OnDataCollected();
         }
     }
 
