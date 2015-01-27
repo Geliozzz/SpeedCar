@@ -119,7 +119,7 @@ public class StorageInput
                             bundle.getDouble("ZAxis"), bundle.getLong("Time"));
                 } else if (key.equals("stop"))
                 {
-                  //  m_collectorOwner.OnDataCollected(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    m_inputInterfaceAdapter.OnDataCollected();
                 }
 
             }

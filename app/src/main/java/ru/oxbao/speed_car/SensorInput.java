@@ -10,7 +10,6 @@ import android.util.Log;
 
 public class SensorInput implements SensorEventListener
 {
-  //  private Collector m_collectorOwner;
     private InputInterfaceAdapter m_inputInterfaceAdapter;
     private ActivityTestExecutor m_ownerActivity;
     private TestExecutor m_ownerTestExecutor;

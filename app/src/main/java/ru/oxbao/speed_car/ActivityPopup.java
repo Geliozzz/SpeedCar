@@ -13,8 +13,11 @@ import android.widget.TextView;
 
 public class ActivityPopup extends ActionBarActivity
 {
-    private TextView m_textViewResult;
-    private Button m_btnBack;
+    //GUI
+    private TextView m_tvAccelerationTimeMessage;
+    private TextView m_tvaccelerationTime;
+    private Button m_repeatTest;
+    //Variable
     final String LOG_TAG = "PopupActivity";
     private boolean m_isHomeButton = true;
 
@@ -25,17 +28,24 @@ public class ActivityPopup extends ActionBarActivity
         setContentView(R.layout.activity_result);
         ActivityInputData.g_flagEraseData = true; // Стереть введенную информацию. Снимет этот флаг кнопка назад или системнаяя назад
         getSupportActionBar().hide();
-        m_btnBack = (Button) findViewById(R.id.btnBack);
-
         /***********Запрет на зысыпание*****************/
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        InitGUI();
+    }
 
+    private void InitGUI()
+    {
+        m_repeatTest = (Button) findViewById(R.id.btnRepeatTest);
         Intent intent = getIntent();
-        String tmp = intent.getStringExtra("TestDataValue");
-        m_textViewResult = (TextView) findViewById(R.id.tvResult);
-        m_textViewResult.setText(tmp);
+        String resultValue = intent.getStringExtra("TimeAcceleration");
+        m_tvaccelerationTime = (TextView) findViewById(R.id.tvaccelerationTime);
+        m_tvAccelerationTimeMessage = (TextView) findViewById(R.id.tvAccelerationTimeMessage);
+        String resultMessage = getResources().getString(R.string.accelerationTimeTo) + String.valueOf(ActivityInputData.g_needSpeed) + " " + getResources().getString(R.string.km_h);
+        m_tvAccelerationTimeMessage.setText(resultMessage);
+        m_tvaccelerationTime.setText(resultValue);
 
-        m_btnBack.setOnClickListener(new View.OnClickListener()
+
+        m_repeatTest.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)

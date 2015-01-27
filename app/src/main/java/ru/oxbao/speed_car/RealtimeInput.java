@@ -6,13 +6,11 @@ public class RealtimeInput extends InputInterfaceAdapter
     // Objects
     private InputInterface m_inputInterface;
     private TestExecutor m_ownerExecutor;
- //   private ActivityTestExecutor m_ownerActivity;
 
     public RealtimeInput(ActivityTestExecutor m_ownerActivity, TestExecutor m_ownerExecutor)
     {
         m_inputInterface = new InputInterface(m_ownerActivity, m_ownerExecutor, this);
         this.m_ownerExecutor = m_ownerExecutor;
-      //  this.m_ownerActivity = m_ownerActivity;
     }
 
     @Override

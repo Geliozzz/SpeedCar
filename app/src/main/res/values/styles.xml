@@ -7,12 +7,12 @@
 
 <!--    <item name="android:gravity">center_horizontal</item>
     <item name="android:drawablePadding">2dp</item>-->
-    <style name="HeaderStyle">
+    <style name="HeaderStyleNormal">
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">30sp</item>
-        <item name="android:text">@string/engineTester</item>
+        <item name="android:text">@string/speedTester</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/HeaderTextColor</item>
@@ -23,7 +23,7 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">50sp</item>
-        <item name="android:text">@string/engineTester</item>
+        <item name="android:text">@string/speedTester</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/HeaderTextColor</item>
@@ -37,7 +37,7 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">25sp</item>
-        <item name="android:text">@string/engineTester</item>
+        <item name="android:text">@string/speedTester</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/HeaderTextColor</item>
@@ -48,8 +48,8 @@
 
     <!--dasd-->
 
-    <style name="StepStyle">
-        <item name="android:layout_width">110dp</item>
+    <style name="StepStyleNormal">
+        <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">5dp</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginLeft">5dp</item>

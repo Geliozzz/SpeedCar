@@ -40,4 +40,10 @@
     <dimen name="MarginBottom">10dp</dimen>
     <!-- End Need Speed Normal -->
 
+    <!-- Result Normal -->
+    <dimen name="textSizeAccelerateTimeNormal">120sp</dimen>
+    <dimen name="textSizeAccelerateTimeMessagesNormal">30sp</dimen>
+    <dimen name="marginTopResultNormal">30dp</dimen>
+    <!-- End Result Normal -->
+
 </resources>

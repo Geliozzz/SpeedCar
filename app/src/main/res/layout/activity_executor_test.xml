@@ -13,7 +13,7 @@
 
 
     <TextView
-        style="@style/HeaderStyle"
+        style="@style/HeaderStyleNormal"
         android:id="@+id/textViewHeader"
          />
 
@@ -23,35 +23,49 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/StepHeadHighNormal"
         android:background="@color/StepBackgroundColor"
-        android:id="@+id/relativeLayout"
+        android:id="@+id/relativeLayoutSteps"
 
         android:layout_below="@+id/textViewHeader"
-
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
 
         <ImageView
-            style="@style/StepStyle"
+            style="@style/StepStyleNormal"
             android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep1"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/imageViewStep2"
-            />
+            android:layout_toLeftOf="@+id/imageViewStep2"
+            android:layout_toStartOf="@+id/imageViewStep2"/>
         <ImageView
-            style="@style/StepStyle"
+            style="@style/StepStyleNormal"
             android:background="@color/StepActiveColor"
             android:id="@+id/imageViewStep2"
-            android:layout_centerHorizontal="true"
-            />
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/imageViewCenter"
+            android:layout_toStartOf="@+id/imageViewCenter"/>
+
         <ImageView
-            style="@style/StepStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/imageViewCenter"/>
+
+        <ImageView
+            style="@style/StepStyleNormal"
             android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep3"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/imageViewStep2" />
+            android:layout_toRightOf="@+id/imageViewCenter"
+            android:layout_toEndOf="@+id/imageViewCenter"/>
+        <ImageView
+            style="@style/StepStyleNormal"
+            android:background="@color/StepNoActiveColor"
+            android:id="@+id/imageViewStep4"
+
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewStep3"
+            android:layout_toEndOf="@+id/imageViewStep3"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,7 +74,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/step2Text"
             android:textColor="@color/StepTextColor"
-            android:id="@+id/textView2"
+            android:id="@+id/tvStepText"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
@@ -78,7 +92,7 @@
         android:id="@+id/textViewHelpMessage"
         android:textColor="@color/HelperMessageTextColor"
         android:gravity="center"
-        android:layout_below="@+id/relativeLayout"
+        android:layout_below="@+id/relativeLayoutSteps"
         android:layout_alignParentLeft="true"
 
         android:layout_alignParentStart="true" />
@@ -96,7 +110,7 @@
             android:layout_gravity="center"
             android:id="@+id/relativeLayout2"
             android:layout_centerHorizontal="true"
-            android:layout_above="@+id/btnBack">
+            android:layout_above="@+id/btnRepeatTest">
 
             <RadioGroup
                 android:id="@+id/radGrTests"
@@ -176,10 +190,9 @@
     <Button
         style="@style/NavigateButtonStyle"
         android:text="@string/back"
-        android:id="@+id/btnBack"
+        android:id="@+id/btnRepeatTest"
         android:layout_alignParentBottom="true"
          />
-
 
 
 </RelativeLayout>

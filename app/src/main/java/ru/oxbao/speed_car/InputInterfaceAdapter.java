@@ -8,4 +8,6 @@ public abstract class InputInterfaceAdapter
     public abstract void Stop();
 
     public void SetNumberOfMeasurements(int number){}
+
+    public void OnDataCollected(){}
 }

@@ -18,19 +18,23 @@
     <string name="filesNotFound">Файлы не найдены</string>
     <string name="failStorage">Карта памяти не доступна</string>
     <string name="calibrate">Калибровка</string>
-    <string name="engineTester">Engine Tester</string>
+    <string name="speedTester">Speed Tester</string>
     <string name="TesterHelpMessage">Разместите телефон на панели
                                         приборов экраном вверх, динамиком
                                      вперед, нажмите кнопку "Начать тест"</string>
 
-    <string name="step1Text">Шаг 1.</string>
-    <string name="step2Text">Шаг 2. Пройдите тест.</string>
-    <string name="step3Text">Шаг 3. Результаты теста.</string>
+    <string name="step1Text">Шаг 1. Условия тестировнания</string>
+    <string name="step2Text">Шаг 2. Калибровка.</string>
+    <string name="step3Text">Шаг 3. Разгон.</string>
+    <string name="step4Text">Шаг 4. Результаты теста.</string>
     <string name="restartTest">ПОВТОРИТЬ ТЕСТ</string>
     <string name="resume">ПРОДОЛЖИТЬ \u21e8</string>
     <string name="needSpeedHeaderText">Тестируемая скорость, км/ч </string>
     <string name="forward">Вперёд!</string>
-
+    <string name="accelerationTimeTo">Время разгона до \n</string>
+    <string name="seconds">секунды</string>
+    <string name="km_h">км/ч</string>
+    <string name="dummy">d</string>
 
     <string name="mainHelpMessage">
         Звучат позывные в эфире\n

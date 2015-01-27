@@ -7,13 +7,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ActivityTestExecutor extends ActionBarActivity
@@ -24,6 +25,9 @@ public class ActivityTestExecutor extends ActionBarActivity
     private Button m_buttonBack;
     private Spinner m_spinnerFiles;
     private ProgressWheel m_progressBarWheel;
+    private ImageView m_imageViewStep2;
+    private ImageView m_imageViewStep3;
+    private TextView m_tvStep;
     // Service
     private boolean m_popupIsStarted = false;
     public static boolean g_startTestFlag = false;
@@ -34,9 +38,16 @@ public class ActivityTestExecutor extends ActionBarActivity
     private TestExecutor m_testExecutor;
     // Variables
     private TestResult m_testResult;
+    private int m_need_speed;
 
     // Temporary
     private RadioButton m_radioTest1;
+
+    private enum Steps
+    {
+        Step2,
+        Step3
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,9 +55,20 @@ public class ActivityTestExecutor extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_executor_test);
         Log.d(LOG_TAG, "CREATE");
+        /***********Запрет на зысыпание*****************/
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getSupportActionBar().hide();
+        ActivityInputData.g_flagEraseData = true; // Стереть введенную информацию. Снимет этот флаг кнопка назад или системнаяя назад
+        InitGUI();
+        m_testResult = new TestResult();
+        m_testExecutor = new TestExecutor(this, m_testResult, ActivityInputData.g_needSpeed);
 
+    }
+
+    private void InitGUI()
+    {
         m_buttonStartTest = (Button) findViewById(R.id.btnStartTest);
-        m_buttonBack = (Button) findViewById(R.id.btnBack);
+        m_buttonBack = (Button) findViewById(R.id.btnRepeatTest);
         m_progressBarWheel = (ProgressWheel) findViewById(R.id.progressBarWheel);
 
         m_radioGroupTests = (RadioGroup) findViewById(R.id.radGrTests);
@@ -54,14 +76,10 @@ public class ActivityTestExecutor extends ActionBarActivity
         m_spinnerFiles = (Spinner) findViewById(R.id.spinnerFiles);
         m_radioTest1 = (RadioButton) findViewById(R.id.test1);
 
-        m_testResult = new TestResult();
-        m_testExecutor = new TestExecutor(this, m_testResult);
+        m_imageViewStep2 = (ImageView) findViewById(R.id.imageViewStep2);
+        m_imageViewStep3 = (ImageView) findViewById(R.id.imageViewStep3);
+        m_tvStep = (TextView) findViewById(R.id.tvStepText);
 
-        getSupportActionBar().hide();
-        ActivityInputData.g_flagEraseData = true; // Стереть введенную информацию. Снимет этот флаг кнопка назад или системнаяя назад
-
-        /***********Запрет на зысыпание*****************/
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         m_handler = new Handler()
         {
@@ -124,6 +142,7 @@ public class ActivityTestExecutor extends ActionBarActivity
     {
         Log.d(LOG_TAG, "Resume");
         SetProgressBar(0);
+        SetStep(Steps.Step2);
         /***Ready for test*/
         if (m_popupIsStarted)
         {
@@ -151,11 +170,9 @@ public class ActivityTestExecutor extends ActionBarActivity
         m_progressBarWheel.setBarLength(max);
     }
 
-    public void OnTestFinished(Solutions.ResultTestEnum resultTestEnum)
+    public void OnTestFinished(float seconds)
     {
-        String stringToShow = "Common result: " + Solutions.ToString(resultTestEnum) +
-                ". " + m_testResult.ResultString;
-
+        String stringToShow = String.valueOf(seconds);
         ShowResult(stringToShow);
     }
 
@@ -163,8 +180,9 @@ public class ActivityTestExecutor extends ActionBarActivity
     {
         // set progressbarmax
         SetProgressBar(0);
-        SetMaxProgressBar(100);
+        SetMaxProgressBar(ActivityInputData.g_needSpeed);
         m_buttonStartTest.setText(getResources().getString(R.string.forward));
+        SetStep(Steps.Step3);
     }
 
 
@@ -199,7 +217,7 @@ public class ActivityTestExecutor extends ActionBarActivity
         if (!m_popupIsStarted)
         {
             Intent intent = new Intent(getApplicationContext(), ActivityPopup.class);
-            intent.putExtra("TestDataValue", resultString);
+            intent.putExtra("TimeAcceleration", resultString);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
             m_isHomeButton = false;
             m_popupIsStarted = true;
@@ -235,7 +253,7 @@ public class ActivityTestExecutor extends ActionBarActivity
                 m_testExecutor.Start(TestExecutor.TestEnum.test2);
                 break;
         }
-
+        SetStep(Steps.Step2);
         SetButtonEnabled(false);
     }
 
@@ -244,19 +262,6 @@ public class ActivityTestExecutor extends ActionBarActivity
     {
         Log.d(LOG_TAG, "FINALIZE");
         super.finalize();
-    }
-
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK)
-        {
-            Log.d(LOG_TAG, "Back");
-            ActivityInputData.g_flagEraseData = false;
-            m_isHomeButton = false;
-        }
-        return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -284,5 +289,20 @@ public class ActivityTestExecutor extends ActionBarActivity
     {
         Log.d(LOG_TAG, "Destroy");
         super.onDestroy();
+    }
+
+    private void SetStep(Steps step)
+    {
+        if (step == Steps.Step2)
+        {
+            m_imageViewStep2.setBackgroundColor(getResources().getColor(R.color.StepActiveColor));
+            m_imageViewStep3.setBackgroundColor(getResources().getColor(R.color.StepNoActiveColor));
+            m_tvStep.setText(getResources().getText(R.string.step2Text));
+        } else if(step == Steps.Step3)
+        {
+            m_imageViewStep2.setBackgroundColor(getResources().getColor(R.color.StepNoActiveColor));
+            m_imageViewStep3.setBackgroundColor(getResources().getColor(R.color.StepActiveColor));
+            m_tvStep.setText(getResources().getText(R.string.step3Text));
+        }
     }
 }

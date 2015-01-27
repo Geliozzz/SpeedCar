@@ -16,7 +16,7 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/StepHeadHighLarge"
         android:background="@color/StepBackgroundColor"
-        android:id="@+id/relativeLayout"
+        android:id="@+id/relativeLayoutSteps"
         android:layout_below="@+id/textViewHeader"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
@@ -47,7 +47,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/step3Text"
             android:textColor="@color/StepTextColor"
-            android:id="@+id/textView2"
+            android:id="@+id/tvStepText"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
@@ -60,8 +60,8 @@
         android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_above="@+id/btnBack">
+        android:layout_below="@+id/relativeLayoutSteps"
+        android:layout_above="@+id/btnRepeatTest">
 
         <TextView
             android:layout_width="fill_parent"
@@ -76,7 +76,7 @@
     <Button
         style="@style/NavigateButtonStyleLarge"
         android:text="@string/restartTest"
-        android:id="@+id/btnBack"
+        android:id="@+id/btnRepeatTest"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

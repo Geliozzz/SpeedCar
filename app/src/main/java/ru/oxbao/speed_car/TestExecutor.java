@@ -22,7 +22,8 @@ public class TestExecutor
     private boolean m_saveData = true;
     private int m_numberOfMeasurements;
     private String m_prefix = "UnKnown";
-    private float m_speed;
+    private int m_speed;
+    private int m_needSpeed;
     // Objects
     private Collector m_collector;
     private RealtimeInput m_realtimeInput;
@@ -33,7 +34,7 @@ public class TestExecutor
     // Output
     public TestResult g_testResult;
 
-    public TestExecutor(ActivityTestExecutor activityTestExecutor, TestResult testResult)
+    public TestExecutor(ActivityTestExecutor activityTestExecutor, TestResult testResult, int needSpeed)
     {
         m_workMath = new WorkMath();
         m_numberOfMeasurements = WorkMath.NumberOfMeasurements;
@@ -45,6 +46,7 @@ public class TestExecutor
         m_collector = new Collector(activityTestExecutor, this, m_numberOfMeasurements);
         m_realtimeInput = new RealtimeInput(activityTestExecutor, this);
         m_saver = new Saver(this, m_prefix);
+        m_needSpeed = needSpeed;
 
     }
 
@@ -60,12 +62,19 @@ public class TestExecutor
             m_saveData = false;
         }
         m_saver.SetPrefix(testEnum.toString());
-
+        //**********Сделано для для отладник. В реальном приложеннии скорость будет измеряться!!!!!!!!!!!!!!!!!!!!!
+        m_speed = 0;
+        //**********************************************************************
     }
+
+    /**
+     * <p>Используется для остановки выполнения теста</p>
+     */
 
     public void Stop()
     {
         m_collector.Stop();
+        m_realtimeInput.Stop();
     }
 
 
@@ -78,7 +87,6 @@ public class TestExecutor
         {
             m_saver.SaveData(g_testData, true); // for alternative
         }
-        //   m_ownerActivity.OnTestFinished(g_testResult.ResultEnum);
         m_ownerActivity.OnCalibrateFinished();
         m_realtimeInput.Start();
     }
@@ -134,18 +142,38 @@ public class TestExecutor
         return m_numberOfMeasurements;
     }
 
+    /**
+     * <p>Метод вызывается методом Amass при передаче значений без накопления</p>
+     *
+     * @param XAxis ось Х
+     * @param YAxis ось Y
+     * @param ZAxis ось Z
+     * @param time метка временени
+     */
     public void ProcessSample(double XAxis, double YAxis, double ZAxis, long time)
     {
         m_speed++;
-        SetProgress((int) m_speed);
-        if (m_speed == 100){
-            m_realtimeInput.Stop();
-            m_ownerActivity.OnTestFinished(g_testResult.ResultEnum);
+        SetProgress(m_speed);
+        if (m_speed >= m_needSpeed){
+            OnTestFinished(9.3f);
         }
     }
-
+    /**
+     * <p>Устанавливает значение пргрессбара</p>
+     * @param progress параметр устанавливает значние прогрессбара
+     */
     public void SetProgress(int progress)
     {
         m_ownerActivity.SetProgressBar(progress);
+    }
+    /**
+     * <p>Останавливает тестирование с выдачей результата.</p>
+     *
+     * @param seconds Время потраченное на разгон
+     *
+     */
+    public void OnTestFinished(float seconds)
+    {
+        m_ownerActivity.OnTestFinished(seconds);
     }
 }

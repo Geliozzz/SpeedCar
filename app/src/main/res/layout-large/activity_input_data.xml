@@ -18,7 +18,7 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/StepHeadHighLarge"
         android:background="@color/StepBackgroundColor"
-        android:id="@+id/relativeLayout"
+        android:id="@+id/relativeLayoutSteps"
         android:layout_below="@+id/textViewHeader"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -53,7 +53,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/step1Text"
             android:textColor="@color/StepTextColor"
-            android:id="@+id/textView2"
+            android:id="@+id/tvStepText"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
@@ -64,7 +64,7 @@
         android:layout_height="fill_parent"
         android:id="@+id/scrollView"
         android:layout_above="@+id/btnTstAct"
-        android:layout_below="@+id/relativeLayout"
+        android:layout_below="@+id/relativeLayoutSteps"
         android:layout_alignRight="@+id/btnTstAct"
         android:layout_alignEnd="@+id/btnTstAct"
         android:layout_alignLeft="@+id/btnTstAct"
