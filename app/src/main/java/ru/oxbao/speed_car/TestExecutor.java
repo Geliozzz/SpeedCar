@@ -26,7 +26,7 @@ public class TestExecutor
     private int m_needSpeed;
     // Objects
     private Collector m_collector;
-    private RealtimeInput m_realtimeInput;
+    private RealtimeInputInterface m_realtimeInputInterface;
     private Saver m_saver;
     public TestData g_testData;
     private WorkMath m_workMath;
@@ -44,7 +44,7 @@ public class TestExecutor
 
         g_testData = new TestData(m_numberOfMeasurements);
         m_collector = new Collector(activityTestExecutor, this, m_numberOfMeasurements);
-        m_realtimeInput = new RealtimeInput(activityTestExecutor, this);
+        m_realtimeInputInterface = new RealtimeInputInterface(activityTestExecutor, this);
         m_saver = new Saver(this, m_prefix);
         m_needSpeed = needSpeed;
 
@@ -54,11 +54,11 @@ public class TestExecutor
     {
         if (testEnum.equals(TestEnum.test1))
         {
-            m_collector.Start(InputInterface.InputTypeEnum.sensors);
+            m_collector.Start(InputAdapter.InputTypeEnum.sensors);
             m_saveData = true;
         } else if (testEnum.equals(TestEnum.test2))
         {
-            m_collector.Start(InputInterface.InputTypeEnum.storage);
+            m_collector.Start(InputAdapter.InputTypeEnum.storage);
             m_saveData = false;
         }
         m_saver.SetPrefix(testEnum.toString());
@@ -74,7 +74,7 @@ public class TestExecutor
     public void Stop()
     {
         m_collector.Stop();
-        m_realtimeInput.Stop();
+        m_realtimeInputInterface.Stop();
     }
 
 
@@ -88,7 +88,7 @@ public class TestExecutor
             m_saver.SaveData(g_testData, true); // for alternative
         }
         m_ownerActivity.OnCalibrateFinished();
-        m_realtimeInput.Start();
+        m_realtimeInputInterface.Start();
     }
 
     public void ShowToast(ToastMessage toastMessage)

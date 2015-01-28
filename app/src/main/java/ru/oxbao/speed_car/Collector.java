@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 
-public class Collector extends InputInterfaceAdapter
+public class Collector extends InputOwnerInterface
 {
     // Flags, parameters
     private boolean m_fromSensorMeasurements = false;
     private int m_numberOfMeasurements;
     private int m_count;
     // Objects
-    private InputInterface m_inputInterface;
+    private InputAdapter m_inputAdapter;
     private TestExecutor m_ownerExecutor;
     private ActivityTestExecutor m_ownerActivity;
     // Service
@@ -22,7 +22,7 @@ public class Collector extends InputInterfaceAdapter
 
     public Collector(ActivityTestExecutor activityTestExecutor, TestExecutor testExecutor, int number)
     {
-        m_inputInterface = new InputInterface(activityTestExecutor, testExecutor, this);
+        m_inputAdapter = new InputAdapter(activityTestExecutor, testExecutor, this);
         m_numberOfMeasurements = number;
         m_ownerExecutor = testExecutor;
         m_ownerActivity = activityTestExecutor;
@@ -30,9 +30,9 @@ public class Collector extends InputInterfaceAdapter
         m_message = new Message();
     }
 
-    public void Start(InputInterface.InputTypeEnum inputTypeEnum)
+    public void Start(InputAdapter.InputTypeEnum inputTypeEnum)
     {
-        if (inputTypeEnum.equals(InputInterface.InputTypeEnum.sensors))
+        if (inputTypeEnum.equals(InputAdapter.InputTypeEnum.sensors))
         {
             m_fromSensorMeasurements = true;
         } else
@@ -41,12 +41,12 @@ public class Collector extends InputInterfaceAdapter
         }
 
         m_count = 0;
-        m_inputInterface.Start(inputTypeEnum);
+        m_inputAdapter.Start(inputTypeEnum);
     }
 
     public void Stop()
     {
-        m_inputInterface.Stop();
+        m_inputAdapter.Stop();
     }
 
     public void Amass(double XAxis, double YAxis, double ZAxis, long time)
@@ -87,7 +87,7 @@ public class Collector extends InputInterfaceAdapter
 
     public String[] GetFilesNames()
     {
-        return m_inputInterface.GetFilesNames();
+        return m_inputAdapter.GetFilesNames();
     }
 
     public void SetNumberOfMeasurements(int number)
@@ -100,5 +100,11 @@ public class Collector extends InputInterfaceAdapter
     {
         Stop();
         m_ownerExecutor.OnDataCollected();
+    }
+
+    @Override
+    public void ShowFailSensor()
+    {
+        m_ownerExecutor.ShowToast(TestExecutor.ToastMessage.failStartSensor);
     }
 }

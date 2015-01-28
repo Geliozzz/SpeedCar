@@ -1,12 +1,19 @@
 package ru.oxbao.speed_car;
 
 
-public class InputInterface
+import android.content.Context;
+import android.hardware.SensorManager;
+
+public class InputAdapter
 {
     private SensorInput m_sensorInput;
     private StorageInput m_storageInput;
     private TestExecutor m_ownerTestExecutor;
-    private InputInterfaceAdapter m_inputInterfaceAdapter;
+    private InputOwnerInterface m_inputOwnerInterface;
+ //   private ActivityTestExecutor m_ownerActivity;
+    private SensorManager m_sensorManager;
+
+
 
     public enum InputTypeEnum
     {
@@ -14,13 +21,14 @@ public class InputInterface
         storage
     }
 
-    public InputInterface(ActivityTestExecutor activityTestExecutor,
-                          TestExecutor testExecutor, InputInterfaceAdapter inputInterfaceAdapter)
+    public InputAdapter(ActivityTestExecutor activityTestExecutor,
+                        TestExecutor testExecutor, InputOwnerInterface inputOwnerInterface)
     {
-        m_sensorInput = new SensorInput(activityTestExecutor, testExecutor, inputInterfaceAdapter);
-        m_storageInput = new StorageInput(activityTestExecutor, testExecutor, inputInterfaceAdapter);
+        m_sensorManager = (SensorManager) activityTestExecutor.getSystemService(Context.SENSOR_SERVICE);
+        m_sensorInput = new SensorInput(inputOwnerInterface, m_sensorManager);
+        m_storageInput = new StorageInput(activityTestExecutor, testExecutor, inputOwnerInterface);
         m_ownerTestExecutor = testExecutor;
-        m_inputInterfaceAdapter = inputInterfaceAdapter;
+        m_inputOwnerInterface = inputOwnerInterface;
     }
 
 
@@ -30,7 +38,7 @@ public class InputInterface
         {
             // Переопределить Тест дата для фиксированного количества измерений если до этого была работа из файла
             m_ownerTestExecutor.SetFixedTestData();
-            m_inputInterfaceAdapter.SetNumberOfMeasurements(m_ownerTestExecutor.Getm_numberOfMeasurements()); // Возврат к фиксированному значению
+            m_inputOwnerInterface.SetNumberOfMeasurements(m_ownerTestExecutor.Getm_numberOfMeasurements()); // Возврат к фиксированному значению
             m_sensorInput.Start();
         } else if (inputTypeEnum.equals(InputTypeEnum.storage))
         {
@@ -39,7 +47,7 @@ public class InputInterface
             int count = m_storageInput.GetNumberLines(); //!!!!!!!!!!!!!!!!!!!!!!!!! проверка на ноль
             m_ownerTestExecutor.g_testData = new TestData(count);
             // Кол-во измерений в коллектрое тоже должно измениться
-            m_inputInterfaceAdapter.SetNumberOfMeasurements(count);
+            m_inputOwnerInterface.SetNumberOfMeasurements(count);
             m_storageInput.Start();
         }
     }
@@ -53,6 +61,7 @@ public class InputInterface
     {
         return m_storageInput.GetFilesFromFolder();
     }
+
 
 
 }

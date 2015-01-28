@@ -1,7 +1,6 @@
 package ru.oxbao.speed_car;
 
 
-import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -10,22 +9,18 @@ import android.util.Log;
 
 public class SensorInput implements SensorEventListener
 {
-    private InputInterfaceAdapter m_inputInterfaceAdapter;
-    private ActivityTestExecutor m_ownerActivity;
-    private TestExecutor m_ownerTestExecutor;
+    //Objects
+    private InputOwnerInterface m_inputOwnerInterface;
     private SensorManager m_sensorManager;
+    //Variable
     private boolean m_sensorIsWorking;
     private final String SENSOR_INPUT = "SensorInput";
 
-    public SensorInput(ActivityTestExecutor activityTestExecutor, TestExecutor testExecutor,
-                       InputInterfaceAdapter inputInterfaceAdapter)
+    public SensorInput(InputOwnerInterface inputOwnerInterface, SensorManager sensorManager)
     {
-       // m_collectorOwner = collector;
-        m_inputInterfaceAdapter = inputInterfaceAdapter;
-        m_ownerActivity = activityTestExecutor;
-        m_sensorManager = (SensorManager) m_ownerActivity.getSystemService(Context.SENSOR_SERVICE);
+        m_inputOwnerInterface = inputOwnerInterface;
+        m_sensorManager = sensorManager;
         m_sensorIsWorking = false;
-        m_ownerTestExecutor = testExecutor;
     }
 
     public void Start()
@@ -37,8 +32,8 @@ public class SensorInput implements SensorEventListener
             m_sensorIsWorking = true;
         } else
         {
-            m_ownerTestExecutor.ShowToast(TestExecutor.ToastMessage.failStartSensor);
-            m_inputInterfaceAdapter.Stop();
+            m_inputOwnerInterface.ShowFailSensor();
+            m_inputOwnerInterface.Stop();
         }
     }
 
@@ -52,9 +47,7 @@ public class SensorInput implements SensorEventListener
     @Override
     public void onSensorChanged(SensorEvent sensorEvent)
     {
-      /*  m_collectorOwner.Amass(sensorEvent.values[0], sensorEvent.values[1],
-                sensorEvent.values[2], sensorEvent.timestamp);*/
-        m_inputInterfaceAdapter.Amass(sensorEvent.values[0], sensorEvent.values[1],
+        m_inputOwnerInterface.Amass(sensorEvent.values[0], sensorEvent.values[1],
                 sensorEvent.values[2], sensorEvent.timestamp);
     }
 

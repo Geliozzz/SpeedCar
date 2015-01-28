@@ -5,7 +5,6 @@
         <shape>
             <solid android:color="@color/NavigationButtonBackgroundColor"/>
             <corners android:radius="10.0dip" />
-            <stroke android:width="3dip" android:color="@color/NavigationButtonStrokeColor" />
         </shape>
     </item>
 </selector>

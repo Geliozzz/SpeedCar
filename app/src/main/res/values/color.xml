@@ -6,12 +6,12 @@
     <color name="white">#ffffffff</color>
     <color name="rimColor">#ff4a3f3e</color>
     <color name="barColor">#ffffffff</color>
-    <color name="backgroundLayoutsColor">#ff212121</color>
-    <color name="btnStartTestActiveColor">#fff7b447</color>
+
+    <color name="btnStartTestActiveColor">#ff49ba79</color>
     <color name="btnStartExecuteColor">#ff131313</color>
     <color name="btnExecuteTextColor">#ffffffff</color>
     <color name="btnStartReadyTextColor">#ff141414</color>
-    <color name="HeaderTextColor">#fff7b64a</color>
+    <color name="HeaderTextColor">#ff29ae61</color>
     <color name="HeaderBackgroundColor">#ff141414</color>
     <color name="StepBackgroundColor">#ff222222</color>
     <color name="StepTextColor">#ffffffff</color>
@@ -20,12 +20,10 @@
     <color name="HelperMessageTextColor">#ffdbdbdb</color>
     <color name="InDataTVTextColor">#ff939393</color>
     <color name="ResultTextColor">#ffffffff</color>
-    <color name="InDataBtnActiveColor">#fff5a725</color>
-    <color name="InDataBtnNoActiveColor">#ff4e4e4f</color>
+
     <color name="NavigationButtonTextColor">#ffffffff</color>
-    <color name="NavigationButtonBackgroundColor">#92f4a625</color>
+    <color name="NavigationButtonBackgroundColor">#ff29ae61</color>
     <color name="NavigationButtonStrokeColor">#fff4a625</color>
-    <color name="NameCarBackgroundColor">#ff71706f</color>
 
     <!-- Need Speed Colors -->
     <color name="NeedSpeedButtonsBackGroundColor">#ffffffff</color>

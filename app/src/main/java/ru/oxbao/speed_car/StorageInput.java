@@ -18,7 +18,7 @@ public class StorageInput
 {
     private ActivityTestExecutor m_ownerActivity;
     //private Collector m_collectorOwner;
-    private InputInterfaceAdapter m_inputInterfaceAdapter;
+    private InputOwnerInterface m_inputOwnerInterface;
     private TestExecutor m_ownerTestExecutor;
     private String m_dir;
     private Handler m_handler;
@@ -100,9 +100,9 @@ public class StorageInput
         }
     }
 
-    public StorageInput(ActivityTestExecutor activityTestExecutor, TestExecutor m_ownerTestExecutor, final InputInterfaceAdapter inputInterfaceAdapter)
+    public StorageInput(ActivityTestExecutor activityTestExecutor, TestExecutor m_ownerTestExecutor, final InputOwnerInterface inputOwnerInterface)
     {
-        this.m_inputInterfaceAdapter = inputInterfaceAdapter;
+        this.m_inputOwnerInterface = inputOwnerInterface;
         this.m_ownerTestExecutor = m_ownerTestExecutor;
         m_ownerActivity = activityTestExecutor;
         m_dir = Environment.getExternalStorageDirectory().toString() + DIRECTORY_NAME;
@@ -115,11 +115,11 @@ public class StorageInput
                 String key = bundle.getString("key");
                 if (key.equals("collector"))
                 {
-                    m_inputInterfaceAdapter.Amass(bundle.getDouble("XAxis"), bundle.getDouble("YAxis"),
+                    m_inputOwnerInterface.Amass(bundle.getDouble("XAxis"), bundle.getDouble("YAxis"),
                             bundle.getDouble("ZAxis"), bundle.getLong("Time"));
                 } else if (key.equals("stop"))
                 {
-                    m_inputInterfaceAdapter.OnDataCollected();
+                    m_inputOwnerInterface.OnDataCollected();
                 }
 
             }
@@ -137,7 +137,7 @@ public class StorageInput
             reader.start();
         } else
         {
-            m_inputInterfaceAdapter.Stop();
+            m_inputOwnerInterface.Stop();
         }
     }
 
