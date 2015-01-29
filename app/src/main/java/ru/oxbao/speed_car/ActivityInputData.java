@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Process;
-import android.support.v7.app.*;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class ActivityInputData extends ActionBarActivity
@@ -22,7 +22,7 @@ public class ActivityInputData extends ActionBarActivity
     private boolean m_isHomeButton = true;
     private Button m_btnSpeedUp;
     private Button m_btnSpeedDown;
-    private EditText m_edtNeedSpeed;
+    private TextView m_tvNeedSpeed;
     // Service
     public static boolean g_flagEraseData = true;
     static final String LOG_TAG = "InDataActivity";
@@ -56,18 +56,20 @@ public class ActivityInputData extends ActionBarActivity
                         break;
                     case Down:
                         g_needSpeed--;
+                        if (g_needSpeed < 0) g_needSpeed = 0;
                         break;
                     default:
                         break;
                 }
+
+                m_handler.sendEmptyMessage(1);
                 try
                 {
-                    sleep(250);
+                    sleep(150);
                 } catch (InterruptedException e)
                 {
                     e.printStackTrace();
                 }
-                m_handler.sendEmptyMessage(1);
             }
         }
     }
@@ -82,12 +84,13 @@ public class ActivityInputData extends ActionBarActivity
         Log.d(LOG_TAG, "Create");
         DeviceHelper.GetOsVersion();
 
+        getSupportActionBar().hide();
 
-        m_buttonOpenTestActivity = (Button) findViewById(R.id.btnTstAct);
+       m_buttonOpenTestActivity = (Button) findViewById(R.id.btnTstAct);
         m_btnSpeedUp = (Button) findViewById(R.id.btnNeedSpeedUp);
         m_btnSpeedDown = (Button) findViewById(R.id.btnNeedSpeedDown);
-        m_edtNeedSpeed = (EditText) findViewById(R.id.edtNeedSpeedEnter);
-        m_edtNeedSpeed.setText(String.valueOf(g_needSpeed));
+        m_tvNeedSpeed = (TextView) findViewById(R.id.tvNeedSpeedEnter);
+        m_tvNeedSpeed.setText(String.valueOf(g_needSpeed));
 
         m_buttonOpenTestActivity.setOnClickListener(new View.OnClickListener()
         {
@@ -140,20 +143,20 @@ public class ActivityInputData extends ActionBarActivity
 
 
 
-        getSupportActionBar().hide();
+
 
         m_handler = new Handler()
         {
             @Override
             public void handleMessage(Message msg)
             {
-                m_edtNeedSpeed.setText(String.valueOf(g_needSpeed));
+                m_tvNeedSpeed.setText(String.valueOf(g_needSpeed));
             }
 
         };
         m_speedHelper = new SpeedHelper();
 
-        m_speedHelper.start();
+       m_speedHelper.start();
     }
 
 

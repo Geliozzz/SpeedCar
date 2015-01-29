@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:weightSum="1">
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background"
+                android:weightSum="1">
     <TextView
         style="@style/HeaderStyleLarge"
         android:id="@+id/textViewHeader"
@@ -17,61 +17,104 @@
         android:layout_height="@dimen/StepHeadHighLarge"
         android:background="@color/StepBackgroundColor"
         android:id="@+id/relativeLayoutSteps"
+
         android:layout_below="@+id/textViewHeader"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
+
+
         <ImageView
             style="@style/StepStyleLarge"
-            android:background="@color/StepActiveColor"
+            android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep1"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/imageViewStep2"
-            />
+            android:layout_toLeftOf="@+id/imageViewStep2"
+            android:layout_toStartOf="@+id/imageViewStep2"/>
         <ImageView
             style="@style/StepStyleLarge"
             android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep2"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/imageViewCenter"
+            android:layout_toStartOf="@+id/imageViewCenter"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:layout_centerHorizontal="true"
-            />
+            android:id="@+id/imageViewCenter"/>
+
         <ImageView
             style="@style/StepStyleLarge"
             android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep3"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/imageViewStep2" />
+            android:layout_toRightOf="@+id/imageViewCenter"
+            android:layout_toEndOf="@+id/imageViewCenter"/>
+        <ImageView
+            style="@style/StepStyleLarge"
+            android:background="@color/StepActiveColor"
+            android:id="@+id/imageViewStep4"
+
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewStep3"
+            android:layout_toEndOf="@+id/imageViewStep3"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/step3Text"
+            android:text="@string/step4Text"
             android:textColor="@color/StepTextColor"
             android:id="@+id/tvStepText"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
-    <ScrollView
+
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:id="@+id/scrlVwResult"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/InDataMarginLeftRightNormal"
-        android:layout_marginRight="@dimen/InDataMarginLeftRightNormal"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_height="fill_parent"
         android:layout_below="@+id/relativeLayoutSteps"
-        android:layout_above="@+id/btnRepeatTest">
+        android:layout_above="@+id/btnRepeatTest"
+        android:layout_alignLeft="@+id/btnRepeatTest"
+        android:layout_alignStart="@+id/btnRepeatTest"
+        android:layout_alignRight="@+id/btnRepeatTest"
+        android:id="@+id/relativeLayoutResult"
+        android:layout_alignEnd="@+id/btnRepeatTest">
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:textColor="@color/ResultTextColor"
-            android:layout_marginTop="@dimen/InDataMarginBetweenElements"
-            android:id="@+id/tvResult" />
-    </ScrollView>
+            android:textSize="@dimen/textSizeAccelerateTimeMessagesLarge"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/dummy"
+            android:id="@+id/tvAccelerationTimeMessage"
+            android:layout_above="@+id/tvaccelerationTime"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeAccelerateTimeLarge"
+            android:textColor="@color/white"
+            android:text="@string/dummy"
+            android:id="@+id/tvaccelerationTime"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSizeAccelerateTimeMessagesLarge"
+            android:text="@string/seconds"
+            android:id="@+id/tvaccelerationTimeUnit"
+            android:layout_below="@+id/tvaccelerationTime"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
 
     <Button
         style="@style/NavigateButtonStyleLarge"
@@ -80,4 +123,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>

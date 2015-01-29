@@ -19,7 +19,7 @@
     <dimen name="InDataButtonTextFuelSmall">12sp</dimen>
     <!--  Head steps -->
     <dimen name="StepHeadHighLarge">80dp</dimen>
-    <dimen name="StepHeadHighNormal">45dp</dimen>
+    <dimen name="StepHeadHighNormal">55dp</dimen>
     <dimen name="StepHeadHighSmall">40dp</dimen>
     <!-- End Head steps -->
 
@@ -28,9 +28,9 @@
     <dimen name="NeedSpeedButtonsTextSize">30sp</dimen>
     <dimen name="NeedSpeedButtonsOvalRadius">10dp</dimen>
 
-    <dimen name="NeedSpeedEditWidthNormal">80dp</dimen>
+    <dimen name="NeedSpeedEditWidthNormal">100dp</dimen>
     <dimen name="NeedSpeedEditTextSize">30sp</dimen>
-    <dimen name="NeedSpeedBorderSize">3dp</dimen>
+    <dimen name="NeedSpeedBorderSize">1dp</dimen>
 
     <dimen name="NeedSpeedHeaderTextSize">30sp</dimen>
 
@@ -40,10 +40,79 @@
     <dimen name="MarginBottom">10dp</dimen>
     <!-- End Need Speed Normal -->
 
+    <!--  Need Speed Small -->
+    <dimen name="NeedSpeedButtonSizeSmall">40dp</dimen>
+    <dimen name="NeedSpeedButtonsTextSizeSmall">30sp</dimen>
+    <dimen name="NeedSpeedButtonsOvalRadiusSmall">5dp</dimen>
+
+    <dimen name="NeedSpeedEditWidthSmall">80dp</dimen>
+    <dimen name="NeedSpeedEditTextSmall">30sp</dimen>
+    <dimen name="NeedSpeedBorderSmall">1dp</dimen>
+
+    <dimen name="NeedSpeedHeaderTextSizeSmall">30sp</dimen>
+
+    <dimen name="MarginLeftSmall">10dp</dimen>
+    <dimen name="MarginRightSmall">10dp</dimen>
+    <dimen name="MarginTopSmall">10dp</dimen>
+    <dimen name="MarginBottomSmall">10dp</dimen>
+    <!-- End Need Speed Small -->
+
+    <!--  Need Speed Large -->
+    <dimen name="NeedSpeedButtonSizeLarge">60dp</dimen>
+    <dimen name="NeedSpeedButtonsTextSizeLarge">40sp</dimen>
+    <dimen name="NeedSpeedButtonsOvalRadiusLarge">5dp</dimen>
+
+    <dimen name="NeedSpeedEditWidthLarge">100dp</dimen>
+    <dimen name="NeedSpeedEditTextLarge">40sp</dimen>
+    <dimen name="NeedSpeedBorderLarge">5dp</dimen>
+
+    <dimen name="NeedSpeedHeaderTextSizeLarge">40sp</dimen>
+
+    <dimen name="MarginLeftLarge">15dp</dimen>
+    <dimen name="MarginRightLarge">15dp</dimen>
+    <dimen name="MarginTopLarge">15dp</dimen>
+    <dimen name="MarginBottomLarge">15dp</dimen>
+    <!-- End Need Speed Large -->
+
     <!-- Result Normal -->
-    <dimen name="textSizeAccelerateTimeNormal">120sp</dimen>
-    <dimen name="textSizeAccelerateTimeMessagesNormal">30sp</dimen>
-    <dimen name="marginTopResultNormal">30dp</dimen>
+    <dimen name="textSizeAccelerateTimeNormal">100sp</dimen>
+    <dimen name="textSizeAccelerateTimeMessagesNormal">20sp</dimen>
+    <dimen name="marginTopResultNormal">15dp</dimen>
     <!-- End Result Normal -->
 
+    <!-- Result Small -->
+    <dimen name="textSizeAccelerateTimeSmall">80sp</dimen>
+    <dimen name="textSizeAccelerateTimeMessagesSmall">15sp</dimen>
+    <dimen name="marginTopResultSmall">7dp</dimen>
+    <!-- End Result Small -->
+
+    <!-- Result Large -->
+    <dimen name="textSizeAccelerateTimeLarge">120sp</dimen>
+    <dimen name="textSizeAccelerateTimeMessagesLarge">30sp</dimen>
+    <dimen name="marginTopResultLarge">20dp</dimen>
+    <!-- End Result Large -->
+
+    <!-- Steps style Small -->
+    <dimen name="stepImageWidthSmall">60dp</dimen>
+    <dimen name="stepImageHeightSmall">3dp</dimen>
+    <dimen name="stepImageMarginTopSmall">10dp</dimen>
+    <dimen name="stepImageMarginLeftSmall">2dp</dimen>
+    <dimen name="stepImageMarginRightSmall">2dp</dimen>
+    <!-- End Steps style Small -->
+
+    <!-- Steps style Normal -->
+    <dimen name="stepImageWidthNormal">70dp</dimen>
+    <dimen name="stepImageHeightNormal">5dp</dimen>
+    <dimen name="stepImageMarginTopNormal">10dp</dimen>
+    <dimen name="stepImageMarginLeftNormal">5dp</dimen>
+    <dimen name="stepImageMarginRightNormal">5dp</dimen>
+    <!-- End Steps style Normal -->
+
+    <!-- Steps style Large -->
+    <dimen name="stepImageWidthLarge">130dp</dimen>
+    <dimen name="stepImageHeightLarge">8dp</dimen>
+    <dimen name="stepImageMarginTopLarge">20dp</dimen>
+    <dimen name="stepImageMarginLeftLarge">10dp</dimen>
+    <dimen name="stepImageMarginRightLarge">10dp</dimen>
+    <!-- End Steps style Large -->
 </resources>

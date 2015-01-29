@@ -47,37 +47,37 @@
         <item name="android:layout_marginBottom">5dp</item>
     </style>
 
-    <!--dasd-->
-
+    <!--Step -->
     <style name="StepStyleNormal">
-        <item name="android:layout_width">80dp</item>
-        <item name="android:layout_height">5dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginLeft">5dp</item>
-        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_width">@dimen/stepImageWidthNormal</item>
+        <item name="android:layout_height">@dimen/stepImageHeightNormal</item>
+        <item name="android:layout_marginTop">@dimen/stepImageMarginTopNormal</item>
+        <item name="android:layout_marginLeft">@dimen/stepImageMarginLeftNormal</item>
+        <item name="android:layout_marginRight">@dimen/stepImageMarginRightNormal</item>
 
     </style>
     <style name="StepStyleLarge">
-        <item name="android:layout_width">130dp</item>
-        <item name="android:layout_height">8dp</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_width">@dimen/stepImageWidthLarge</item>
+        <item name="android:layout_height">@dimen/stepImageHeightLarge</item>
+        <item name="android:layout_marginTop">@dimen/stepImageMarginTopLarge</item>
+        <item name="android:layout_marginLeft">@dimen/stepImageMarginLeftLarge</item>
+        <item name="android:layout_marginRight">@dimen/stepImageMarginRightLarge</item>
 
     </style>
-
     <style name="StepStyleSmall">
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">8dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginLeft">5dp</item>
-        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_width">@dimen/stepImageWidthSmall</item>
+        <item name="android:layout_height">@dimen/stepImageHeightSmall</item>
+        <item name="android:layout_marginTop">@dimen/stepImageMarginTopSmall</item>
+        <item name="android:layout_marginLeft">@dimen/stepImageMarginLeftSmall</item>
+        <item name="android:layout_marginRight">@dimen/stepImageMarginRightSmall</item>
 
     </style>
+    <!--End Step -->
+
     <style name="NavigateButtonStyle">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">60dp</item>
-        <item name="android:background">@drawable/navigate_buttons</item>
+        <item name="android:background">@drawable/navigate_buttons_enabled</item>
         <item name="android:textSize">25sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/NavigationButtonTextColor</item>
@@ -90,7 +90,7 @@
     <style name="NavigateButtonStyleLarge">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">90dp</item>
-        <item name="android:background">@drawable/navigate_buttons</item>
+        <item name="android:background">@drawable/navigate_buttons_enabled</item>
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/NavigationButtonTextColor</item>
@@ -102,7 +102,7 @@
     <style name="NavigateButtonStyleSmall">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">40dp</item>
-        <item name="android:background">@drawable/navigate_buttons</item>
+        <item name="android:background">@drawable/navigate_buttons_enabled</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/NavigationButtonTextColor</item>
@@ -112,21 +112,8 @@
 
     </style>
 
-    <style name="ButtonsFuelStyle">
-    <item name="android:textSize">@dimen/InDataButtonTextFuelNormal</item>
-    <item name="android:textStyle">bold</item>
-</style>
 
-    <style name="ButtonsFuelStyleLarge">
-        <item name="android:textSize">@dimen/InDataButtonTextFuelLarge</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="ButtonsFuelStyleSmall">
-        <item name="android:textSize">@dimen/InDataButtonTextFuelSmall</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-<!-- Need Speed Styles Normal -->
+    <!-- Need Speed Styles Normal -->
     <style name="ButtonsNeedSpeedNormal">
         <item name="android:layout_width">@dimen/NeedSpeedButtonSizeNormal</item>
         <item name="android:layout_height">@dimen/NeedSpeedButtonSizeNormal</item>
@@ -140,7 +127,7 @@
         <item name="android:layout_marginBottom">@dimen/MarginBottom</item>
     </style>
 
-    <style name="EditNeedSpeedNormal">
+    <style name="TextNeedSpeedNormal">
         <item name="android:layout_width">@dimen/NeedSpeedEditWidthNormal</item>
         <item name="android:layout_height">@dimen/NeedSpeedButtonSizeNormal</item>
         <item name="android:textSize">@dimen/NeedSpeedButtonsTextSize</item>
@@ -165,4 +152,86 @@
         <item name="android:layout_marginLeft">@dimen/MarginLeft</item>
         <item name="android:layout_marginRight">@dimen/MarginRight</item>
     </style>
+
+    <!-- End Need Speed Styles Normal -->
+
+    <!-- Need Speed Styles Small -->
+    <style name="ButtonsNeedSpeedSmall">
+        <item name="android:layout_width">@dimen/NeedSpeedButtonSizeSmall</item>
+        <item name="android:layout_height">@dimen/NeedSpeedButtonSizeSmall</item>
+        <item name="android:textSize">@dimen/NeedSpeedButtonsTextSizeSmall</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/NeedSpeedButtonsTextColor</item>
+        <item name="android:background">@drawable/need_speed_buttons_oval</item>
+        <item name="android:layout_marginTop">@dimen/MarginTopSmall</item>
+        <item name="android:layout_marginLeft">@dimen/MarginLeftSmall</item>
+        <item name="android:layout_marginRight">@dimen/MarginRightSmall</item>
+        <item name="android:layout_marginBottom">@dimen/MarginBottomSmall</item>
+    </style>
+    <style name="TextNeedSpeedSmall">
+        <item name="android:layout_width">@dimen/NeedSpeedEditWidthSmall</item>
+        <item name="android:layout_height">@dimen/NeedSpeedButtonSizeSmall</item>
+        <item name="android:textSize">@dimen/NeedSpeedButtonsTextSizeSmall</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/need_speed_edit_oval</item>
+
+        <item name="android:layout_marginTop">@dimen/MarginTopSmall</item>
+        <item name="android:layout_marginLeft">@dimen/MarginLeftSmall</item>
+        <item name="android:layout_marginRight">@dimen/MarginRightSmall</item>
+        <item name="android:layout_marginBottom">@dimen/MarginBottomSmall</item>
+    </style>
+    <style name="HeaderNeedSpeedSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/NeedSpeedHeaderTextColor</item>
+
+        <item name="android:layout_marginTop">@dimen/MarginTop</item>
+        <item name="android:layout_marginLeft">@dimen/MarginLeft</item>
+        <item name="android:layout_marginRight">@dimen/MarginRight</item>
+    </style>
+
+    <!-- End Need Speed Styles Small -->
+
+    <!-- Need Speed Styles Large -->
+    <style name="ButtonsNeedSpeedLarge">
+        <item name="android:layout_width">@dimen/NeedSpeedButtonSizeLarge</item>
+        <item name="android:layout_height">@dimen/NeedSpeedButtonSizeLarge</item>
+        <item name="android:textSize">@dimen/NeedSpeedButtonsTextSizeLarge</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/NeedSpeedButtonsTextColor</item>
+        <item name="android:background">@drawable/need_speed_buttons_oval</item>
+        <item name="android:layout_marginTop">@dimen/MarginTopLarge</item>
+        <item name="android:layout_marginLeft">@dimen/MarginLeftLarge</item>
+        <item name="android:layout_marginRight">@dimen/MarginRightLarge</item>
+        <item name="android:layout_marginBottom">@dimen/MarginBottomLarge</item>
+    </style>
+    <style name="TextNeedSpeedLarge">
+        <item name="android:layout_width">@dimen/NeedSpeedEditWidthLarge</item>
+        <item name="android:layout_height">@dimen/NeedSpeedButtonSizeLarge</item>
+        <item name="android:textSize">@dimen/NeedSpeedButtonsTextSizeLarge</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/need_speed_edit_oval</item>
+
+        <item name="android:layout_marginTop">@dimen/MarginTopLarge</item>
+        <item name="android:layout_marginLeft">@dimen/MarginLeftLarge</item>
+        <item name="android:layout_marginRight">@dimen/MarginRightLarge</item>
+        <item name="android:layout_marginBottom">@dimen/MarginBottomLarge</item>
+    </style>
+    <style name="HeaderNeedSpeedLarge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/NeedSpeedHeaderTextColor</item>
+
+        <item name="android:layout_marginTop">@dimen/MarginTopLarge</item>
+        <item name="android:layout_marginLeft">@dimen/MarginLeftLarge</item>
+        <item name="android:layout_marginRight">@dimen/MarginRightLarge</item>
+    </style>
+
+    <!-- End Need Speed Styles Small -->
 </resources>

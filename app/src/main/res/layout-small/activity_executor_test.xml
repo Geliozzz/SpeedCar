@@ -16,51 +16,65 @@
         />
 
     <RelativeLayout
-        android:id="@+id/relativeLayoutSteps"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/StepHeadHighSmall"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textViewHeader"
         android:background="@color/StepBackgroundColor"
-        android:orientation="vertical">
+        android:id="@+id/relativeLayoutSteps"
+
+        android:layout_below="@+id/textViewHeader"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
 
         <ImageView
-            android:id="@+id/imageViewStep1"
             style="@style/StepStyleSmall"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/imageViewStep2"
             android:background="@color/StepNoActiveColor"
-            />
-
-        <ImageView
-            android:id="@+id/imageViewStep2"
-            style="@style/StepStyleSmall"
-            android:layout_centerHorizontal="true"
-            android:background="@color/StepActiveColor"
-            />
-
-        <ImageView
-            android:id="@+id/imageViewStep3"
-            style="@style/StepStyleSmall"
+            android:id="@+id/imageViewStep1"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/imageViewStep2"
-            android:background="@color/StepNoActiveColor"/>
+            android:layout_toStartOf="@+id/imageViewStep2"/>
+        <ImageView
+            style="@style/StepStyleSmall"
+            android:background="@color/StepActiveColor"
+            android:id="@+id/imageViewStep2"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/imageViewCenter"
+            android:layout_toStartOf="@+id/imageViewCenter"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/imageViewCenter"/>
+
+        <ImageView
+            style="@style/StepStyleSmall"
+            android:background="@color/StepNoActiveColor"
+            android:id="@+id/imageViewStep3"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewCenter"
+            android:layout_toEndOf="@+id/imageViewCenter"/>
+        <ImageView
+            style="@style/StepStyleSmall"
+            android:background="@color/StepNoActiveColor"
+            android:id="@+id/imageViewStep4"
+
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewStep3"
+            android:layout_toEndOf="@+id/imageViewStep3"/>
 
         <TextView
-            android:id="@+id/tvStepText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
             android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/step2Text"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/StepTextColor"/>
+            android:textColor="@color/StepTextColor"
+            android:id="@+id/tvStepText"
+            android:layout_below="@+id/imageViewStep2"
+            android:layout_marginTop="7dp"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 

@@ -22,7 +22,7 @@ public class ActivityTestExecutor extends ActionBarActivity
     // GUI
     private RadioGroup m_radioGroupTests;
     private Button m_buttonStartTest;
-    private Button m_buttonBack;
+    private Button m_navigateButton;
     private Spinner m_spinnerFiles;
     private ProgressWheel m_progressBarWheel;
     private ImageView m_imageViewStep2;
@@ -68,7 +68,7 @@ public class ActivityTestExecutor extends ActionBarActivity
     private void InitGUI()
     {
         m_buttonStartTest = (Button) findViewById(R.id.btnStartTest);
-        m_buttonBack = (Button) findViewById(R.id.btnRepeatTest);
+        m_navigateButton = (Button) findViewById(R.id.btnRepeatTest);
         m_progressBarWheel = (ProgressWheel) findViewById(R.id.progressBarWheel);
 
         m_radioGroupTests = (RadioGroup) findViewById(R.id.radGrTests);
@@ -99,7 +99,7 @@ public class ActivityTestExecutor extends ActionBarActivity
             }
         });
 
-        m_buttonBack.setOnClickListener(new View.OnClickListener()
+        m_navigateButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -143,10 +143,11 @@ public class ActivityTestExecutor extends ActionBarActivity
         Log.d(LOG_TAG, "Resume");
         SetProgressBar(0);
         SetStep(Steps.Step2);
+        NavigationButtonSetEnabled(true);
         /***Ready for test*/
         if (m_popupIsStarted)
         {
-            SetButtonEnabled(true);
+            TestButtonSetEnabled(true);
             m_popupIsStarted = false;
         }
         if (g_startTestFlag)
@@ -225,7 +226,7 @@ public class ActivityTestExecutor extends ActionBarActivity
         }
     }
 
-    private void SetButtonEnabled(boolean flag)
+    private void TestButtonSetEnabled(boolean flag)
     {
         if (flag)
         {
@@ -253,8 +254,9 @@ public class ActivityTestExecutor extends ActionBarActivity
                 m_testExecutor.Start(TestExecutor.TestEnum.test2);
                 break;
         }
-        SetStep(Steps.Step2);
-        SetButtonEnabled(false);
+        //  SetStep(Steps.Step2);
+        NavigationButtonSetEnabled(false);
+        TestButtonSetEnabled(false);
     }
 
     @Override
@@ -298,11 +300,29 @@ public class ActivityTestExecutor extends ActionBarActivity
             m_imageViewStep2.setBackgroundColor(getResources().getColor(R.color.StepActiveColor));
             m_imageViewStep3.setBackgroundColor(getResources().getColor(R.color.StepNoActiveColor));
             m_tvStep.setText(getResources().getText(R.string.step2Text));
-        } else if(step == Steps.Step3)
+        } else if (step == Steps.Step3)
         {
             m_imageViewStep2.setBackgroundColor(getResources().getColor(R.color.StepNoActiveColor));
             m_imageViewStep3.setBackgroundColor(getResources().getColor(R.color.StepActiveColor));
             m_tvStep.setText(getResources().getText(R.string.step3Text));
         }
+    }
+
+    private void NavigationButtonSetEnabled(boolean enable)
+    {
+        if (enable)
+        {
+            m_navigateButton.setEnabled(true);
+            m_navigateButton.setBackgroundResource(R.drawable.navigate_buttons_enabled);
+            m_navigateButton.setTextColor(getResources().getColor(R.color.NavigationButtonTextColor));
+        } else
+        {
+            m_navigateButton.setEnabled(false);
+            m_navigateButton.setBackgroundResource(R.drawable.navigate_buttons_disabled);
+            m_navigateButton.setTextColor(getResources().getColor(R.color.NavigationButtonTextColorInactive));
+        }
+
+
+
     }
 }

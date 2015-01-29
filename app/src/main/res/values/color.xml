@@ -4,26 +4,36 @@
     <color name="green">#ff0eff03</color>
     <color name="black">#ff000000</color>
     <color name="white">#ffffffff</color>
+
+    <!-- Round button execute -->
     <color name="rimColor">#ff4a3f3e</color>
     <color name="barColor">#ffffffff</color>
-
-    <color name="btnStartTestActiveColor">#ff49ba79</color>
+    <color name="btnStartTestActiveColor">#ff29ae61</color>
     <color name="btnStartExecuteColor">#ff131313</color>
     <color name="btnExecuteTextColor">#ffffffff</color>
     <color name="btnStartReadyTextColor">#ff141414</color>
+    <!-- End Round button execute -->
+
+    <!-- Header Color -->
     <color name="HeaderTextColor">#ff29ae61</color>
     <color name="HeaderBackgroundColor">#ff141414</color>
+    <!-- End Header Color -->
+
+    <!-- Step color -->
     <color name="StepBackgroundColor">#ff222222</color>
     <color name="StepTextColor">#ffffffff</color>
     <color name="StepActiveColor">#fffdfdfd</color>
     <color name="StepNoActiveColor">#ff524c4c</color>
     <color name="HelperMessageTextColor">#ffdbdbdb</color>
-    <color name="InDataTVTextColor">#ff939393</color>
-    <color name="ResultTextColor">#ffffffff</color>
+    <!-- End Step color -->
 
+    <!-- Navigate Buttons -->
     <color name="NavigationButtonTextColor">#ffffffff</color>
     <color name="NavigationButtonBackgroundColor">#ff29ae61</color>
+    <color name="NavigationButtonTextColorInactive">#80ffffff</color>
+    <color name="NavigationButtonBackgroundColorInactive">#8029ae61</color>
     <color name="NavigationButtonStrokeColor">#fff4a625</color>
+    <!-- End Navigate Buttons -->
 
     <!-- Need Speed Colors -->
     <color name="NeedSpeedButtonsBackGroundColor">#ffffffff</color>
@@ -35,4 +45,9 @@
 
     <color name="NeedSpeedHeaderTextColor">#ff989291</color>
     <!-- End Need Speed Colors -->
+
+    <!-- Relative layout Navigate and need Speed -->
+    <color name="relativeLayoutNeedSpeedBackground">#b4000000</color>
+    <!-- End Relative layout Navigate and need Speed -->
+
 </resources>

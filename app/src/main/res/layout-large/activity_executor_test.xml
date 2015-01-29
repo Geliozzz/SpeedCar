@@ -19,50 +19,66 @@
 
 
     <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/StepHeadHighLarge"
-        android:background="@color/StepBackgroundColor"
-        android:id="@+id/relativeLayoutSteps"
-        android:layout_below="@+id/textViewHeader"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/StepHeadHighLarge"
+    android:background="@color/StepBackgroundColor"
+    android:id="@+id/relativeLayoutSteps"
+
+    android:layout_below="@+id/textViewHeader"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
 
 
-        <ImageView
-            style="@style/StepStyleLarge"
-            android:background="@color/StepNoActiveColor"
-            android:id="@+id/imageViewStep1"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/imageViewStep2"
-            />
-        <ImageView
-            style="@style/StepStyleLarge"
-            android:background="@color/StepActiveColor"
-            android:id="@+id/imageViewStep2"
-            android:layout_centerHorizontal="true"
-            />
-        <ImageView
-            style="@style/StepStyleLarge"
-            android:background="@color/StepNoActiveColor"
-            android:id="@+id/imageViewStep3"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/imageViewStep2" />
+    <ImageView
+        style="@style/StepStyleLarge"
+        android:background="@color/StepNoActiveColor"
+        android:id="@+id/imageViewStep1"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/imageViewStep2"
+        android:layout_toStartOf="@+id/imageViewStep2"/>
+    <ImageView
+        style="@style/StepStyleLarge"
+        android:background="@color/StepActiveColor"
+        android:id="@+id/imageViewStep2"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/imageViewCenter"
+        android:layout_toStartOf="@+id/imageViewCenter"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/step2Text"
-            android:textColor="@color/StepTextColor"
-            android:id="@+id/tvStepText"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageViewCenter"/>
 
-    </RelativeLayout>
+    <ImageView
+        style="@style/StepStyleLarge"
+        android:background="@color/StepNoActiveColor"
+        android:id="@+id/imageViewStep3"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageViewCenter"
+        android:layout_toEndOf="@+id/imageViewCenter"/>
+    <ImageView
+        style="@style/StepStyleLarge"
+        android:background="@color/StepNoActiveColor"
+        android:id="@+id/imageViewStep4"
+
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageViewStep3"
+        android:layout_toEndOf="@+id/imageViewStep3"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/step2Text"
+        android:textColor="@color/StepTextColor"
+        android:id="@+id/tvStepText"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
 
 
 

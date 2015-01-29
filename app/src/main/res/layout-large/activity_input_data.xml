@@ -19,32 +19,48 @@
         android:layout_height="@dimen/StepHeadHighLarge"
         android:background="@color/StepBackgroundColor"
         android:id="@+id/relativeLayoutSteps"
+
         android:layout_below="@+id/textViewHeader"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
 
         <ImageView
             style="@style/StepStyleLarge"
-            android:background="@color/StepNoActiveColor"
+            android:background="@color/StepActiveColor"
             android:id="@+id/imageViewStep1"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/imageViewStep2"
-            />
+            android:layout_toLeftOf="@+id/imageViewStep2"
+            android:layout_toStartOf="@+id/imageViewStep2"/>
         <ImageView
             style="@style/StepStyleLarge"
             android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep2"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/imageViewCenter"
+            android:layout_toStartOf="@+id/imageViewCenter"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:layout_centerHorizontal="true"
-            />
+            android:id="@+id/imageViewCenter"/>
+
         <ImageView
             style="@style/StepStyleLarge"
-            android:background="@color/StepActiveColor"
+            android:background="@color/StepNoActiveColor"
             android:id="@+id/imageViewStep3"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/imageViewStep2" />
+            android:layout_toRightOf="@+id/imageViewCenter"
+            android:layout_toEndOf="@+id/imageViewCenter"/>
+        <ImageView
+            style="@style/StepStyleLarge"
+            android:background="@color/StepNoActiveColor"
+            android:id="@+id/imageViewStep4"
+
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewStep3"
+            android:layout_toEndOf="@+id/imageViewStep3"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,7 +79,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/scrollView"
-        android:layout_above="@+id/btnTstAct"
+        android:layout_above="@+id/relativeLayoutNeedSpeed"
         android:layout_below="@+id/relativeLayoutSteps"
         android:layout_alignRight="@+id/btnTstAct"
         android:layout_alignEnd="@+id/btnTstAct"
@@ -78,6 +94,52 @@
             android:text="@string/mainHelpMessage"
             android:id="@+id/textView"/>
     </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayoutNeedSpeed"
+        android:layout_above="@+id/btnTstAct"
+        android:layout_alignLeft="@+id/scrollView"
+        android:layout_alignStart="@+id/scrollView"
+        android:layout_alignRight="@+id/scrollView"
+        android:layout_alignEnd="@+id/scrollView"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            style="@style/HeaderNeedSpeedLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/needSpeedHeaderText"
+            android:id="@+id/tvNeedSpeedHeaderText"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            style="@style/TextNeedSpeedLarge"
+            android:inputType="none"
+            android:ems="10"
+            android:id="@+id/tvNeedSpeedEnter"
+            android:layout_below="@+id/tvNeedSpeedHeaderText"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            style="@style/ButtonsNeedSpeedLarge"
+            android:text="@string/arrowUp"
+            android:id="@+id/btnNeedSpeedUp"
+            android:layout_below="@+id/tvNeedSpeedHeaderText"
+            android:layout_toRightOf="@+id/tvNeedSpeedEnter"
+            android:layout_toEndOf="@+id/tvNeedSpeedEnter"/>
+
+        <Button
+            style="@style/ButtonsNeedSpeedLarge"
+            android:text="@string/arrowDown"
+            android:id="@+id/btnNeedSpeedDown"
+            android:layout_below="@+id/tvNeedSpeedHeaderText"
+            android:layout_toLeftOf="@+id/tvNeedSpeedEnter"
+            android:layout_toStartOf="@+id/tvNeedSpeedEnter"/>
+
+
+    </RelativeLayout>
 
     <Button
         style="@style/NavigateButtonStyleLarge"

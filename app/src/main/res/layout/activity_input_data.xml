@@ -98,13 +98,13 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-
         android:id="@+id/relativeLayoutNeedSpeed"
         android:layout_above="@+id/btnTstAct"
         android:layout_alignLeft="@+id/scrollView"
         android:layout_alignStart="@+id/scrollView"
         android:layout_alignRight="@+id/scrollView"
-        android:layout_alignEnd="@+id/scrollView">
+        android:layout_alignEnd="@+id/scrollView"
+        android:layout_marginBottom="10dp">
 
         <TextView
             style="@style/HeaderNeedSpeedNormal"
@@ -114,11 +114,11 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
 
-        <EditText
-            style="@style/EditNeedSpeedNormal"
+        <TextView
+            style="@style/TextNeedSpeedNormal"
             android:inputType="none"
             android:ems="10"
-            android:id="@+id/edtNeedSpeedEnter"
+            android:id="@+id/tvNeedSpeedEnter"
             android:layout_below="@+id/tvNeedSpeedHeaderText"
             android:layout_centerHorizontal="true"/>
 
@@ -127,16 +127,16 @@
             android:text="@string/arrowUp"
             android:id="@+id/btnNeedSpeedUp"
             android:layout_below="@+id/tvNeedSpeedHeaderText"
-            android:layout_toRightOf="@+id/edtNeedSpeedEnter"
-            android:layout_toEndOf="@+id/edtNeedSpeedEnter"/>
+            android:layout_toRightOf="@+id/tvNeedSpeedEnter"
+            android:layout_toEndOf="@+id/tvNeedSpeedEnter"/>
 
         <Button
             style="@style/ButtonsNeedSpeedNormal"
             android:text="@string/arrowDown"
             android:id="@+id/btnNeedSpeedDown"
             android:layout_below="@+id/tvNeedSpeedHeaderText"
-            android:layout_toLeftOf="@+id/edtNeedSpeedEnter"
-            android:layout_toStartOf="@+id/edtNeedSpeedEnter"/>
+            android:layout_toLeftOf="@+id/tvNeedSpeedEnter"
+            android:layout_toStartOf="@+id/tvNeedSpeedEnter"/>
 
 
     </RelativeLayout>
