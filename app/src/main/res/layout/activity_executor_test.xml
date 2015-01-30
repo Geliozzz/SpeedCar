@@ -164,7 +164,7 @@
                 android:text="@string/startTest"
                 android:textSize="21sp"
                 android:textStyle="bold"
-                android:textColor="@color/btnStartReadyTextColor"
+                android:textColor="@color/btnExecuteTextColor"
                 android:background= "@drawable/oval_button_ready"
                 android:id="@+id/btnStartTest"
 

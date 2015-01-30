@@ -159,7 +159,7 @@
             android:layout_centerVertical="true"
             android:background="@drawable/oval_button_ready"
             android:text="@string/startTest"
-            android:textColor="@color/btnStartReadyTextColor"
+            android:textColor="@color/btnExecuteTextColor"
             android:textSize="14sp"
             android:textStyle="bold"
             />

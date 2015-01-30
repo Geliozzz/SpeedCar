@@ -233,7 +233,7 @@ public class ActivityTestExecutor extends ActionBarActivity
             m_buttonStartTest.setBackgroundResource(R.drawable.oval_button_ready);
             m_buttonStartTest.setText(getResources().getString(R.string.startTest));
             m_buttonStartTest.setEnabled(true);
-            m_buttonStartTest.setTextColor(getResources().getColor(R.color.btnStartReadyTextColor));
+            m_buttonStartTest.setTextColor(getResources().getColor(R.color.btnExecuteTextColor));
         } else
         {
             m_buttonStartTest.setText(getResources().getString(R.string.calibrate));
@@ -256,6 +256,7 @@ public class ActivityTestExecutor extends ActionBarActivity
         }
         //  SetStep(Steps.Step2);
         NavigationButtonSetEnabled(false);
+        SetMaxProgressBar(m_testExecutor.Get_m_numberOfMeasurements());
         TestButtonSetEnabled(false);
     }
 

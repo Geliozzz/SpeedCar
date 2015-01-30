@@ -38,7 +38,7 @@ public class InputAdapter
         {
             // Переопределить Тест дата для фиксированного количества измерений если до этого была работа из файла
             m_ownerTestExecutor.SetFixedTestData();
-            m_inputOwnerInterface.SetNumberOfMeasurements(m_ownerTestExecutor.Getm_numberOfMeasurements()); // Возврат к фиксированному значению
+            m_inputOwnerInterface.SetNumberOfMeasurements(m_ownerTestExecutor.Get_m_numberOfMeasurements()); // Возврат к фиксированному значению
             m_sensorInput.Start();
         } else if (inputTypeEnum.equals(InputTypeEnum.storage))
         {

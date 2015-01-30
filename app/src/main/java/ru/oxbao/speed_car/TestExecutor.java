@@ -137,7 +137,7 @@ public class TestExecutor
         g_testData = new TestData(m_numberOfMeasurements);
     }
 
-    public int Getm_numberOfMeasurements()
+    public int Get_m_numberOfMeasurements()
     {
         return m_numberOfMeasurements;
     }
