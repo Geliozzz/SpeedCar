@@ -31,7 +31,7 @@ public class ActivityInputData extends ActionBarActivity
     private SpeedHelper m_speedHelper;
 
     // Variables
-    public static int g_needSpeed = 100;
+    public static int g_needSpeed = 60;
     private DirectionSpeed directionSpeed = DirectionSpeed.Stop;
 
     private enum DirectionSpeed
@@ -52,10 +52,10 @@ public class ActivityInputData extends ActionBarActivity
                 switch (directionSpeed)
                 {
                     case Up:
-                        g_needSpeed++;
+                        g_needSpeed+=10;
                         break;
                     case Down:
-                        g_needSpeed--;
+                        g_needSpeed-=10;
                         if (g_needSpeed < 0) g_needSpeed = 0;
                         break;
                     default:

@@ -14,5 +14,8 @@ public abstract class InputOwnerInterface
     public void OnDataCollected()
     {
     }
+
+    public abstract String GetFileName();
+
     public abstract void ShowFailSensor();
 }

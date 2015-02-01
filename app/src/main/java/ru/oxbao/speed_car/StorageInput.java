@@ -16,16 +16,12 @@ import java.io.IOException;
 
 public class StorageInput
 {
-    private ActivityTestExecutor m_ownerActivity;
-    //private Collector m_collectorOwner;
     private InputOwnerInterface m_inputOwnerInterface;
-    private TestExecutor m_ownerTestExecutor;
     private String m_dir;
     private Handler m_handler;
     private boolean m_storageIsWorking;
     private static final String DIRECTORY_NAME = "/Accelerometer";
     private static final String FILE_EXTENSION = ".txt";
-
 
     private final String STORAGE_INPUT_TAG = "StorageInput";
 
@@ -100,11 +96,9 @@ public class StorageInput
         }
     }
 
-    public StorageInput(ActivityTestExecutor activityTestExecutor, TestExecutor m_ownerTestExecutor, final InputOwnerInterface inputOwnerInterface)
+    public StorageInput(final InputOwnerInterface inputOwnerInterface)
     {
         this.m_inputOwnerInterface = inputOwnerInterface;
-        this.m_ownerTestExecutor = m_ownerTestExecutor;
-        m_ownerActivity = activityTestExecutor;
         m_dir = Environment.getExternalStorageDirectory().toString() + DIRECTORY_NAME;
         m_handler = new Handler()
         { // Необходим для заполнения коллектора из другого потока
@@ -130,7 +124,7 @@ public class StorageInput
 
     public void Start()
     {
-        String fileName = m_ownerTestExecutor.GetCheckedSpinner();
+        String fileName = m_inputOwnerInterface.GetFileName();
         if (!fileName.equals(""))
         {
             Reader reader = new Reader(fileName);
@@ -180,7 +174,7 @@ public class StorageInput
 
     public int GetNumberLines()
     {
-        String fileName = m_ownerTestExecutor.GetCheckedSpinner();
+        String fileName = m_inputOwnerInterface.GetFileName();
         File file = new File(m_dir + "/" + fileName);
         BufferedReader bufferedReader = null;
         int count = 0;

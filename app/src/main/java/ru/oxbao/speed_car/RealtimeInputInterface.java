@@ -26,6 +26,12 @@ public class RealtimeInputInterface extends InputOwnerInterface
     }
 
     @Override
+    public String GetFileName()
+    {
+        return m_ownerExecutor.GetCheckedSpinner();
+    }
+
+    @Override
     public void ShowFailSensor()
     {
         m_ownerExecutor.ShowToast(TestExecutor.ToastMessage.failStartSensor);

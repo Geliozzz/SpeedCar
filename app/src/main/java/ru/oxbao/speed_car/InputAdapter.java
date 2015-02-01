@@ -10,7 +10,6 @@ public class InputAdapter
     private StorageInput m_storageInput;
     private TestExecutor m_ownerTestExecutor;
     private InputOwnerInterface m_inputOwnerInterface;
- //   private ActivityTestExecutor m_ownerActivity;
     private SensorManager m_sensorManager;
 
 
@@ -26,7 +25,7 @@ public class InputAdapter
     {
         m_sensorManager = (SensorManager) activityTestExecutor.getSystemService(Context.SENSOR_SERVICE);
         m_sensorInput = new SensorInput(inputOwnerInterface, m_sensorManager);
-        m_storageInput = new StorageInput(activityTestExecutor, testExecutor, inputOwnerInterface);
+        m_storageInput = new StorageInput(inputOwnerInterface);
         m_ownerTestExecutor = testExecutor;
         m_inputOwnerInterface = inputOwnerInterface;
     }

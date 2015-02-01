@@ -2,6 +2,7 @@ package ru.oxbao.speed_car;
 
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,7 +39,7 @@ public class ActivityTestExecutor extends ActionBarActivity
     private TestExecutor m_testExecutor;
     // Variables
     private TestResult m_testResult;
-    private int m_need_speed;
+
 
     // Temporary
     private RadioButton m_radioTest1;
@@ -79,7 +80,6 @@ public class ActivityTestExecutor extends ActionBarActivity
         m_imageViewStep2 = (ImageView) findViewById(R.id.imageViewStep2);
         m_imageViewStep3 = (ImageView) findViewById(R.id.imageViewStep3);
         m_tvStep = (TextView) findViewById(R.id.tvStepText);
-
 
         m_handler = new Handler()
         {
@@ -180,6 +180,8 @@ public class ActivityTestExecutor extends ActionBarActivity
     public void OnCalibrateFinished()
     {
         // set progressbarmax
+        final MediaPlayer m_mediaPlayer = MediaPlayer.create(this, R.raw.tone);
+        m_mediaPlayer.start();
         SetProgressBar(0);
         SetMaxProgressBar(ActivityInputData.g_needSpeed);
         m_buttonStartTest.setText(getResources().getString(R.string.forward));
@@ -245,6 +247,8 @@ public class ActivityTestExecutor extends ActionBarActivity
 
     public void StartTest()
     {
+
+
         switch (m_radioGroupTests.getCheckedRadioButtonId())
         {
             case R.id.test1:
